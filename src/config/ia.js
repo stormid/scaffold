@@ -5,5 +5,9 @@ export default [{
     {
         label: 'Contact',
         href: '/contact.html'
+    },
+    {
+        label: 'Services',
+        href: '/services/'
     }
 ];
