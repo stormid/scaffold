@@ -1,0 +1,22 @@
+{
+  "name": "storm-dom",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./node_modules/.bin/rimraf ./build && mkdir ./build && babel-node tools",
+    "start": "npm run build && ./node_modules/.bin/http-server ./build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "stormid",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
+    "http-server": "^0.11.1",
+    "preact-render-to-string": "^4.1.0",
+    "rimraf": "^2.6.2"
+  }
+}
