@@ -6,9 +6,9 @@ import Navigation from '../../src/html/components/navigation/primary';
 import ia from '../../src/config/ia';
 
 storiesOf('Header', module)
-  .add('Default', () => {
-    return renderToString(<Header />) + '<div id="main"></div>';
+  .addWithMarkup('Default', () => {
+    return renderToString(<Header />);
   });
 
 storiesOf('Primary navigation', module)
-    .add('Default', () => renderToString(<Navigation items={ia} active={'Home'} />));
+    .addWithMarkup('Default', () => renderToString(<Navigation items={ia} active={'Home'} />));
