@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel-node tools",
+    "gulp": "node_modules/.bin/gulp",
     "start": "npm run build",
     "test": "jest",
     "storybook": "start-storybook -p 9001 -c .storybook"
@@ -19,8 +20,10 @@
     "@babel/runtime": "^7.1.5",
     "babel-loader": "^8.0.4",
     "fs-extra": "^7.0.1",
+    "gulp": "^3.9.1",
     "preact-render-to-string": "^4.1.0",
-    "storm-storybook-markup": "^0.1.0"
+    "storm-storybook-markup": "^0.1.0",
+    "through2": "^3.0.0"
   },
   "dependencies": {
     "@storybook/addon-a11y": "^4.0.4",
