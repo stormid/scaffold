@@ -3,7 +3,7 @@ import Head from '../components/head';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import PrimaryNav from '../components/navigation/primary';
-import ia from '../../config/ia';
+import { ia } from '../../data';
 
 const Default = ({ children, title }) => <html lang="en" class="no-webfonts no-js">
     <Head title={title} />

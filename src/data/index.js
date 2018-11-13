@@ -1,4 +1,4 @@
-export default [{
+export const ia = [{
         label: 'Home',
         href: '/home.html'
     },
