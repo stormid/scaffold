@@ -5,6 +5,9 @@ export default [
         component: 'Header'
     },
     {
+        component: 'Button'
+    },
+    {
         component: 'Navigation',
         path: 'navigation/primary',
         props: {
