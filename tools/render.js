@@ -4,16 +4,13 @@ import render from 'preact-render-to-string';
 import fse from 'fs-extra';
 import path from 'path';
 
-export default () => {
-    const pages = walker(__dirname, `../src/html/pages`);
+const writeFile = page => new Promise(resolve => {
+    fse.outputFile(
+        path.resolve(__dirname, path.join(`../build`, page.path, `${page.name.replace(/.js/, '')}.html`)),
+        doctype(render(require(`../src/html/pages/${page.path}/${page.name}`).default())),
+        'utf8',
+        () => resolve(page.name)
+    );
+});
 
-    for(let page of pages){
-        const html = render(require(`../src/html/pages/${page.path}/${page.name}`).default());
-        fse.outputFile(
-            path.resolve(__dirname, path.join(`../build`, page.path, `${page.name.replace(/.js/, '')}.html`)),
-            doctype(html), 'utf8',
-            () => {}
-        );
-    }
-    return;
-};
+export default () => Promise.all(walker(__dirname, `../src/html/pages`).map(writeFile));

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "babel-node tools",
     "gulp": "node_modules/.bin/gulp",
+    "watch": "node_modules/.bin/gulp watch",
     "start": "npm run build",
     "test": "jest",
     "storybook": "start-storybook -p 9001 -c .storybook"

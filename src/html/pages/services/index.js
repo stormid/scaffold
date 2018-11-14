@@ -2,7 +2,7 @@ import { h } from '../../../../tools/dom';
 import DefaultLayout from '../../layouts/default';
 import Test from '../../components/test';
 
-const ServicesPage = () => <DefaultLayout title={'Sefvices'}>
+const ServicesPage = () => <DefaultLayout title={'Services'}>
     <h1>Services</h1>
     <Test />
     { Test() }

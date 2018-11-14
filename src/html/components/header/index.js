@@ -1,4 +1,5 @@
 import { h } from '../../../../tools/dom';
+import Logo from '../logo';
 
 const Header = ({ children }) => <header class="banner">
     <div class="skip">
