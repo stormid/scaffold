@@ -2,12 +2,12 @@
     font-size: var(--font-size-delta);
     line-height: var(--line-height-delta);
     border-radius: 2px;
-    color: var(--dark-grey-1);
+    color: white;
     display: inline-block;
     text-align: center;
     transition: all 0.2s ease-in-out;
     width: auto;
     padding:calc(var(--baseline)/4) calc(var(--gutter)/2);
-    background-color:#191919;
+    background-color:var(--teal);
     color:white;
 }

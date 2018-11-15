@@ -163,3 +163,8 @@ textarea {
 	resize: vertical; 
     width:100%;
 }
+
+main {
+	display: flex;
+	padding:var(--baseline) var(--gutter)
+}

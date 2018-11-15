@@ -1,2 +1,3 @@
 import { h } from '../../../../tools/dom';
-export default () => <div>I am a partial</div>
+
+export default ({ wtf }) => <div>{wtf}</div>;

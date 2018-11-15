@@ -1,3 +1,3 @@
-import render from './render';
+import render from './dom/render';
 
 render();

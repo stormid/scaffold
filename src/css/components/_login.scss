@@ -1,5 +1,5 @@
 .login {
-    border-top:4px solid #191919;
+    border-top:calc(var(--baseline)/2) solid #191919;
     display: flex;
     justify-content: center;
     align-items: center;
