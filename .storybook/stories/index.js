@@ -29,7 +29,7 @@ storiesOf('Card', module)
     return renderToString(<Empty />);
   })
   .addWithMarkup('Card', () => {
-    return renderToString(<Card img={'Headline'} title={'Headline'} summary={'Lorem ipsum dolor amet, lorem ipsum dolor amet.'} />);
+    return renderToString(<Card href={'#'} title={'Headline'} summary={'Lorem ipsum dolor amet, lorem ipsum dolor amet.'} />);
   });
 
 // import anthology from '../anthology';
