@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel-node tools",
+    "build": "babel-node tools && npm run sass",
     "gulp": "node_modules/.bin/gulp",
     "watch": "node_modules/.bin/gulp watch",
     "start": "npm run build",
     "test": "jest",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "sass": "node-sass src/css -o build/static/css"
   },
   "author": "stormid",
   "license": "MIT",
@@ -22,9 +23,9 @@
     "babel-loader": "^8.0.4",
     "fs-extra": "^7.0.1",
     "gulp": "^3.9.1",
+    "node-sass": "^4.10.0",
     "preact-render-to-string": "^4.1.0",
-    "storm-storybook-markup": "^0.1.0",
-    "through2": "^3.0.0"
+    "storm-storybook-markup": "^0.1.0"
   },
   "dependencies": {
     "@storybook/addon-a11y": "^4.0.4",

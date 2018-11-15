@@ -1,0 +1,7 @@
+.link {
+    color:var(--dark-blue);
+}
+.link:hover,
+.link:focus {
+    text-decoration: underline;
+}

@@ -1,0 +1,10 @@
+.header {
+    background-color:#191919;
+    padding:0 calc(var(--baseline));
+    box-shadow: 2px 4px 10px rgba(0,0,0,.2);
+    display: flex;
+}
+.header__link {
+    display: inline-block;
+    padding:calc(var(--baseline)/2) 0
+}

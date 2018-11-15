@@ -10,10 +10,12 @@ const Default = ({ children, title }) => <html lang="en" class="no-webfonts no-j
     <Head title={title} />
     <body>
         <Header title={title}>
-            <a href="/"><Logo /></a>
+            <a class="header__link" href="/"><Logo /></a>
+            <PrimaryNav items={ia} active={title} />
         </Header>
-        <PrimaryNav items={ia} active={title} />
-        <main id="main">{ children }</main>
+        <main id="main">
+            { children }
+        </main>
         <Footer></Footer>
     </body>
     <script src="/static/js/app.js"></script>

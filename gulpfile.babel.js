@@ -6,8 +6,9 @@ gulp.task('watch', cb => {
 });
 
 gulp.task('default', cb => {
-    render.default().then(res => {
-        console.log(res);
-        cb();
-    })
+    render.default()
+        .then(res => {
+            cb();
+        })
+        .catch(e => cb(e))
 });

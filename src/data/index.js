@@ -3,11 +3,11 @@ export const ia = [{
         href: '/home.html'
     },
     {
+        label: 'Services',
+        href: '/services/'
+    },
+    {
         label: 'Contact',
         href: '/contact.html'
     },
-    {
-        label: 'Services',
-        href: '/services/'
-    }
 ];

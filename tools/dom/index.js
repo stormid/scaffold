@@ -5,4 +5,4 @@ export const h = (nodeName, attributes, ...args) => {
 
 export const doctype = html => `<!DOCTYPE html>${html}`;
 
-export const withGhost = ({ component, ghost, isGhost }) => isGhost ? ghost : component; 
+export const ghost = (component, ghost, isGhost) => isGhost ? ghost : component; 
