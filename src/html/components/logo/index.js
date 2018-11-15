@@ -1,8 +1,8 @@
 import { h } from '../../../../tools/dom';
 
 const Logo = ({
-    width = 150,
-    height = 32,
+    width = '150',
+    height = '32',
     fillStorm = '#fff',
     fillId = 'gray'
 }) => <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="20 -2.2 240.8 51.2">

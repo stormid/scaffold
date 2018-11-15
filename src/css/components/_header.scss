@@ -2,6 +2,7 @@
     background-color:#191919;
     padding:0 calc(var(--baseline));
     box-shadow: 2px 4px 10px rgba(0,0,0,.2);
+    min-height:60px;
     display: flex;
 }
 .header__link {
