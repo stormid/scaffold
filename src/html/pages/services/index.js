@@ -3,7 +3,7 @@ import DefaultLayout from '../../layouts/default';
 import Test from '../../components/test';
 
 const ServicesPage = () => <DefaultLayout title={'Services'}>
-    <h1>Servicess</h1>
+    <h1>Services</h1>
     <Test />
     { Test() }
     { require('../../components/test').default() }

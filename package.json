@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel-node tools && npm run sass",
     "gulp": "node_modules/.bin/gulp",
-    "watch": "node_modules/.bin/gulp watch",
+    "watch": "babel-node tools/watch",
     "start": "npm run build",
     "test": "jest",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -21,6 +21,7 @@
     "@babel/preset-env": "^7.1.5",
     "@babel/runtime": "^7.1.5",
     "babel-loader": "^8.0.4",
+    "chokidar": "^2.0.4",
     "fs-extra": "^7.0.1",
     "gulp": "^3.9.1",
     "node-sass": "^4.10.0",

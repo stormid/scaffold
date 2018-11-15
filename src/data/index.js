@@ -1,7 +1,4 @@
-export const ia = [{
-        label: 'Home',
-        href: '/home.html'
-    },
+export const ia = [
     {
         label: 'Services',
         href: '/services/'
