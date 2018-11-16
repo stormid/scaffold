@@ -10,16 +10,30 @@ import '../../build/static/css/index.css';
 
 storiesOf('Header', module)
   .addWithMarkup('Default', () => {
-    return renderToString(<Header />);
+    return renderToString(<Header title={'Dashboard'}>
+      <a class="header__link" href="#" aria-label="Home"><Logo /></a>
+      <Navigation items={ia} active={'Dashboard'} />
+  </Header>);
   });
 
 storiesOf('Logo', module)
+  .addDecorator(story => {
+      return `<div style="background-color: #191919; justify-content: center; align-items: center; position: fixed; display: flex;top: 0; left: 0; right: 0; bottom: 0;">      
+          ${story()}
+      </div>`;
+  })
   .addWithMarkup('Default', () => {
     return renderToString(<Logo />);
   });
 
 storiesOf('Primary navigation', module)
-    .addWithMarkup('Default', () => renderToString(<Navigation items={ia} active={'Home'} />));
+  .addDecorator(story => {
+    return `<div style="background-color: #191919; position: fixed; display: flex;top: 0; left: 0; right: 0; bottom: 0;">      
+        <div style="max-height:65px;display:flex">${story()}</div>
+    </div>`;
+  })
+  .addWithMarkup('Default', () => renderToString(<Navigation items={ia} />))
+  .addWithMarkup('Active', () => renderToString(<Navigation items={ia} active={'Dashboard'} />));
 
 storiesOf('Card', module)
   .addWithMarkup('Loading', () => {

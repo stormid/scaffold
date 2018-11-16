@@ -6,7 +6,7 @@ const DashboardPage = () => <DefaultLayout title={'Dashboard'}>
     <div class="card__list">
     {
         xkcd.map(strip => <Card
-            img={strip.img}
+            href={strip.img}
             title={strip.title}
             summary={strip.alt}
         />)
