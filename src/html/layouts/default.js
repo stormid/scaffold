@@ -18,7 +18,7 @@ const Default = ({ children, title }) => <html lang="en" class="no-webfonts no-j
         </main>
         <Footer></Footer>
     </body>
-    {/* <script src="/static/js/app.js"></script> */}
+    <script src="/static/js/app.js"></script>
 </html>;
 
 export default Default;
