@@ -4,7 +4,7 @@ import imageminMozjpeg from 'imagemin-mozjpeg';
 import imageminPngquant from'imagemin-pngquant';
 import imageminSvgo from'imagemin-svgo';
  
-const optimise = (async (src = 'src/img/**/*.{jpg,jpeg,png,svg}') => {
+const optimise = async (src = 'src/img/**/*.{jpg,jpeg,png,svg}') => {
     const files = await imagemin([src], 'build/static/img', {
         plugins: [
             imageminMozjpeg({quality: 70}),
@@ -17,14 +17,13 @@ const optimise = (async (src = 'src/img/**/*.{jpg,jpeg,png,svg}') => {
         ]
     });
  
-    // console.log(files);
+    console.log(files);
     //=> [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
-})();
+};
 
 
-export const watch = () => chokidar.watch(`src/img/**/*`).on('change', file => {
-    console.log(file);
-    //optimise(file));
-});
+export const watch = () => chokidar.watch(`src/img/**/*`)
+    .on('add', path => optimise(path))
+    .on('change', file => optimise(file));
 
-export default watch();
+watch();
