@@ -10,7 +10,7 @@ const Default = ({ children, title }) => <html lang="en" class="no-webfonts no-j
     <Head title={title} />
     <body>
         <Header title={title}>
-            <a class="header__link" href="/"><Logo /></a>
+            <a class="header__link" href="/" aria-label="Home"><Logo /></a>
             <PrimaryNav items={ia} active={title} />
         </Header>
         <main id="main">
