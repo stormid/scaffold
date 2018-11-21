@@ -1,8 +1,7 @@
 {
-  "name": "storm-dom",
+  "name": "scaffold",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "babel-node tools/dom && npm run sass && npm run img && npm run js",
     "watch": "babel-node tools/watch",
@@ -13,11 +12,24 @@
     "js:watch": "babel-node tools/js/watch",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "sass": "node-sass src/css -o build/static/css",
+    "css": "babel-node tools/css",
     "img": "babel-node tools/img"
   },
+  "browserslist": [
+    "ie >= 9",
+    "ie_mob >= 10",
+    "ff >= 20",
+    "chrome >= 4",
+    "safari >= 7",
+    "opera >= 23",
+    "ios >= 7",
+    "android >= 4.4",
+    "bb >= 10"
+  ],
   "author": "stormid",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^9.3.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^22.4.3",
@@ -29,6 +41,7 @@
     "browser-sync": "^2.26.3",
     "browserify": "^16.2.3",
     "chokidar": "^2.0.4",
+    "clean-css-cli": "^4.2.1",
     "concurrently": "^4.0.1",
     "fs-extra": "^7.0.1",
     "imagemin-keep-folder": "^5.3.2",
@@ -37,6 +50,7 @@
     "imagemin-svgo": "^7.0.0",
     "node-fetch": "^2.3.0",
     "node-sass": "^4.10.0",
+    "postcss": "^7.0.6",
     "preact-render-to-string": "^4.1.0",
     "storm-storybook-markup": "^0.1.0"
   },
