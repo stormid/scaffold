@@ -1,6 +1,3 @@
-export const h = (nodeName, attributes, ...args) => {  
-    let children = args.length ? [].concat(...args) : null;
-    return { nodeName, attributes, children };
-};
+import render from './render';
 
-export const doctype = html => `<!DOCTYPE html>${html}`;
+render();

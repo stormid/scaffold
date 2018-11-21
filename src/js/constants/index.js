@@ -5,7 +5,8 @@ export const PATHS = {
 export const TOGGLES = {
 	SELECTOR:{
 		GLOBAL: '.js-toggle',
-		LOCAL: '.js-toggle__local'
+		LOCAL: '.js-toggle__local',
+		NAV: '.js-toggle__nav'
 	},
 	OPTIONS: {
 		LOCAL: {

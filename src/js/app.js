@@ -2,10 +2,7 @@ import { PATHS } from './constants';
 import Toggle from './require/toggle';
 
 const onInit = [
-	() => {
-		Toggle();
-		console.log('Not my bag');
-	}
+	Toggle
 ];
 
 { onInit.map(fn => fn()); }

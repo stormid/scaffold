@@ -1,9 +1,11 @@
 import chokidar from 'chokidar';
 import { walker } from '../utils';
-import { writeFile } from './render';
-const BASE_PATH = 'src/html';
+import { write } from './render';
+import { paths } from '../../config';
 
-chokidar.watch(`${BASE_PATH}/**/*`).on('change', file => new Promise(resolve => {
-    Promise.all(walker(__dirname, `../../src/html/pages`).map(writeFile))
-        .then(resolve);
-}));
+chokidar
+    .watch(`${paths.src.templates}/**/*`)
+    .on('change', file => new Promise(resolve => {
+        Promise.all(walker(__dirname, `../../${paths.src.templates}/pages`).map(write))
+            .then(resolve);
+    }));
