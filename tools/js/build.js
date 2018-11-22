@@ -23,7 +23,7 @@ const core = () => {
             });
             b.bundle().pipe(writeStream);
             writeStream.on('finish', () => {
-                console.log(`JS: ${paths.dest.js}/${entry}`);
+                // console.log(`js:core ${paths.dest.js}/${entry}`);
                 // return callback();
             });
         });
@@ -31,29 +31,20 @@ const core = () => {
 };
 
 const standalone = () => {
-    const entries = fse.readdirSync(`${paths.src.js}`);
+    const entries = fse.readdirSync(`${paths.src.js}/async`);
     for (let entry of entries) {
-        // fse.createReadStream(source);
-
-        /*
-        var rd = fs.createReadStream(source);
-  var wr = fs.createWriteStream(target);
-  return new Promise(function(resolve, reject) {
-    rd.on('error', reject);
-    wr.on('error', reject);
-    wr.on('finish', resolve);
-    rd.pipe(wr);
-  }).catch(function(error) {
-    rd.destroy();
-    wr.end();
-    throw error;
-  });
-        */
+        const minified = Terser.minify(fse.readFileSync(path.resolve(__dirname, `../../${paths.src.js}/async/${entry}`), "utf8"));
+        
+        fse.outputFile(
+            path.resolve(__dirname, `../../${paths.dest.js}/async/${entry}`),
+            minified.code
+        )
     }
 };
 
 export default () => {
     core();
+    standalone();
 };
 
 
