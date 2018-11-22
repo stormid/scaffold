@@ -14,3 +14,7 @@ export const TOGGLES = {
 		}
 	}
 };
+
+export const AI = {
+	META: 'data-ai'
+};
