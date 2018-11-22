@@ -4,5 +4,5 @@ import { paths } from '../../config';
 
 chokidar
     .watch(`${paths.src.css}/**/*`)
-    .on('add', compile)
+    // .on('add', compile)
     .on('change', compile);
