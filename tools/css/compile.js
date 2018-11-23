@@ -15,24 +15,25 @@ export default () => fse.readdirSync(paths.src.css).forEach(file => {
         }, (err, res) => { 
             if(err) console.log(err);
 
-            //to do: async/await
-            postcss([ autoprefixer ]).process(res.css, {
-                from: undefined,
-                map: {
-                    inline: true
-                }
-            }).then(postres => {
-                postres.warnings().forEach(warn => console.warn(warn.toString()));
-                fse.outputFile(
-                    `${paths.dest.css}/${file.replace('.scss', '.css')}`,
-                    postres.css,
-                    'utf8',
-                    err => {
-                        if(err) return console.log(err);
-                        console.log(`compiled`);
+            postcss([ autoprefixer ])
+                .process(res.css, {
+                    from: undefined,
+                    map: {
+                        inline: true
                     }
-                );
-            });
+                })
+                .then(postres => {
+                    postres.warnings().forEach(warn => console.warn(warn.toString()));
+                    fse.outputFile(
+                        `${paths.dest.css}/${file.replace('.scss', '.css')}`,
+                        postres.css,
+                        'utf8',
+                        err => {
+                            if(err) return console.log(err);
+                            console.log(`compiled`);
+                        }
+                    );
+                });
         });
     }
 });

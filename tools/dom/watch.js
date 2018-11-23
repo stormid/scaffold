@@ -5,7 +5,8 @@ import { paths } from '../../config';
 
 const render = file => new Promise(resolve => {
     Promise.all(walker(__dirname, `../../${paths.src.templates}/pages`).map(write))
-        .then(resolve);
+        .then(resolve)
+        .catch(err => console.log(err));
 });
 
 chokidar

@@ -166,5 +166,6 @@ textarea {
 
 main {
 	display: flex;
-	padding:var(--baseline) var(--gutter)
+	padding:var(--baseline) var(--gutter);
+	justify-content: center;
 }

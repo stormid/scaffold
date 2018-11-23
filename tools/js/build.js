@@ -9,26 +9,33 @@ import Terser from 'terser';
 // 2. copy/minify standalone/async modules
 // 3. copy/minify any custom modules
 // 4. polyfills
+
+const compile = (src, dest, entry, outputFileName) => {
+    fse.mkdirs(dest, err => {
+        if(err) return console.log(err);
+
+        const writeStream = fse.createWriteStream(path.resolve(__dirname, `../../${dest}/${outputFileName ? outputFileName : entry}`));
+        const b = browserify({
+            entries: `${src}/${entry}`,
+            transform: [ babelify ]
+        });
+        b.bundle().pipe(writeStream);
+        writeStream.on('finish', () => {
+            // console.log(`js:core ${paths.dest.js}/${entry}`);
+            // return callback();
+        });
+    });
+}
+
 const core = () => {
     const entries = fse.readdirSync(`${paths.src.js}`);
     for (let entry of entries) {
         if(fse.statSync(path.resolve(__dirname, `../../${paths.src.js}/${entry}`)).isDirectory()) continue;
-        fse.mkdirs(paths.dest.js, err => {
-            if(err) return console.log(err);
-
-            const writeStream = fse.createWriteStream(path.resolve(__dirname, `../../${paths.dest.js}/${entry}`));
-            const b = browserify({
-                entries: `${paths.src.js}/${entry}`,
-                transform: [ babelify ]
-            });
-            b.bundle().pipe(writeStream);
-            writeStream.on('finish', () => {
-                // console.log(`js:core ${paths.dest.js}/${entry}`);
-                // return callback();
-            });
-        });
+        compile(paths.src.js, paths.dest.js, entry);
     }
 };
+
+const polyfills = () => compile(`${paths.src.js}/polyfills`, `${paths.dest.js}/async`, `index.js`, 'polyfills.js');
 
 const standalone = () => {
     const entries = fse.readdirSync(`${paths.src.js}/async`);
@@ -43,6 +50,7 @@ const standalone = () => {
 };
 
 export default () => {
+    polyfills();
     core();
     standalone();
 };
