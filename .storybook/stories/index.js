@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/html';
 import { h } from '../../tools/dom';
 import renderToString from 'preact-render-to-string/jsx';
-import Header from '../../src/html/components/header';
-import Logo from '../../src/html/components/logo';
-import Navigation from '../../src/html/components/navigation/primary';
-import Card, { Ghost, Empty } from '../../src/html/components/card';
+import Header from '../../src/templates/components/header';
+import Logo from '../../src/templates/components/logo';
+import Navigation from '../../src/templates/components/navigation/primary';
+import Card, { Ghost, Empty } from '../../src/templates/components/card';
 import { ia } from '../../src/data';
 import '../../build/static/css/index.css';
 
