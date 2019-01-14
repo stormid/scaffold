@@ -1,7 +1,7 @@
 import { PATHS } from './constants';
 import Promise from 'promise-polyfill';
+import Load from './require/load';
 import Toggle from './require/toggle';
-import Load from 'storm-load';
 
 const onInit = [
 	Toggle

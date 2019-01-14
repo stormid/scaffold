@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/html';
-import { h } from '../../tools/dom';
+import { h } from '../../tools/dom/h';
 import renderToString from 'preact-render-to-string/jsx';
 import Header from '../../src/templates/components/header';
 import Logo from '../../src/templates/components/logo';
-import Navigation from '../../src/templates/components/navigation/primary';
+import Navigation from '../../src/templates/components/navigation/primary'
 import Card, { Ghost, Empty } from '../../src/templates/components/card';
 import { ia } from '../../src/data';
 import '../../build/static/css/index.css';

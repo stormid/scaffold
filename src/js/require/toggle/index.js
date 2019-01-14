@@ -1,5 +1,5 @@
 import { TOGGLES } from '../../constants';
-import Toggle from 'storm-toggle';
+import Toggle from './lib';
 
 export default () => {
     Toggle.init(TOGGLES.SELECTOR.NAV,
@@ -17,5 +17,6 @@ export default () => {
                     return acc;
                 }, false)) this.toggle();
             }
-		});
+            
+        });        
 };

@@ -15,8 +15,8 @@ const PrimaryNavSubItem = ({ href, label }) => <li class="nav-primary__sub-item"
 </li>
 
 const PrimaryNav = ({ items, active }) => <div class="nav-primary__container">
-    <MenuButton className="nav-primary__btn js-toggle__primary-nav" />
-    <nav class="nav-primary js-toggle__nav" id="primary__nav" data-toggle="js-toggle__primary-nav">
+    <MenuButton className="nav-primary__btn js-toggle__nav-btn" />
+    <nav class="nav-primary js-toggle__nav" id="primary__nav" data-toggle="js-toggle__nav-btn">
         <ul class="nav-primary__list">
             { items.map(item => <PrimaryNavItem label={item.label} href={item.href} active={active === item.label} />) }
         </ul>
