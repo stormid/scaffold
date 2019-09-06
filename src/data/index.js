@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 export const ia = [
     {
         label: 'Dashboard',
-        href: '/dashboard.html'
+        href: '/dashboard/'
     },
     {
         label: 'Test',
