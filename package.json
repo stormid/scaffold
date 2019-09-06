@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "dev": "webpack-dev-server --config tools/webpack/config.js --mode development --inline false"
+    "dev": "node tools/webpack/dev"
   },
   "author": "stormid",
   "license": "MIT",
@@ -25,9 +25,11 @@
     "clean-css-cli": "^4.2.1",
     "clean-webpack-plugin": "^3.0.0",
     "concurrently": "^4.0.1",
+    "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
     "ejs": "^2.7.1",
+    "express": "^4.17.1",
     "fs-extra": "^7.0.1",
     "http-server": "^0.11.1",
     "imagemin-keep-folder": "^5.3.2",
@@ -51,7 +53,8 @@
     "terser": "^3.10.12",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "dependencies": {
     "@storybook/addon-a11y": "^4.0.4",

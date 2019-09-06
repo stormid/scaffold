@@ -12,3 +12,6 @@ const onInit = [
 	if(!Object.assign) Load(`${PATHS.JS_ASYNC}/polyfills.js`) .then(() => onInit.map(f => f()));
 	else onInit.map(f => f());
 }
+if (module.hot) {
+	module.hot.accept()
+}    
