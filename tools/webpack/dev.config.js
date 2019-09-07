@@ -11,7 +11,7 @@ module.exports = [{
     mode: 'development',
   	output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, `../../build/static`),
+        path: path.resolve(__dirname, `../../build`),
         libraryTarget: `umd`
     },
     target: "node",
@@ -24,7 +24,6 @@ module.exports = [{
             filename: 'index.css',
             chunkFilename: '[id].css',
             ignoreOrder: false,
-            publicPath: `build/static`,
         }),
         // new BrowserSyncPlugin(
         //     {
@@ -74,8 +73,7 @@ module.exports = [{
     mode: 'development',
   	output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, `../../build/static`),
-        libraryTarget: `umd`
+        path: path.resolve(__dirname, `../../build`)
     },
     target: "web",
   	plugins: [

@@ -8,9 +8,8 @@ module.exports = function(locals) {
 
     // if (module.hot) {
     //      module.hot.accept()
-    // }    
-    const assets = Object.keys(locals.webpackStats.compilation.assets)
-    // const js = assets.filter(value => value.match(/\.js$/))
+    // }
+    const assets = Object.keys(locals.webpackStats.compilation.assets);
     const css = assets.filter(value => value.match(/\.css$/))
     return Promise.resolve(`<!DOCTYPE html>${render(<Html css={css} htmlBody={<Body />} />)}`);
 

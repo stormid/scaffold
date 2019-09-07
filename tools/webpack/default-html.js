@@ -10,8 +10,9 @@ module.exports = function({ htmlBody, css }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link rel="stylesheet" href={`/${css}`} />
-        <script src={`/index.js`}></script>
+        <link rel="stylesheet" href={`${css}`} />
+        {/* set path based on NODE_ENV */}
+        <script src={`index.js`} async></script>
       </head>
       <body>     
         {htmlBody}

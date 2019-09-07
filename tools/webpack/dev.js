@@ -26,15 +26,18 @@ const express = require('express');
 const webpack = require('webpack');
 
 const app = express();
+app.use(express.static('build'))
 
 ;(function() {
-  const webpackConfig = require(process.env.WEBPACK_CONFIG || './config')
+  const webpackConfig = require(process.env.WEBPACK_CONFIG || './dev.config')
 
   webpackConfig.forEach((config, index) => {
     const compiler = webpack(config)
 
-    app.use(require('webpack-dev-middleware')(compiler))
-  })
+    app.use(require('webpack-dev-middleware')(compiler, {
+      publicPath: '/'
+    }));
+  });
 })()
 
 if (require.main === module) {

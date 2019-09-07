@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "dev": "node tools/webpack/dev"
+    "dev": "node tools/webpack/dev",
+    "build": "webpack --config tools/webpack/build.config.js"
   },
   "author": "stormid",
   "license": "MIT",
