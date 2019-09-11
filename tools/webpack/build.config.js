@@ -85,7 +85,11 @@ module.exports = [{
     },
     target: "web",
     plugins: [
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+		new CopyWebpackPlugin([{
+			from: path.resolve(__dirname, '../../src/js/async'),
+			to: path.resolve(__dirname, `../../build/static/js/async`)
+		}])
     ],
   	module: {
 		rules: [

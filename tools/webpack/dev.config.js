@@ -4,6 +4,7 @@ const StaticSiteGeneratorPlugin = require('./static-site-generator-webpack-plugi
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcssCustomProperties = require('postcss-custom-properties');
 // const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { getPaths } = require('./utils');
 const paths = require('../../config').paths;
@@ -68,7 +69,7 @@ module.exports = [{
 					},
 				  	'css-loader',
 				  	'postcss-loader',
-				  	'sass-loader'
+					'sass-loader',
 				]
 			}
 		]
@@ -87,6 +88,12 @@ module.exports = [{
 		path: path.resolve(__dirname, `../../build`)
 	},
 	target: "web",
+    plugins: [
+		new CopyWebpackPlugin([{
+			from: path.resolve(__dirname, '../../src/js/async'),
+			to: path.resolve(__dirname, `../../build/static/js/async`)
+		}])
+    ],
   	module: {
 		rules: [
 			{
