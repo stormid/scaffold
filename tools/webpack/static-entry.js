@@ -4,7 +4,7 @@ const Html = require(`./default-html`);
 require('../../src/css/index.scss');
 
 module.exports = function(locals) {
-	const body = require(`../../src/templates/pages/${locals.path}`).default();
+	  const body = require(`../../src/templates/pages/${locals.path}`).default();
     const assets = Object.keys(locals.webpackStats.compilation.assets);
     const css = assets.filter(value => value.match(/\.css$/));
     return new Promise((resolve, reject) => {

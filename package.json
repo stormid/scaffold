@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "node tools/webpack/dev",
     "build": "webpack --config tools/webpack/build.config.js",
-    "storybook": "start-storybook -p 8001"
+    "storybook": "start-storybook -p 8001",
+    "test": "node_modules/.bin/jest"
   },
   "author": "stormid",
   "license": "MIT",
@@ -28,6 +29,7 @@
     "@babel/preset-env": "^7.1.6",
     "@storybook/html": "^4.1.6",
     "autoprefixer": "^9.3.1",
+    "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babelify": "^10.0.0",
@@ -51,6 +53,7 @@
     "imagemin-pngquant": "^6.0.0",
     "imagemin-svgo": "^7.0.0",
     "jest": "^23.6.0",
+    "jest-axe": "^3.2.0",
     "microbundle": "^0.7.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-fetch": "^2.3.0",
