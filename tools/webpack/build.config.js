@@ -1,14 +1,14 @@
 const path = require('path');
-const webpack = require('webpack');
 const StaticSiteGeneratorPlugin = require('./static-site-generator-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { getPaths } = require('./utils');
 const paths = require('../../config').paths;
 
 module.exports = [{
     entry: path.resolve(__dirname, './static-entry.js'),
-    mode: 'development',
+    mode: 'production',
   	output: {
         filename: '[name].js',
         path: path.resolve(__dirname, `../../build`),
@@ -16,7 +16,6 @@ module.exports = [{
     },
     target: "node",
   	plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new StaticSiteGeneratorPlugin({
             paths: getPaths(paths.src.templates)
         }),
@@ -25,6 +24,10 @@ module.exports = [{
             chunkFilename: '[id].css',
             ignoreOrder: false,
         }),
+		new CopyWebpackPlugin([{
+			from: path.resolve(__dirname, '../../src/assets'),
+			to: path.resolve(__dirname, `../../build/static`)
+		}])
         // new BrowserSyncPlugin(
         //     {
         //       host: 'localhost',
@@ -51,34 +54,38 @@ module.exports = [{
                     loader: 'file-loader'
                 }
             },
-            {
-                test: /\.scss$/,
-                use: [
-                  {
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                      hmr: process.env.NODE_ENV === 'development',
-                    },
-                  },
-                  'css-loader',
-                  'sass-loader',
-                //   'postcss-loader'
-                ],
-            }
+			{
+				test: /\.(s)?css$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+					  	options: {
+							hmr: process.env.NODE_ENV === 'development',
+					  	},
+					},
+				  	'css-loader',
+				  	'postcss-loader',
+				  	'sass-loader'
+				]
+			}
         ]
     }
 },
 {
-    entry: path.resolve(__dirname, '../../src/js/app.js'),
-    mode: 'development',
+    entry: {
+		index: path.resolve(__dirname, '../../src/js/index.js'),
+		head: path.resolve(__dirname, '../../src/js/head.js'),
+		polyfills: path.resolve(__dirname, '../../src/js/polyfills/index.js'),
+    },
+    mode: 'production',
   	output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, `../../build/static/js`),
-        libraryTarget: `umd`
+        filename: '[name].js',
+        path: path.resolve(__dirname, `../../build/static/js`)
     },
     target: "web",
-  	plugins: [
-        new webpack.HotModuleReplacementPlugin()
+    plugins: [
+        new CleanWebpackPlugin()
     ],
   	module: {
 		rules: [

@@ -1,30 +1,21 @@
 var RawSource = require('webpack-sources/lib/RawSource');
 var evaluate = require('eval');
 var path = require('path');
-var cheerio = require('cheerio');
-var url = require('url');
 var Promise = require('bluebird');
 
 function StaticSiteGeneratorWebpackPlugin(options) {
-  if (arguments.length > 1) {
-    options = legacyArgsToOptions.apply(null, arguments);
-  }
-
   options = options || {};
 
   this.entry = options.entry;
   this.paths = Array.isArray(options.paths) ? options.paths : [options.paths || '/'];
   this.locals = options.locals;
   this.globals = options.globals;
-  this.crawl = Boolean(options.crawl);
 }
 
 StaticSiteGeneratorWebpackPlugin.prototype.apply = function(compiler) {
   var self = this;
   addThisCompilationHandler(compiler, function(compilation) {
     addOptimizeAssetsHandler(compilation, function(_, done) {
-      var renderPromises;
-
       var webpackStats = compilation.getStats();
       var webpackStatsJson = webpackStats.toJson();
 
@@ -48,7 +39,7 @@ StaticSiteGeneratorWebpackPlugin.prototype.apply = function(compiler) {
           throw new Error('Export from "' + self.entry + '" must be a function that returns an HTML string. Is output.libraryTarget in the configuration set to "umd"?');
         }
 
-        renderPaths(self.crawl, self.locals, self.paths, render, assets, webpackStats, compilation)
+        renderPaths(self.locals, self.paths, render, assets, webpackStats, compilation)
           .nodeify(done);
       } catch (err) {
         compilation.errors.push(err.stack);
@@ -58,7 +49,7 @@ StaticSiteGeneratorWebpackPlugin.prototype.apply = function(compiler) {
   });
 };
 
-function renderPaths(crawl, userLocals, paths, render, assets, webpackStats, compilation) {
+function renderPaths(userLocals, paths, render, assets, webpackStats, compilation) {
   var renderPromises = paths.map(function(outputPath) {
     var locals = {
       path: outputPath,
@@ -89,15 +80,7 @@ function renderPaths(crawl, userLocals, paths, render, assets, webpackStats, com
           }
 
           compilation.assets[assetName] = new RawSource(rawSource);
-
-          if (crawl) {
-            var relativePaths = relativePathsFromHtml({
-              source: rawSource,
-              path: key
-            });
-
-            return renderPaths(crawl, userLocals, relativePaths, render, assets, webpackStats, compilation);
-          }
+         
         });
 
         return Promise.all(assetGenerationPromises);
@@ -175,57 +158,6 @@ function makeObject(key, value) {
   obj[key] = value;
   return obj;
 }
-
-function relativePathsFromHtml(options) {
-  var html = options.source;
-  var currentPath = options.path;
-
-  var $ = cheerio.load(html);
-
-  var linkHrefs = $('a[href]')
-    .map(function(i, el) {
-      return $(el).attr('href');
-    })
-    .get();
-
-  var iframeSrcs = $('iframe[src]')
-    .map(function(i, el) {
-      return $(el).attr('src');
-    })
-    .get();
-
-  return []
-    .concat(linkHrefs)
-    .concat(iframeSrcs)
-    .map(function(href) {
-      if (href.indexOf('//') === 0) {
-        return null
-      }
-
-      var parsed = url.parse(href);
-
-      if (parsed.protocol || typeof parsed.path !== 'string') {
-        return null;
-      }
-
-      return parsed.path.indexOf('/') === 0 ?
-        parsed.path :
-        url.resolve(currentPath, parsed.path);
-    })
-    .filter(function(href) {
-      return href != null;
-    });
-}
-
-function legacyArgsToOptions(entry, paths, locals, globals) {
-  return {
-    entry: entry,
-    paths: paths,
-    locals: locals,
-    globals: globals
-  };
-}
-
 function addThisCompilationHandler(compiler, callback) {
   if(compiler.hooks) {
     /* istanbul ignore next */

@@ -1,6 +1,4 @@
 // require modules
-// var fs = require('fs');
-// var archiver = require('archiver');
 import fs from 'fs';
 import archiver from 'archiver';
 
