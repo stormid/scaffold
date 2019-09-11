@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "node tools/webpack/dev",
-    "build": "webpack --config tools/webpack/build.config.js"
+    "build": "webpack --config tools/webpack/build.config.js",
+    "storybook": "start-storybook -p 8001"
   },
   "author": "stormid",
   "license": "MIT",
