@@ -1,4 +1,4 @@
-import { h } from '../../../../tools/dom/h';
+import { h } from 'preact';
 import './index.css';
 
 const MenuButton = ({ className, label = 'Menu' }) => <button class={className}>

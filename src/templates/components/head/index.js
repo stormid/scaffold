@@ -1,4 +1,4 @@
-import { h } from '../../../../tools/dom/h';
+import { h } from 'preact';
 
 const Head = ({ title }) => <head>
     <meta charset="utf-8" />

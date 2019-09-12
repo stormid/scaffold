@@ -1,4 +1,4 @@
-import { h } from '../../../../tools/dom/h';
+import { h } from 'preact';
 
 const Footer = ({ children }) => <footer>{ children }</footer>;
 

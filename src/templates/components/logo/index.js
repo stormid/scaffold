@@ -1,4 +1,4 @@
-import { h } from '../../../../tools/dom/h';
+import { h } from 'preact';
 
 const Logo = ({
     width = '150',

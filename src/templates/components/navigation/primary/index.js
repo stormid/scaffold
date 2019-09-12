@@ -1,4 +1,4 @@
-import { h } from '../../../../../tools/dom/h';
+import { h } from 'preact';
 import MenuButton from '../../menu-button';
 
 const PrimaryNavItem = ({ href, active, label, sub }) => <li class="nav-primary__item">

@@ -1,4 +1,4 @@
-import { h } from '../../../../tools/dom/h';
+import { h } from 'preact';
 import Logo from '../logo';
 
 const Header = ({ children }) => <header class="header">

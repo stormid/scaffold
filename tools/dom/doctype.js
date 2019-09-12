@@ -1,1 +1,0 @@
-export const doctype = html => `<!DOCTYPE html>${html}`;

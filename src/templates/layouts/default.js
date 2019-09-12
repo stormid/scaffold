@@ -1,5 +1,5 @@
-import { h } from '../../../tools/dom/h';
-import Head from '../components/head';
+import { h } from 'preact';
+// import Head from '../components/head';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Logo from '../components/logo';

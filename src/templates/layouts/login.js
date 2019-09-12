@@ -1,5 +1,5 @@
-import { h } from '../../../tools/dom/h';
-import Head from '../components/head';
+import { h } from 'preact';
+// import Head from '../components/head';
 
 const Login = ({ children }) => <body>
     <main id="main" class="login">{ children }</main>

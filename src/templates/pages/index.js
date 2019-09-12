@@ -1,4 +1,4 @@
-import { h } from '../../../tools/dom/h';
+import { h } from 'preact';
 import LoginLayout from '../layouts/login';
 import Logo from '../components/logo';
 

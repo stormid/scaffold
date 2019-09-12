@@ -1,4 +1,4 @@
-import { h } from '../../../../tools/dom/h';
+import { h } from 'preact';
 import DefaultLayout from '../../layouts/default';
 import Test from '../../components/test';
 import Card from '../../components/card';

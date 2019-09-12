@@ -1,4 +1,4 @@
-import { h } from '../../../../../tools/dom/h';
+import { h } from 'preact';
 
 const SecondaryNav = ({ items, active }) => <nav class="nav-secondary">
     <ul class="nav-primary__list">
