@@ -1,10 +1,10 @@
 const path = require('path');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const StaticSiteGeneratorPlugin = require('./static-site-generator-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const postcssCustomProperties = require('postcss-custom-properties');
 // const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { getPaths } = require('./utils');
 const paths = require('../../config').paths;
@@ -32,7 +32,12 @@ module.exports = [{
 		new CopyWebpackPlugin([{
 			from: path.resolve(__dirname, '../../src/assets'),
 			to: path.resolve(__dirname, `../../build/static`)
-		}])
+		}]),
+		new CopyWebpackPlugin([{
+			from:path.resolve(__dirname, '../../src/img'),
+			to: path.resolve(__dirname, `../../build/static/img`)
+		}]),
+		new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
 		// new BrowserSyncPlugin(
 		//     {
 		//       host: 'localhost',
@@ -92,7 +97,10 @@ module.exports = [{
 		new CopyWebpackPlugin([{
 			from: path.resolve(__dirname, '../../src/js/async'),
 			to: path.resolve(__dirname, `../../build/static/js/async`)
-		}])
+		}]),
+        // new webpack.DefinePlugin({
+        //     VERSION: JSON.stringify(new Date())
+        // })
     ],
   	module: {
 		rules: [
