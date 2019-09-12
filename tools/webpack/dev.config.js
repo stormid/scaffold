@@ -13,7 +13,8 @@ module.exports = [{
 	entry: path.resolve(__dirname, './static-entry.js'),
   	output: {
 		filename: '[name].js',
-		path: path.resolve(__dirname, `../../build`),
+		// path: path.resolve(__dirname, `../../build`),
+		path: paths.output,
 		libraryTarget: `umd`
 	},
 	mode: 'development',
