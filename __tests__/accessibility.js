@@ -12,24 +12,20 @@ expect.extend(toHaveNoViolations);
 
 walker(__dirname, `../src/templates/pages`)
     .forEach(link => {
-        console.log(link);
-        // url = url === '.' ? '/' : url;
-        // const url = path.join(`${link.path ? `/${link.path}` : ''}/${link.name.replace('.js', '.html')}`);
+        const url = `${link.path ? `/${link.path}` : ''}/${link.name}`;
 
-        // describe(`Accessibility`, () => { 
+        describe(`Accessibility`, () => { 
 
-        //     it(`should have no violations on ${url}`, async () => {
-        //         const body = require(`../../src/templates/pages/${locals.path}`).default();
-        //         const assets = Object.keys(locals.webpackStats.compilation.assets);
-        //         const css = assets.filter(value => value.match(/\.css$/));
-        //         const result = awit new Promise((resolve, reject) => {
-        //             if(body.then) body.then(Res => {
-        //                 resolve(`<!DOCTYPE html>${render(<Html css={css} htmlBody={Res} />)}`);
-        //             });
-        //             else resolve(`<!DOCTYPE html>${render(<Html css={css} htmlBody={body} />)}`);
-        //         });
-        //         expect(await axe(result)).toHaveNoViolations()
-        //     });
+            it(`should have no violations on ${url}`, async () => {
+                const body = require(path.join(`../../src/templates/pages/`, url)).default();
+                const result = await new Promise((resolve, reject) => {
+                    if(body.then) body.then(Res => {
+                        resolve(`<!DOCTYPE html>${render(<Html htmlBody={Res} />)}`);
+                    });
+                    else resolve(`<!DOCTYPE html>${render(<Html htmlBody={body} />)}`);
+                });
+                expect(await axe(result)).toHaveNoViolations()
+            });
 
-        // });
+        });
     });
