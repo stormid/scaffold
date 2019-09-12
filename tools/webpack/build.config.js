@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const StaticSiteGeneratorPlugin = require('./static-site-generator-webpack-plugin');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
+
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -12,12 +14,17 @@ module.exports = [{
     entry: path.resolve(__dirname, './static-entry.js'),
     mode: 'production',
   	output: {
-        filename: '[name].js',
+        filename: 'static-entry.js',
         path: path.resolve(__dirname, `../../build`),
         libraryTarget: `umd`
     },
     target: "node",
   	plugins: [
+        new FileManagerPlugin({
+            onEnd: {
+                delete: [ path.resolve(__dirname, '../../build/static-entry.js') ]
+            }
+        }),
         new StaticSiteGeneratorPlugin({
             paths: getPaths(paths.src.templates)
         }),
