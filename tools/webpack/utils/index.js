@@ -9,7 +9,7 @@ module.exports = {
     getPaths(baseDir) {
         const fs = require('fs');
         const path = require('path');
-        const testFolder = path.resolve(__dirname, `../../${baseDir}`);
+        const testFolder = path.resolve(__dirname, `../../../${baseDir}`);
         const read = dir => fs.readdirSync(dir)
                                 .reduce((files, file) =>  
                                     fs.statSync(path.resolve(__dirname, path.join(dir, file))).isDirectory() ?
