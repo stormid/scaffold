@@ -1,6 +1,7 @@
 const base = require('../base');
 const path = require('path');
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -41,22 +42,25 @@ module.exports = [
                 from:path.resolve(__dirname, '../../../../src/img'),
                 to: path.resolve(__dirname, `../../../../build/static/img`)
             }]),
+            new webpack.optimize.LimitChunkCountPlugin({
+                maxChunks: 5
+            }),
             new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
         ],
     }),
     merge(base.javascript, {
         output: {
             filename: '[name].js',
+            publicPath: '/static/js/',
             path: path.resolve(__dirname, `../../../../build/static/js`)
         },
         mode: 'production',
-        target: "web",
-        plugins: [
-            new CleanWebpackPlugin(),
-            new CopyWebpackPlugin([{
-                from: path.resolve(__dirname, '../../../../src/js/async'),
-                to: path.resolve(__dirname, `../../../../build/static/js/async`)
-            }])
-        ]
+        // plugins: [
+        //     new CleanWebpackPlugin(),
+        //     new CopyWebpackPlugin([{
+        //         from: path.resolve(__dirname, '../../../../src/js/async'),
+        //         to: path.resolve(__dirname, `../../../../build/static/js/async`)
+        //     }])
+        // ]
     })
 ];

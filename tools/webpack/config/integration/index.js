@@ -45,7 +45,6 @@ module.exports = [
             path: path.resolve(__dirname, `../../../../../src/SampleProject/static/js`)
         },
         mode: 'production',
-        target: "web",
         plugins: [
             new CleanWebpackPlugin(),
             new CopyWebpackPlugin([{

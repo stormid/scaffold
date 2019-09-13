@@ -47,23 +47,29 @@ module.exports = [
         ],
     }),
     merge(base.javascript, {
-        entry: {
-            index: path.resolve(__dirname, '../../../../src/js/index.js'),
-            head: path.resolve(__dirname, '../../../../src/js/head.js'),
-            polyfills: path.resolve(__dirname, '../../../../src/js/polyfills/index.js'),
+        output: {
+            filename: '[name].js',
+            publicPath: '/',
+            path: path.resolve(__dirname, `../../../../build`)
         },
         mode: 'development',
         devtool: '#source-map',
-          output: {
-            filename: '[name].js',
-            path: path.resolve(__dirname, `../../../../build`)
-        },
-        target: "web",
-        plugins: [
-            new CopyWebpackPlugin([{
-                from: path.resolve(__dirname, '../../../../src/js/async'),
-                to: path.resolve(__dirname, `../../../../build/static/js/async`)
-            }])
-        ]
+        // optimization: {
+        //     splitChunks: {
+        //         cacheGroups: {
+        //             vendor: {
+        //                 test: /[\\/]node_modules[\\/]/,
+        //                 name: 'vendors',
+        //                 chunks: 'all'
+        //             }
+        //         }
+        //     }
+        // }
+        // plugins: [
+        //     new CopyWebpackPlugin([{
+        //         from: path.resolve(__dirname, '../../../../src/js/async'),
+        //         to: path.resolve(__dirname, `../../../../build/static/js/async`)
+        //     }])
+        // ]
     })
 ];

@@ -11,7 +11,7 @@ module.exports = function({ htmlBody, css }) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {css && <link rel="stylesheet" href={`/${css}`} />}
-        {/* set path based on NODE_ENV */}
+        {/* to do set path based on NODE_ENV for prod/integration builds */}
         <script src={`/index.js`} async></script>
       </head>
       <body>     

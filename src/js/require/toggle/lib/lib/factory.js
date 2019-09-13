@@ -1,12 +1,9 @@
 import { createStore } from './store';
 import {
     findToggles,
-    toggleAttributes,
     getFocusableChildren,
     keyListener,
-    closeOnBlur,
-    focusInListener,
-    manageFocus,
+    proxyListener,
     initUI,
     startToggleLifecycle,
     toggle
@@ -33,7 +30,8 @@ export default ({ node, settings }) => {
         focusableChildren: getFocusableChildren(node),
         lastFocused: false,
         keyListener: keyListener(Store),
-        focusInListener: focusInListener(Store)
+        focusInListener: proxyListener(Store),
+        clickListener: proxyListener(Store)
     }, [ initUI(Store), () => {
 	    settings.startOpen && startToggleLifecycle(Store)();
     }]);

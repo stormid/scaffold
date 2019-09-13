@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /*
  * Default settings used by a Toggle instance if not otherwise overwritten with config
  *
@@ -9,6 +10,7 @@
  * @property focus, Boolean, focus should change to the first focusable child of a toggled element when opened
  * @property trapTab, Boolean, the toggled element should trap tab (tabbing from last child item returns focus to the first) when open
  * @property closeOnBlur, Boolean, the toggled element should close when focus moves to a non-child element
+ * @property closeOnClick, Boolean, the toggled element should close when a non-child element is clicked
  */
 export default {
 	delay: 0,
@@ -17,6 +19,7 @@ export default {
 	prehook: false,
 	callback: false,
 	focus: true,
-	trapTab: true,
-	closeOnBlur: true
+	trapTab: false,
+	closeOnBlur: false,
+	closeOnClick: false
 };

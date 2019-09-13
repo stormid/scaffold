@@ -1,13 +1,12 @@
 import Promise from 'promise-polyfill';
-import Load from './require/load';
-import Toggle from './require/toggle';
+import Import from './require/importer';
 
 const onInit = [
-	Toggle
+	Import('toggle')
 ];
 
 {
 	window.Promise = window.Promise ? window.Promise : Promise;
-	if(!Object.assign) Load(`/polyfills.js`).then(() => onInit.map(f => f()));
+	if(!Object.assign) import(/* webpackChunkName: "polyfills" */`./polyfills`).then(() => onInit.map(f => f()));
 	else onInit.map(f => f());
 }

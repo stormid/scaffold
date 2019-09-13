@@ -1,9 +1,8 @@
-import { TOGGLES } from '../../constants';
+import { TOGGLE } from '../../constants';
 import Toggle from './lib';
 
 export default () => {
-    const nav = document.querySelector(TOGGLES.SELECTOR.NAV);
-    nav && Toggle.init(TOGGLES.SELECTOR.NAV,
+   Toggle.init(TOGGLE.SELECTOR.NAV,
 		{
 			local: true,
 			callback(){
