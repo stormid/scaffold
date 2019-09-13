@@ -3,7 +3,7 @@ const express = require('express');
 const webpack = require('webpack');
 
 const app = express();
-app.use(express.static('build'));
+// app.use(express.static('build'));
 
 const webpackConfig = require('../config/dev');
 
