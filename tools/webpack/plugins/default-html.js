@@ -1,4 +1,5 @@
 const h = require('preact').h;
+const paths = require('../../../config').paths;
 
 module.exports = function({ htmlBody, css }) {
   return (
@@ -11,8 +12,7 @@ module.exports = function({ htmlBody, css }) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {css && <link rel="stylesheet" href={`/${css}`} />}
-        {/* to do set path based on NODE_ENV for prod/integration builds */}
-        <script src={`/index.js`} async></script>
+        <script src={`${process.env.NODE_ENV === 'production' ? `/${paths.dest.js}` : ''}/index.js`} async></script>
       </head>
       <body>     
         {htmlBody}

@@ -13,28 +13,28 @@ module.exports = [
     merge(base.main, {
         output: {
           filename: 'static-entry.js',
-          path: path.resolve(__dirname, `../../../../../src/SampleProject`),
+          path: path.join(process.cwd(),'../src/SampleProject'),
           libraryTarget: `umd`
         },
         mode: 'production',        
         plugins: [
             new FileManagerPlugin({
                 onEnd: {
-                    delete: [ path.resolve(__dirname, '../../../../../src/SampleProject/static-entry.js') ]
+                    delete: [ path.join(process.cwd(), paths.integrationOutput, 'static-entry.js') ]
                 }
             }),
             new MiniCssExtractPlugin({
-                filename: 'static/css/index.css',
+                filename: path.join(paths.dest.css, 'index.css'),
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
             }),
             new CopyWebpackPlugin([{
-                from: path.resolve(__dirname, '../../../../src/assets'),
-                to: path.resolve(__dirname, `../../../../../src/SampleProject/static`)
+                from: path.join(process.cwd(), paths.src.assets),
+                to: path.join(process.cwd(), paths.integrationOutput, paths.dest.assets)
             }]),
             new CopyWebpackPlugin([{
-                from:path.resolve(__dirname, '../../../../src/img'),
-                to: path.resolve(__dirname, `../../../../../src/SampleProject/static/img`)
+                from: path.join(process.cwd(), paths.src.img),
+                to: path.join(process.cwd(), paths.integrationOutput, paths.dest.img)
             }]),
             new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
         ],
@@ -42,15 +42,11 @@ module.exports = [
     merge(base.javascript, {
         output: {
             filename: '[name].js',
-            path: path.resolve(__dirname, `../../../../../src/SampleProject/static/js`)
+            path: path.join(process.cwd(), paths.integrationOutput, paths.dest.js)
         },
         mode: 'production',
         plugins: [
-            new CleanWebpackPlugin(),
-            new CopyWebpackPlugin([{
-                from: path.resolve(__dirname, '../../../../src/js/async'),
-                to: path.resolve(__dirname, `../../../../../src/SampleProject/static/js/async`)
-            }])
+            new CleanWebpackPlugin()
         ]
     })
 ];

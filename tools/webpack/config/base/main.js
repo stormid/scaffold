@@ -1,9 +1,6 @@
-const StaticSiteGeneratorPlugin = require('../../plugins/static-site-generator-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { getPaths } = require('../../utils');
-const paths = require('../../../../config').paths;
-const path = require('path');
+var path = require('path');
 
 module.exports = {
     entry: path.resolve(__dirname, '../../plugins/static-entry.js'),

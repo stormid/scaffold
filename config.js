@@ -12,25 +12,26 @@ const src = {
 };
 
 const dest = {
-    img: `${output}/${staticAssets}/img`,
+    img: `${staticAssets}/img`,
     templates: output,
-    js: `${output}/${staticAssets}/js`,
-    css: `${output}/${staticAssets}/css`,
-    assets: `${output}/${staticAssets}`
+    js: `${staticAssets}/js`,
+    css: `${staticAssets}/css`,
+    assets: `${staticAssets}`
 };
 
-const integration = {
-    img: `${integrationOutput}/${staticAssets}/img`,
-    js: `${integrationOutput}/${staticAssets}/js`,
-    css: `${integrationOutput}/${staticAssets}/css`,
-    assets: `${integrationOutput}/${staticAssets}`
-};
+// const integration = {
+//     img: `${staticAssets}/img`,
+//     js: `${staticAssets}/js`,
+//     css: `${staticAssets}/css`,
+//     assets: `${staticAssets}`
+// };
 
 module.exports = {
     paths: {
         output,
         src,
         dest,
-        integration
+        integrationOutput,
+        // integration
     }
 };

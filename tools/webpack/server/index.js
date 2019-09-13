@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const app = express();
 app.use(express.static('build'));
 
-const webpackConfig = require(process.env.WEBPACK_CONFIG || '../config/dev');
+const webpackConfig = require('../config/dev');
 
 webpackConfig.forEach((config, index) => {
   const compiler = webpack(config)
