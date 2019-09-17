@@ -14,6 +14,7 @@ module.exports = [
         output: {
             filename: '[name].js',
             path: path.join(process.cwd(), paths.output),
+            publicPath: '/',
             libraryTarget: `umd`
         },
         mode: 'development',

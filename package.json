@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "node tools/webpack/server",
+    "dev-server": "webpack-dev-server --config tools/webpack/config/dev --hot",
     "build": "webpack --config tools/webpack/config/build",
     "ci": "webpack --config tools/webpack/config/integration",
     "watch-dev": "webpack --config tools/webpack/config/integration --watch",
