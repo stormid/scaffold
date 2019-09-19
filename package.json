@@ -1,7 +1,7 @@
 {
-  "name": "scaffold",
+  "name": "@stormid/scaffold",
   "version": "0.1.0",
-  "description": "",
+  "description": "Project scaffold and UI build system",
   "scripts": {
     "start": "npm run dev",
     "dev": "webpack-dev-server --config tools/webpack/config/dev --hot",
