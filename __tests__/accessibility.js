@@ -1,33 +1,31 @@
 import jest from 'jest';
-import { toHaveNoViolations } from 'jest-axe';
+const { axe, toHaveNoViolations } = require('jest-axe')
+expect.extend(toHaveNoViolations);
+const h = require(`preact`).h;
+const render = require('preact-render-to-string').render;
+const Html = require(`../tools/webpack/default-html`);
 const fs = require('fs');
 const path = require('path');
 import { walker } from '../tools/utils';
-import config from '../jest-puppeteer.config';
 
 expect.extend(toHaveNoViolations);
 
 walker(__dirname, `../src/templates/pages`)
     .forEach(link => {
-        // url = url === '.' ? '/' : url;
-        const url = path.join(`${link.path ? `/${link.path}` : ''}/${link.name.replace('.js', '.html')}`);
+        const url = `${link.path ? `/${link.path}` : ''}/${link.name}`;
 
-        describe(`Accessibility`, () => {        
-            beforeAll(async () => {
-                await page.goto(`http://localhost:${config.server.port}${url}`, { waitUntil: 'load'});
-                await page.addScriptTag({ path: require.resolve('axe-core') });
-            });
+        describe(`Accessibility`, () => { 
 
             it(`should have no violations on ${url}`, async () => {
-                const result = await page.evaluate(() => {
-                    return new Promise(resolve => {
-                        window.axe.run((err, results) => {
-                            if (err) throw err;
-                            resolve(results);
-                        });
+                const body = require(path.join(`../../src/templates/pages/`, url)).default();
+                const result = await new Promise((resolve, reject) => {
+                    if(body.then) body.then(Res => {
+                        resolve(`<!DOCTYPE html>${render(<Html htmlBody={Res} />)}`);
                     });
+                    else resolve(`<!DOCTYPE html>${render(<Html htmlBody={body} />)}`);
                 });
-                expect(result).toHaveNoViolations();
+                expect(await axe(result)).toHaveNoViolations()
             });
+
         });
     });

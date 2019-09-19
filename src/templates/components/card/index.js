@@ -1,4 +1,4 @@
-import { h } from '../../../../tools/dom/h';
+import { h } from 'preact';
 
 export const Card = ({ href, title, summary, children }) => <a href={href} class="card">
     <div class="card__bd">

@@ -2,7 +2,7 @@ export const PATHS = {
 	JS_ASYNC: '/static/js/async'
 };
 
-export const TOGGLES = {
+export const TOGGLE = {
 	SELECTOR:{
 		GLOBAL: '.js-toggle',
 		LOCAL: '.js-toggle__local',

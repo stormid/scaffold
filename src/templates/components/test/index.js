@@ -1,3 +1,3 @@
-import { h } from '../../../../tools/dom/h';
+import { h } from 'preact';
 
 export default ({ wtf }) => <h1>{wtf}</h1>;

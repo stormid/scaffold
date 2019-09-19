@@ -1,8 +1,8 @@
-import { TOGGLES } from '../../constants';
+import { TOGGLE } from '../../constants';
 import Toggle from './lib';
 
 export default () => {
-    Toggle.init(TOGGLES.SELECTOR.NAV,
+   Toggle.init(TOGGLE.SELECTOR.NAV,
 		{
 			local: true,
 			callback(){
@@ -16,7 +16,6 @@ export default () => {
                     if(e.target === toggle || toggle.contains(e.target)) acc = true;
                     return acc;
                 }, false)) this.toggle();
-            }
-            
+            }            
         });        
 };

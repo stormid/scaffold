@@ -1,4 +1,4 @@
-import { h } from '../../../tools/dom/h';
+import { h } from 'preact';
 import LoginLayout from '../layouts/login';
 import Logo from '../components/logo';
 
@@ -16,7 +16,7 @@ const LoginPage = () => <LoginLayout>
                 <input class="input" type="password" id="pwd" name="pwd" autocomplete="off" />
             </div>
             <div class="u-align__right">
-                <a class="btn" href="/dashboard.html">Log in</a>
+                <a class="btn" href="/dashboard/">Log in</a>
             </div>
         </fieldset>
     </form>

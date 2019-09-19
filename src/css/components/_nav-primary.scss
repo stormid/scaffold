@@ -7,7 +7,7 @@
         position: absolute;
         top:-100%;
     }
-    .active > .nav-primary {
+    .is--active > .nav-primary {
         top: 50px;
         right: var(--gutter);
         background-color: #fff;
