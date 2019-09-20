@@ -4,7 +4,7 @@
   "description": "Project scaffold and UI build system",
   "scripts": {
     "start": "npm run dev",
-    "dev": "webpack-dev-server --config tools/webpack/config/dev --hot",
+    "dev": "webpack-dev-server --config tools/webpack/config/dev --hot --open --overlay",
     "build": "webpack --config tools/webpack/config/build",
     "ci": "webpack --config tools/webpack/config/integration",
     "watch-dev": "webpack --config tools/webpack/config/integration --watch",

@@ -8,9 +8,6 @@ module.exports = {
 		head: path.join(process.cwd(), `${paths.src.js}/head.js`)
 	},
 	target: "web",
-	performance: {
-		hints: 'warning'
-	},
 	plugins: [
 		new webpack.optimize.LimitChunkCountPlugin({
 			maxChunks: 5

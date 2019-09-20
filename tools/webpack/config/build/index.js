@@ -55,6 +55,9 @@ module.exports = [
             path: path.join(process.cwd(), paths.output, paths.dest.js)
         },
         mode: 'production',
+        performance: {
+            hints: 'warning'
+        },
         plugins: [
             new CleanWebpackPlugin()
         //     new CopyWebpackPlugin([{
