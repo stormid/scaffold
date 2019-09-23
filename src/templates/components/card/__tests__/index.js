@@ -1,4 +1,4 @@
-import { h } from '../../../../../tools/dom/h';
+import { h } from 'preact';
 import Card, { Ghost, Empty} from '../';
 import render from 'preact-render-to-json';
 
