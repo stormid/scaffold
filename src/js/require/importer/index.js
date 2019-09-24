@@ -7,5 +7,5 @@ export default component => fn => {
                             ? document.querySelector(selector)
                             : Object.keys(selector).reduce((acc, curr) => acc || (document.querySelector(selector[curr]) ? true : false), false);
     if(!targetNode) return;
-    import(/* webpackChunkName: "[request]" */`../${component}`).then(module => module.default());
+    import(/* webpackChunkName: "[request]" */`${component}`).then(module => module.default());
 };
