@@ -3,21 +3,21 @@ const { axe, toHaveNoViolations } = require('jest-axe')
 expect.extend(toHaveNoViolations);
 const h = require(`preact`).h;
 const render = require('preact-render-to-string').render;
-const Html = require(`../tools/webpack/plugins/default-html`);
+const Html = require(`../../tools/webpack/plugins/default-html`);
 const fs = require('fs');
 const path = require('path');
-const walker = require('../tools/utils').walker;
+const walker = require('../../tools/utils').walker;
 
 expect.extend(toHaveNoViolations);
 
-walker(__dirname, `../src/templates/pages`)
+walker(__dirname, `../../src/templates/pages`)
     .forEach(link => {
         const url = `${link.path ? `/${link.path}` : ''}/${link.name}`;
 
         describe(`Accessibility`, () => { 
 
             it(`should have no violations on ${url}`, async () => {
-                const body = require(path.join(`../src/templates/pages/`, url)).default();
+                const body = require(path.join(`../../src/templates/pages/`, url)).default();
                 const result = await new Promise((resolve, reject) => {
                     if(body.then) body.then(Res => {
                         resolve(`<!DOCTYPE html>${render(<Html htmlBody={Res} />)}`);
