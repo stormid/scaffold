@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 // const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { getPaths } = require('../../utils');
-const paths = require('../../../../config').paths;
+const paths = require('../../../../paths.config');
 
 module.exports = [
     merge(base.main, {

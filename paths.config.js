@@ -27,11 +27,9 @@ const dest = {
 // };
 
 module.exports = {
-    paths: {
-        output,
-        src,
-        dest,
-        integrationOutput,
-        // integration
-    }
+    output,
+    src,
+    dest,
+    integrationOutput,
+    // integration
 };
