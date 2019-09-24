@@ -1,5 +1,5 @@
 const h = require('preact').h;
-const paths = require('../../../config').paths;
+const paths = require('../../../paths.config');
 
 module.exports = function({ htmlBody, css }) {
   return (

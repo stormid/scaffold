@@ -1,4 +1,4 @@
-:root{
+:root {
     --font-family-default: sans-serif;
 
     --font-size-peta: 2.986rem;
@@ -20,6 +20,7 @@
 
     --baseline: 1.5rem;
     --gutter: 24px;
+    --max-container-width: 1200px;
     
     --off-black: #191919;
     --light-grey-1: #f5f5f5;
@@ -29,6 +30,40 @@
     --mid-grey-2: #999999;
     --mid-grey-3:#808080;
     --dark-grey-1: #666666;
+    --dark-grey-2: #4d4d4d;
     --dark-grey-3: #323232;
     --teal: #187E81;
+
+    --light-weight: 300;
+    --regular-weight: 400;
+    --medium-weight: 500;
+    --semibold-weight: 600;
+    --bold-weight: 700;
+
+    --measure: 40em;
+
+    --bp-xs: 480px;
+    --bp-sm: 768px;
+    --bp-md: 1024px;
+    --bp-lg: 1200px;
 }
+
+$columns: 12;
+
+$mq-breakpoints: (
+    xs: var(--bp-xs),
+    sm: var(--bp-sm),
+    md: var(--bp-md),
+    lg: var(--bp-lg)
+);
+
+// conversion table from mq-breakpoints and grid classNames
+$grid-names: (
+    xs: default,
+    sm: sm,
+    md: md,
+    lg: lg
+);
+
+
+

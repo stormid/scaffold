@@ -11,7 +11,3 @@
 | `npm run watch-dev` | write static assets to integration destination disk with production optimisations and watch |
 | `npm run storybook` | start Storybook dev server |
 | `npm t` | run tests |
-
-
-## Config
-Update project configuration in ./config.js
