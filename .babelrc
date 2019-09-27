@@ -3,12 +3,12 @@
       [
         "@babel/preset-env",
         {
-					"loose": true,
-          "modules": "commonjs",
-          "targets": {
-            "node": 8,
-            "browsers": ["> 0.25%", "IE >= 9"]
-          }
+					// "loose": true,
+          "modules": false,
+          // "targets": {
+          //   "node": 8,
+          //   "browsers": ["> 0.25%", "IE >= 9"]
+          // }
 				}
       ]
     ],

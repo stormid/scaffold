@@ -2,7 +2,8 @@ import { TOGGLE } from '../../constants';
 import Toggle from './lib';
 
 export default () => {
-   Toggle.init(TOGGLE.SELECTOR.NAV,
+    if(!document.querySelector(TOGGLE.SELECTOR.NAV)) return;
+    Toggle.init(TOGGLE.SELECTOR.NAV,
 		{
 			local: true,
 			callback(){

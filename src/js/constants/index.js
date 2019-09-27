@@ -14,7 +14,10 @@ export const TOGGLE = {
 		}
 	}
 };
-
+export const VALIDATE = {
+	SELECTOR: 'form:not([novalidate])',
+	IS_NPM: true
+}
 export const AI = {
 	META: 'data-ai'
 };
