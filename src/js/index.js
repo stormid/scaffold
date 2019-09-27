@@ -13,7 +13,7 @@ import Importer from './features/importer';
 
 const onInit = [
 	Importer(`toggle`),	
-	Importer.bind(null, 'validate')(import(/* webpackChunkName: "validate" */`@stormid/validate`))
+	// Importer.bind(null, 'validate')(import(/* webpackChunkName: "validate" */`@stormid/validate`))
 ];
 
 

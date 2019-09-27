@@ -8,10 +8,6 @@ module.exports = {
 		head: path.join(process.cwd(), `${paths.src.js}/head.js`)
 	},
 	target: "web",
-	resolve: {
-		modules: [path.join(process.cwd(), `${paths.src.js}/require`), 'node_modules'],
-		extensions: ['.wasm', '.mjs', '.js', '.json']
-	},
 	plugins: [
 		new webpack.optimize.LimitChunkCountPlugin({
 			maxChunks: 5
@@ -24,7 +20,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
+				exclude: /(bower_components)/,
 				use: {
 					loader: 'babel-loader'
 				}

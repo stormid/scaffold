@@ -1,5 +1,5 @@
 import { TOGGLE } from '../../constants';
-import Toggle from './lib';
+import Toggle from '@stormid/toggle';
 
 export default () => {
     if(!document.querySelector(TOGGLE.SELECTOR.NAV)) return;
