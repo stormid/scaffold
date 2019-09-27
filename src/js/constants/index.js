@@ -16,7 +16,7 @@ export const TOGGLE = {
 };
 export const VALIDATE = {
 	SELECTOR: 'form:not([novalidate])',
-	IS_NPM: true
+	MODULE: `@stormid/validate`
 }
 export const AI = {
 	META: 'data-ai'

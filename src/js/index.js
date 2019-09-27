@@ -1,5 +1,6 @@
 import { VALIDATE } from './constants';
 import Promise from 'promise-polyfill';
+window.Promise = window.Promise ? window.Promise : Promise;
 import Importer from './features/importer';
 // It is not possible to use a fully dynamic import statement
 // https://webpack.js.org/api/module-methods/#dynamic-expressions-in-import
@@ -12,14 +13,11 @@ import Importer from './features/importer';
 
 const onInit = [
 	Importer(`toggle`),	
-	() => {
-		import(/* webpackChunkName: "validate" */`@stormid/validate`).then(module => module.default.init(VALIDATE.SELECTOR));
-	}
+	Importer.bind(null, 'validate')(import(/* webpackChunkName: "validate" */`@stormid/validate`))
 ];
 
 
 {
-	window.Promise = window.Promise ? window.Promise : Promise;
 	if(!Object.assign) import(/* webpackChunkName: "polyfills" */`./polyfills`).then(() => onInit.map(f => f()));
 	else onInit.map(f => f());
 }
