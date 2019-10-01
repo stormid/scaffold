@@ -33,5 +33,5 @@ import { TABS } from '../../constants';
 import Tabs from '@stormid/tabs';
 
 export default () => {
-   Tabs.init(TABS.SELECTOR);        
+   if(document.querySelector(TABS.SELECTOR)) Tabs.init(TABS.SELECTOR);        
 };
