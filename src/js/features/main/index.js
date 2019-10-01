@@ -5,5 +5,6 @@ import { initStack } from '../../';
 
 {
 	if(!Object.assign) import(/* webpackChunkName: "polyfills" */`../../polyfills`).then(() => initStack.map(f => f()));
-	else initStack.map(f => f());
+	// else initStack.map(f => f());
+	else Promise.all(initStack.map(fn => Promise.resolve(fn())));
 }
