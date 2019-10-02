@@ -18,5 +18,5 @@ export default () => {
                     return acc;
                 }, false)) this.toggle();
             }            
-        });        
+        });
 };
