@@ -4,7 +4,7 @@ const paths = require(path.join(process.cwd(), `./paths.config`));
 
 module.exports = {
 	entry: {
-		index: path.join(process.cwd(), `${paths.src.js}/index.js`),
+		index: path.join(process.cwd(), `${paths.src.js}/features/main/index.js`),
 		head: path.join(process.cwd(), `${paths.src.js}/head.js`)
 	},
 	target: "web",
@@ -20,7 +20,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
+				exclude: /(bower_components)/,
 				use: {
 					loader: 'babel-loader'
 				}

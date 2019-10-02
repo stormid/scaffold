@@ -15,6 +15,15 @@ export const TOGGLE = {
 	}
 };
 
+export const VALIDATE = {
+	SELECTOR: 'form:not([novalidate])',
+	MODULE: `@stormid/validate`
+}
+
+export const TABS = {
+	SELECTOR: '.js-tabs'
+}
+
 export const AI = {
 	META: 'data-ai'
 };

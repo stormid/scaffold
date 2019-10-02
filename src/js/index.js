@@ -1,12 +1,11 @@
-import Promise from 'promise-polyfill';
-import Import from './require/importer';
+import Importer from './features/importer';
+import Toggle from './features/toggle';
 
-const onInit = [
-	Import('toggle')
+//This stack is executed in parallel
+export const initStack = [
+	Toggle,
+	Importer(`tabs`)
+	// 	() => { import(/* webpackChunkName: "toggle" */`./features/toggle`).then(module => module.default()); },
+	// 	() => { import(/* webpackChunkName: "validate" */`@stormid/validate`).then(module => module.default.init(VALIDATE.SELECTOR)); },
+	// Importer.bind(null, 'validate')(import(/* webpackChunkName: "validate" */`@stormid/validate`)),
 ];
-
-{
-	window.Promise = window.Promise ? window.Promise : Promise;
-	if(!Object.assign) import(/* webpackChunkName: "polyfills" */`./polyfills`).then(() => onInit.map(f => f()));
-	else onInit.map(f => f());
-}

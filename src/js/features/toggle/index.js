@@ -1,8 +1,9 @@
 import { TOGGLE } from '../../constants';
-import Toggle from './lib';
+import Toggle from '@stormid/toggle';
 
 export default () => {
-   Toggle.init(TOGGLE.SELECTOR.NAV,
+    if(!document.querySelector(TOGGLE.SELECTOR.NAV)) return;
+    Toggle.init(TOGGLE.SELECTOR.NAV,
 		{
 			local: true,
 			callback(){
@@ -17,5 +18,5 @@ export default () => {
                     return acc;
                 }, false)) this.toggle();
             }            
-        });        
+        });
 };
