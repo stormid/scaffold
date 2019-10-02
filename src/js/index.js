@@ -1,8 +1,7 @@
 import Importer from './features/importer';
 import Toggle from './features/toggle';
-// It is not possible to use a fully dynamic import statement
-// https://webpack.js.org/api/module-methods/#dynamic-expressions-in-import
 
+//This stack is executed in parallel
 export const initStack = [
 	Toggle,
 	Importer(`tabs`)

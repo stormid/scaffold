@@ -22,19 +22,20 @@ module.exports = function (api) {
 	//api.cache.forever(); // api.cache(true)
 	//api.cache.never();   // api.cache(false)
 	//api.cache.using(fn); // api.cache(fn)
-
 	return {
 	  "presets": [
 		[
 		  "@babel/preset-env",
-		  {
-			// "loose": true,
-			"modules": false,
-			// "targets": {
-			//   "node": 8,
-			//   "browsers": ["> 0.25%", "IE >= 9"]
-			// }
-		  }
+		  Object.assign({}, process.env.NODE_ENV === "test"
+		  	? {
+				  "loose": true,
+					"targets": {
+						"node": 8,
+						"browsers": ["> 0.25%", "IE >= 9"]
+					}
+			  }
+			: { "modules": false }
+			)
 		]
 	  ],
 	  "plugins": [
