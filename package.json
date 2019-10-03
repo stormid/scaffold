@@ -13,17 +13,6 @@
   },
   "author": "stormid",
   "license": "MIT",
-  "browserslist": [
-    "ie >= 9",
-    "ie_mob >= 10",
-    "ff >= 20",
-    "chrome >= 4",
-    "safari >= 7",
-    "opera >= 23",
-    "ios >= 7",
-    "android >= 4.4",
-    "bb >= 10"
-  ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.1.6",
@@ -59,9 +48,9 @@
     "postcss-css-variables": "^0.13.0",
     "postcss-custom-properties": "^9.0.2",
     "postcss-loader": "^3.0.0",
-    "preact": "^8.5.2",
+    "preact": "^10.0.0",
     "preact-render-to-json": "^3.6.6",
-    "preact-render-to-string": "^4.1.0",
+    "preact-render-to-string": "^5.0.6",
     "sass-loader": "^8.0.0",
     "storm-storybook-markup": "^0.1.0",
     "style-loader": "^1.0.0",
@@ -72,9 +61,11 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@microsoft/applicationinsights-web": "^2.2.4",
     "@storybook/addon-a11y": "^4.0.4",
     "@storybook/html": "^4.0.4",
     "es6-object-assign": "^1.1.0",
+    "picturefill": "^3.0.3",
     "promise-polyfill": "^8.1.0"
   }
 }

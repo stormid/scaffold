@@ -5,12 +5,9 @@
 @import 'base/normalise';
 @import 'base/grid';
 @import 'base/typefaces';
-// @import 'base/typescale';
+@import 'base/typescale';
  
-// @import 'components/skip';
-// @import 'components/header';
-// @import 'components/nav-primary';
-// @import 'components/menu-button';
-// @import 'components/login';
-// @import 'components/forms';
-// @import 'components/card';
+@import 'components/skip';
+@import 'components/header';
+@import 'components/main';
+@import 'components/footer';

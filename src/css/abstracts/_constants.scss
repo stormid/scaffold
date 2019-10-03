@@ -1,38 +1,30 @@
 :root {
     --font-family-default: sans-serif;
-
-    --font-size-peta: 2.986rem;
-    --line-height-peta: 1.25;
-    --font-size-giga: 2.074rem;
-    --line-height-giga: 1.25;
-    --font-size-mega: 01.728rem;
-    --line-height-mega: 1.25;
-    --font-size-beta: 1.2rem;
-    --line-height-beta: 1.4;
-    --font-size-alpha: 1.44rem;
-    --line-height-alpha: 1.25;
-    --font-size-gamma: 1rem;
-    --line-height-gamma: 1.2;
-    --font-size-delta: 0.85rem;
-    --line-height-delta: 1.4;
-    --font-size-epsilon: 0.694rem;
-    --line-height-epsilon: 1.4;
+    
+    --font-size-plus-4: 1rem;
+    --font-size-plus-3: 1rem;
+    --font-size-plus-2: 1rem;
+    --font-size-plus-1: 1rem;
+    --font-size-baseline: 1rem;
+    --font-size-minus-1: 1rem;
+    --font-size-minus-2: 1rem;
+    --font-size-minus-3: 1rem;
+    --font-size-minus-4: 1rem;
 
     --baseline: 1.5rem;
     --gutter: 24px;
     --max-container-width: 1200px;
     
-    --off-black: #191919;
-    --light-grey-1: #f5f5f5;
-    --light-grey-2: #e6e6e6;
-    --light-grey-3: #cccccc;
-    --mid-grey-1: #b3b3b3;
-    --mid-grey-2: #999999;
-    --mid-grey-3:#808080;
-    --dark-grey-1: #666666;
-    --dark-grey-2: #4d4d4d;
-    --dark-grey-3: #323232;
-    --teal: #187E81;
+    --light-grey-1: hsl(0, 0, 96%);
+    --light-grey-2: hsl(0, 0, 90%);
+    --light-grey-3: hsl(0, 0, 80%);
+    --mid-grey-1: hsl(0, 0, 70%);
+    --mid-grey-2: hsl(0, 0, 60%);
+    --mid-grey-3: hsl(0, 0, 50%);
+    --dark-grey-1: hsl(0, 0, 46%); //lightest AA accessible grey on white
+    --dark-grey-2: hsl(0, 0, 30%);
+    --dark-grey-3: hsl(0, 0, 20%);
+    --off-black: hsl(0, 0, 10%);
 
     --light-weight: 300;
     --regular-weight: 400;
@@ -41,7 +33,7 @@
     --bold-weight: 700;
 
     --measure: 40em;
-
+    
     --bp-xs: 480px;
     --bp-sm: 768px;
     --bp-md: 1024px;

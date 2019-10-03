@@ -1,21 +1,21 @@
 import { h } from 'preact';
-import Card, { Ghost, Empty} from '../';
+import Example, { Ghost, Empty} from '../';
 import render from 'preact-render-to-json';
 
-test('Card > Ghost matches snapshot', () => {
+test('Example > Ghost matches snapshot', () => {
     const tree = render(<Ghost />);
     expect(tree).toMatchSnapshot();
 });
 
-test('Card > Empty matches snapshot', () => {
+test('Example > Empty matches snapshot', () => {
     const tree = render(<Empty />);
     expect(tree).toMatchSnapshot();
 });
 
-test('Card matches snapshot', () => {
-    const tree = render(<Card href={'#'}
+test('Example > Example matches snapshot', () => {
+    const tree = render(<Example href={'#'}
                               title={'Quick brown fox'}
-                              summary={'Jumps over the lazy dog'}>Woof</Card>);
+                              summary={'Jumps over the lazy dog'}>Woof</Example>);
     expect(tree).toMatchSnapshot();
 });
 

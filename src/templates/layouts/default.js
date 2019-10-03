@@ -1,20 +1,17 @@
 import { h } from 'preact';
-// import Head from '../components/head';
+import Skip from '../components/skip';
 import Header from '../components/header';
+import Main from '../components/main';
 import Footer from '../components/footer';
-import Logo from '../components/logo';
-import PrimaryNav from '../components/navigation/primary';
-import { ia } from '../../data';
 
 const Default = ({ children, title }) => <body>
     <Header title={title}>
-        <a class="header__link" href="/" aria-label="Home"><Logo /></a>
-        <PrimaryNav items={ia} active={title} />
+        <Skip />
     </Header>
-    <main id="main">
+    <Main>
         { children }
-    </main>
-    <Footer></Footer>
+    </Main>
+    <Footer />
 </body>;
 
 export default Default;
