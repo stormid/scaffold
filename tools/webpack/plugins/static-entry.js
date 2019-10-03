@@ -4,13 +4,19 @@ const Html = require(`./default-html`);
 require('../../../src/css/index.scss');
 
 module.exports = function(locals) {
-	  const body = require(`../../../src/templates/pages/${locals.path}`).default();
-    const assets = Object.keys(locals.webpackStats.compilation.assets);
-    const css = assets.filter(value => value.match(/\.css$/));
-    return new Promise((resolve, reject) => {
-		if(body.then) body.then(Res => {
-			resolve(`<!DOCTYPE html>${render(<Html css={css} htmlBody={Res} />)}`);
+	const body = require(`../../../src/templates/pages/${locals.path}`).default();
+	const assets = Object.keys(locals.webpackStats.compilation.assets);
+	const css = assets.filter(value => value.match(/\.css$/));
+	try {
+		return new Promise((resolve, reject) => {
+			if(body.then) {
+				body.then(Res => {
+					resolve(`<!DOCTYPE html>${render(<Html css={css} htmlBody={Res} />)}`);
+				});
+			}
+			else resolve(`<!DOCTYPE html>${render(<Html css={css} htmlBody={body} />)}`);
 		});
-    	else resolve(`<!DOCTYPE html>${render(<Html css={css} htmlBody={body} />)}`);
-    });
+	} catch(e){
+		console.log(`HTML render error: ${e}`);
+	}
   };

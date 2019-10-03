@@ -19,17 +19,9 @@ const dest = {
     assets: `${staticAssets}`
 };
 
-// const integration = {
-//     img: `${staticAssets}/img`,
-//     js: `${staticAssets}/js`,
-//     css: `${staticAssets}/css`,
-//     assets: `${staticAssets}`
-// };
-
 module.exports = {
     output,
     src,
     dest,
-    integrationOutput,
-    // integration
+    integrationOutput
 };

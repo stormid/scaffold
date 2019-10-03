@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Example > Empty matches snapshot 1`] = `
+Object {
+  "__b": 0,
+  "__c": null,
+  "__e": null,
+  "__k": null,
+  "__p": null,
+  "constructor": undefined,
+  "key": undefined,
+  "l": null,
+  "props": Object {},
+  "ref": undefined,
+  "type": [Function],
+}
+`;
+
+exports[`Example > Example matches snapshot 1`] = `
+Object {
+  "__b": 0,
+  "__c": null,
+  "__e": null,
+  "__k": null,
+  "__p": null,
+  "constructor": undefined,
+  "key": undefined,
+  "l": null,
+  "props": Object {
+    "children": "Woof",
+    "href": "#",
+    "summary": "Jumps over the lazy dog",
+    "title": "Quick brown fox",
+  },
+  "ref": undefined,
+  "type": [Function],
+}
+`;
+
+exports[`Example > Ghost matches snapshot 1`] = `
+Object {
+  "__b": 0,
+  "__c": null,
+  "__e": null,
+  "__k": null,
+  "__p": null,
+  "constructor": undefined,
+  "key": undefined,
+  "l": null,
+  "props": Object {},
+  "ref": undefined,
+  "type": [Function],
+}
+`;
