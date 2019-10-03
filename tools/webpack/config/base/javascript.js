@@ -7,7 +7,11 @@ module.exports = {
 		index: path.join(process.cwd(), `${paths.src.js}/features/main/index.js`),
 		head: path.join(process.cwd(), `${paths.src.js}/head.js`)
 	},
-	target: "web",
+	target: "web",	
+	stats: {
+		modules: false,
+		entrypoints: false
+	},
 	plugins: [
 		new webpack.optimize.LimitChunkCountPlugin({
 			maxChunks: 5

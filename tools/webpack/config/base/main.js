@@ -5,6 +5,10 @@ var path = require('path');
 module.exports = {
     entry: path.resolve(__dirname, '../../plugins/static-entry.js'),
 	target: "node",
+	stats: {
+		modules: false,
+		entrypoints: false
+	},
   	plugins: [
 		new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
 	],
