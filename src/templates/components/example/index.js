@@ -10,8 +10,8 @@ export const Example = ({ href, title, summary, children }) => <a href={href} cl
 
 export const Ghost = () => <div class="example ghost">
     <div class="example__bd">
-        <div class="example__title example__title--ghost"></div>
-        <div class="example__summary example__title--ghost"></div>
+        <div class="example__title"></div>
+        <div class="example__summary"></div>
     </div>
 </div>;
 

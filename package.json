@@ -8,8 +8,9 @@
     "build": "webpack --config tools/webpack/config/build",
     "ci": "webpack --config tools/webpack/config/integration",
     "watch-dev": "webpack --config tools/webpack/config/integration --watch",
-    "storybook": "start-storybook -p 8001",
-    "test": "node_modules/.bin/jest"
+    "storybook": "start-storybook -p 6006",
+    "test": "node_modules/.bin/jest",
+    "build-storybook": "build-storybook"
   },
   "author": "stormid",
   "license": "MIT",
@@ -22,7 +23,7 @@
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-react-jsx": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
-    "@storybook/html": "^4.1.6",
+    "@storybook/html": "^5.2.1",
     "autoprefixer": "^9.3.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^25.0.0",
@@ -63,7 +64,6 @@
   "dependencies": {
     "@microsoft/applicationinsights-web": "^2.2.4",
     "@storybook/addon-a11y": "^4.0.4",
-    "@storybook/html": "^4.0.4",
     "es6-object-assign": "^1.1.0",
     "picturefill": "^3.0.3",
     "promise-polyfill": "^8.1.0"
