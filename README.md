@@ -1,5 +1,3 @@
-## Commands
-
 | Command | Description |
 |-|-|
 | `npm i` | install dependencies
