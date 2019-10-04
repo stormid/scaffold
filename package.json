@@ -9,8 +9,8 @@
     "ci": "webpack --config tools/webpack/config/integration",
     "watch-dev": "webpack --config tools/webpack/config/integration --watch",
     "storybook": "start-storybook -p 6006",
-    "test": "node_modules/.bin/jest",
-    "build-storybook": "build-storybook"
+    "storybook:eject": "build-storybook -c .storybook -o storybook",
+    "test": "node_modules/.bin/jest"
   },
   "author": "stormid",
   "license": "MIT",
