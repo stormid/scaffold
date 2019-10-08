@@ -1,4 +1,4 @@
-import Toggle from './features/toggle';
+import Toggle from './modules/toggle';
 
 export const initStack = [
 	Toggle,
