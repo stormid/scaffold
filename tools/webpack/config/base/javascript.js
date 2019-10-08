@@ -4,7 +4,7 @@ const paths = require(path.join(process.cwd(), `./paths.config`));
 
 module.exports = {
 	entry: {
-		index: path.join(process.cwd(), `${paths.src.js}/features/main/index.js`),
+		index: path.join(process.cwd(), `${paths.src.js}/modules/main/index.js`),
 		head: path.join(process.cwd(), `${paths.src.js}/head.js`)
 	},
 	target: "web",	

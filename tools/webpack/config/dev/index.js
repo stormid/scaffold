@@ -18,7 +18,7 @@ module.exports = [
             libraryTarget: `umd`
         },
         mode: 'development',
-        devtool: '#source-map',
+        devtool: 'cheap-module-eval-source-map',
         plugins: [
             new StaticSiteGeneratorPlugin({
                 paths: getPaths(paths.src.templates)
@@ -53,7 +53,7 @@ module.exports = [
             path: path.join(process.cwd(), paths.output)
         },
         mode: 'development',
-        devtool: '#source-map',
+        devtool: 'cheap-module-eval-source-map',
         // optimization: {
         //     splitChunks: {
         //         cacheGroups: {
