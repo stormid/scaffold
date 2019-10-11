@@ -13,7 +13,7 @@ module.exports = [
     merge(base.main, {
         output: {
           filename: 'static-entry.js',
-          path: path.join(process.cwd(),'../src/SampleProject'),
+          path: path.join(process.cwd(), paths.integrationOutput),
           libraryTarget: `umd`
         },
         mode: 'production',        
@@ -24,7 +24,7 @@ module.exports = [
                 }
             }),
             new MiniCssExtractPlugin({
-                filename: path.join(paths.integrationOutput, paths.dest.css, 'index.css'),
+                filename: path.join(paths.dest.css, 'index.css'),
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
             }),
