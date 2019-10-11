@@ -24,7 +24,7 @@ module.exports = [
                 }
             }),
             new MiniCssExtractPlugin({
-                filename: path.join(paths.dest.css, 'index.css'),
+                filename: path.join(paths.integrationOutput, paths.dest.css, 'index.css'),
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
             }),
