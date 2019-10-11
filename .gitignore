@@ -21,7 +21,7 @@ coverage
 
 .lock-wscript
 
-build
+/build
 
 node_modules/
 jspm_packages/
