@@ -1,5 +1,7 @@
 import { h } from 'preact';
 
+export const title = 'Grid';
+
 const Grid = () => <body>
     <main id="main">
         <div class="wrap">
