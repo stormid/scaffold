@@ -19,7 +19,7 @@ const dest = {
     assets: `${staticAssets}`
 };
 
-const webpackPublicPath = `/${staticAssets}/${dest.js}/`;
+const webpackPublicPath = `/${dest.js}/`;
 
 module.exports = {
     output,
