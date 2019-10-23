@@ -19,9 +19,12 @@ const dest = {
     assets: `${staticAssets}`
 };
 
+const webpackPublicPath = `/${staticAssets}/${dest.js}/`;
+
 module.exports = {
     output,
     src,
     dest,
-    integrationOutput
+    integrationOutput,
+    webpackPublicPath
 };

@@ -51,7 +51,7 @@ module.exports = [
     merge(base.javascript, {
         output: {
             filename: '[name].js',
-            publicPath: '/static/js/',
+            publicPath: paths.webpackPublicPath,
             path: path.join(process.cwd(), paths.output, paths.dest.js)
         },
         mode: 'production',
