@@ -10,7 +10,8 @@
     "watch-dev": "webpack --config tools/webpack/config/integration --watch",
     "storybook": "start-storybook -p 6006",
     "storybook:eject": "build-storybook -c .storybook -o storybook",
-    "test": "node_modules/.bin/jest"
+    "test": "node_modules/.bin/jest",
+    "lint": "node_modules/.bin/eslint src/js -c .eslintrc.json --ext js"
   },
   "author": "stormid",
   "license": "MIT",
@@ -37,6 +38,9 @@
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "eval": "^0.1.4",
     "fast-async": "^6.3.8",
     "filemanager-webpack-plugin": "^2.0.5",

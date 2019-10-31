@@ -8,3 +8,4 @@
 | `npm run watch-dev` | watch and write assets to disk in production |
 | `npm run storybook` | start Storybook |
 | `npm t` | run tests |
+| `npm run lint` | run eslint validation |
