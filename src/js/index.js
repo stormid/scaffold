@@ -1,6 +1,6 @@
 import Toggle from './modules/toggle';
 
-const initStack = [
+export const initStack = [
   Toggle,
   // Importer(`tabs`),
   // () => {
@@ -14,6 +14,3 @@ const initStack = [
   // Importer.bind(null, 'validate')(import(/* webpackChunkName: "validate" */ `@stormid/validate`)),
 ];
 
-export default {
-  initStack,
-};
