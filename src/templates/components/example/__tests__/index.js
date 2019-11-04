@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import Example, { Ghost, Empty} from '../';
+import Example, { Ghost, Empty } from '../';
 import render from 'preact-render-to-json';
 
 test('Example > Ghost matches snapshot', () => {
@@ -13,9 +13,10 @@ test('Example > Empty matches snapshot', () => {
 });
 
 test('Example > Example matches snapshot', () => {
-    const tree = render(<Example href={'#'}
-                              title={'Quick brown fox'}
-                              summary={'Jumps over the lazy dog'}>Woof</Example>);
+    const tree = render(
+        <Example href={'#'} title={'Quick brown fox'} summary={'Jumps over the lazy dog'}>
+            Woof
+        </Example>
+    );
     expect(tree).toMatchSnapshot();
 });
-

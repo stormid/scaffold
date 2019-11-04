@@ -1,6 +1,6 @@
 :root {
     --font-family-default: sans-serif;
-    
+
     --font-size-plus-4: 1rem;
     --font-size-plus-3: 1rem;
     --font-size-plus-2: 1rem;
@@ -14,7 +14,7 @@
     --baseline: 1.5rem;
     --gutter: 24px;
     --max-container-width: 1200px;
-    
+
     --light-grey-1: hsl(0, 0%, 96%);
     --light-grey-2: hsl(0, 0%, 90%);
     --light-grey-3: hsl(0, 0%, 80%);
@@ -33,7 +33,7 @@
     --bold-weight: 700;
 
     --measure: 40em;
-    
+
     --bp-xs: 480px;
     --bp-sm: 768px;
     --bp-md: 1024px;
@@ -56,6 +56,3 @@ $grid-names: (
     md: md,
     lg: lg
 );
-
-
-

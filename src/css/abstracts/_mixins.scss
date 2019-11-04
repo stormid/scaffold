@@ -1,19 +1,19 @@
 @mixin column($num) {
-	width: column-calc($num);
+    width: column-calc($num);
 }
 
 @mixin wrap {
     max-width: var(--max-container-width);
-    margin:0 auto;
-    padding: 0 calc(var(--gutter)/2);
-        @media(min-width: var(--bp-sm)){
-            padding-left: var(--gutter);
-            padding-right: var(--gutter);
-        }
-        @media(min-width: calc(var(--max-container-width) + var(--gutter))){
-            padding-left: 0;
-            padding-right: 0;
-        }
+    margin: 0 auto;
+    padding: 0 calc(var(--gutter) / 2);
+    @media (min-width: var(--bp-sm)) {
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
+    }
+    @media (min-width: calc(var(--max-container-width) + var(--gutter))) {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 @mixin visuallyhidden {
@@ -35,15 +35,15 @@
     height: auto;
     padding: 0;
     margin: auto;
-    overflow:inherit;
-    clip:auto;
+    overflow: inherit;
+    clip: auto;
 }
 
 @mixin clearfix {
     &:after {
-        content:'';
+        content: '';
         display: table;
         clear: both;
-        width:100%;
+        width: 100%;
     }
 }
