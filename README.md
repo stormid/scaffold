@@ -1,11 +1,16 @@
-| Command | Description |
-|-|-|
-| `npm i` | install dependencies
-| `npm start` | alias for npm run dev |
-| `npm run dev` | start dev server with live reloading |
-| `npm run build` | write static site to disk |
-| `npm run ci` | write static site to disk for production/CI |
-| `npm run watch-dev` | watch and write assets to disk in production |
-| `npm run storybook` | start Storybook |
-| `npm t` | run tests |
-| `npm run lint` | run eslint validation |
+| Command                | Description                                   |
+| ---------------------- | --------------------------------------------- |
+| `npm i`                | install dependencies                          |
+| `npm start`            | alias for npm run dev                         |
+| `npm run dev`          | start dev server with live reloading          |
+| `npm run build`        | write static site to disk                     |
+| `npm run ci`           | write static site to disk for production/CI   |
+| `npm run watch-dev`    | watch and write assets to disk in production  |
+| `npm run storybook`    | start Storybook                               |
+| `npm t`                | run tests                                     |
+| `npm run lint`         | run eslint validation                         |
+| `npm run lint-fix`     | run eslint fix                                |
+| `npm run format-check` | run prettier validation                       |
+| `npm run format`       | run prettier fix                              |
+| `npm run checkall`     | run eslint validation and prettier validation |
+| `npm run fixall`       | run eslint fix and prettier fix               |
