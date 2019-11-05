@@ -1,3 +1,5 @@
-src/js/modules
+# modules main uses a conditional import for polyfills, causes a linting error
+src/js/modules/main
 
-src/css/index.scss
+# can't airbnb eslint the jsx stuff because it's not react
+src/templates
