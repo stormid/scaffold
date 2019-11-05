@@ -14,7 +14,9 @@
         "lint": "node_modules/.bin/eslint src/js -c .eslintrc --ext js",
         "lint-fix": "node_modules/.bin/eslint src/js --fix .eslintrc --ext js",
         "format-check": "node_modules/.bin/prettier --check src/**/*.js src/**/*.scss",
-        "format": "node_modules/.bin/prettier --write src/**/*.js src/**/*.scss"
+        "format": "node_modules/.bin/prettier --write src/**/*.js src/**/*.scss",
+        "fixall": "npm run lint-fix && npm run format",
+        "checkall": "npm run lint && npm run format-check"
     },
     "author": "stormid",
     "license": "MIT",
