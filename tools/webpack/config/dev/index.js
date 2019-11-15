@@ -5,7 +5,7 @@ const StaticSiteGeneratorPlugin = require('../../plugins/static-site-generator-w
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { getPaths } = require('../../utils');
 const paths = require('../../../../paths.config');
 
@@ -36,14 +36,14 @@ module.exports = [
                 from: path.join(process.cwd(), paths.src.img),
                 to: path.join(process.cwd(), paths.output, paths.dest.img)
             }]),
-            new CleanWebpackPlugin()
-            // new BrowserSyncPlugin(
-            //     {
-            //       host: 'localhost',
-            //       port: 3000,
-            //       proxy: 'http://localhost:8080/'
-            //     }
-            // )
+            new CleanWebpackPlugin(),
+            new BrowserSyncPlugin(
+                {
+                  host: 'localhost',
+                  port: 3000,
+                  proxy: 'http://localhost:8080/'
+                }
+            )
         ],
     }),
     merge(base.javascript, {
