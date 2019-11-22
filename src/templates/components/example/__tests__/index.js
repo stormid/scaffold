@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import Example, { Ghost, Empty} from '../';
+import Example, { Ghost, Empty, Error } from '../';
 import render from 'preact-render-to-json';
 
 test('Example > Ghost matches snapshot', () => {
@@ -9,6 +9,11 @@ test('Example > Ghost matches snapshot', () => {
 
 test('Example > Empty matches snapshot', () => {
     const tree = render(<Empty />);
+    expect(tree).toMatchSnapshot();
+});
+
+test('Example > Error matches snapshot', () => {
+    const tree = render(<Error />);
     expect(tree).toMatchSnapshot();
 });
 
