@@ -17,4 +17,6 @@ export const Ghost = () => <div class="example ghost">
 
 export const Empty = () => <div class="example example--empty"></div>;
 
+export const Error = () => <div class="example example--error"></div>;
+
 export default Example; 
