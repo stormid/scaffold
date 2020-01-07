@@ -10,13 +10,13 @@ export const Example = ({ href, title, summary, children }) => <a href={href} cl
 
 export const Ghost = () => <div class="example ghost">
     <div class="example__bd">
-        <div class="example__title"></div>
-        <div class="example__summary"></div>
+        <div class="example__title" />
+        <div class="example__summary" />
     </div>
 </div>;
 
-export const Empty = () => <div class="example example--empty"></div>;
+export const Empty = () => <div class="example example--empty" />;
 
-export const Error = () => <div class="example example--error"></div>;
+export const Error = () => <div class="example example--error" />;
 
-export default Example; 
+export default Example;

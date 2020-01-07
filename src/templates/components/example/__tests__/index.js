@@ -19,8 +19,9 @@ test('Example > Error matches snapshot', () => {
 
 test('Example > Example matches snapshot', () => {
     const tree = render(<Example href={'#'}
-                              title={'Quick brown fox'}
-                              summary={'Jumps over the lazy dog'}>Woof</Example>);
+	title={'Quick brown fox'}
+	summary={'Jumps over the lazy dog'}
+                        >Woof</Example>);
     expect(tree).toMatchSnapshot();
 });
 
