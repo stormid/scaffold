@@ -7,6 +7,6 @@ export default component => fn => {
         ? document.querySelector(SELECTOR)
         : Object.keys(SELECTOR).reduce((acc, curr) => acc || (!!document.querySelector(SELECTOR[curr])), false);
     if (!targetNode) return;
-    if (MODULE) fn.then(module => module.default.init(SELECTOR, OPTIONS));
+    if (MODULE) fn.then(module => module.default(SELECTOR, OPTIONS));
     else import(/* webpackChunkName: "[request]" */`../${component}`).then(module => module.default(SELECTOR, OPTIONS));
 };
