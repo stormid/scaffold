@@ -1,7 +1,7 @@
 import { TOGGLE } from '../../constants';
-import Toggle from './lib';
+import toggle from '@stormid/toggle';
 
 export default () => {
-    document.querySelector(TOGGLE.SELECTOR.GLOBAL) && Toggle.init(TOGGLE.SELECTOR.GLOBAL);
-    document.querySelector(TOGGLE.SELECTOR.LOCAL) && Toggle.init(TOGGLE.SELECTOR.LOCAL, TOGGLE.OPTIONS.LOCAL);
+    document.querySelector(TOGGLE.SELECTOR.GLOBAL) && toggle(TOGGLE.SELECTOR.GLOBAL);
+    document.querySelector(TOGGLE.SELECTOR.LOCAL) && toggle(TOGGLE.SELECTOR.LOCAL, TOGGLE.OPTIONS.LOCAL);
 };
