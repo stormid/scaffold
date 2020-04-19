@@ -6,8 +6,8 @@ export const walker = (base, dir) => {
     const walk = (dir, filelist = []) => {
         fs.readdirSync(dir).forEach(file => {
             filelist = fs.statSync(path.join(dir, file)).isDirectory()
-            ? walk(path.join(dir, file), filelist)
-            : filelist.concat({ name: file, path: dir.split(baseDir)[1]});
+                ? walk(path.join(dir, file), filelist)
+                : filelist.concat({ name: file, path: dir.split(baseDir)[1] });
         });
         return filelist;
     };
