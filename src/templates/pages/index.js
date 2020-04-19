@@ -3,6 +3,11 @@ import DefaultLayout from '../layouts/default';
 
 export const title = 'Home';
 
+// export const meta = [{
+//     name: 'description',
+//     content: ''
+// }];
+
 const HomePage = () => <DefaultLayout />;
 
 export default HomePage;

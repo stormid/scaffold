@@ -1,18 +1,13 @@
 const h = require('preact').h;
+const Head = require('../../../src/templates/components/head').default;
 const paths = require('../../../paths.config');
 
-module.exports = function({ htmlBody, css, title }) {
-	return (
-		<html>
-	  		<head>
-				<meta charSet="utf-8" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-				<link rel="shortcut icon" href={`/${paths.dest.img}/favicon.ico`} />
-				<title>{title}</title>
-				{css && <link rel="stylesheet" href={`/${css}`} />}
-				<script src={`${process.env.NODE_ENV === 'production' ? `/${paths.dest.js}` : ''}/index.js`} async></script>
-			</head>
-			{htmlBody}
-	</html>
-  )
-};
+const html = ({ htmlBody, css, title, meta }) => <html lang="en">
+    <Head title={title} meta={meta}>
+        {css && <link rel="stylesheet" href={`/${css}`} />}
+        <script src={`${process.env.NODE_ENV === 'production' ? `/${paths.dest.js}` : ''}/index.js`} async />
+    </Head>
+    {htmlBody}
+</html>;
+
+module.exports = html;
