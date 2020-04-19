@@ -8,6 +8,6 @@ export const title = 'Home';
 //     content: ''
 // }];
 
-const HomePage = () => <DefaultLayout />;
+const HomePage = () => <DefaultLayout section={'Home'} />;
 
 export default HomePage;

@@ -1,4 +1,4 @@
 module.exports = {
-	main: require('./main'),
-	javascript: require('./javascript')
+    main: require('./main'),
+    javascript: require('./javascript')
 };
