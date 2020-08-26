@@ -18,7 +18,7 @@
 
 @mixin visuallyhidden {
     position: absolute;
-    visibility: hidden;
+    opacity: 0;
     width: 1px;
     height: 1px;
     padding: 0;
@@ -31,6 +31,7 @@
 @mixin visible {
     position: static;
     visibility: visible;
+    opacity: 1;
     width: auto;
     height: auto;
     padding: 0;
