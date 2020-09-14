@@ -15,11 +15,11 @@ const paths = require('../../../../paths.config');
 module.exports = [
     merge(base.main, {
         output: {
-          filename: 'static-entry.js',
-          path: path.join(process.cwd(), paths.output),
-          libraryTarget: `umd`
+            filename: 'static-entry.js',
+            path: path.join(process.cwd(), paths.output),
+            libraryTarget: 'umd'
         },
-        mode: 'production',        
+        mode: 'production',
         plugins: [
             new StaticSiteGeneratorPlugin({
                 paths: getPaths(paths.src.templates)

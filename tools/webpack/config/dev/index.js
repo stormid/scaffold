@@ -29,7 +29,7 @@ module.exports = [
                 ignoreOrder: false,
             }),
             new CopyWebpackPlugin([{
-                from:path.join(process.cwd(), paths.src.assets),
+                from: path.join(process.cwd(), paths.src.assets),
                 to: path.join(process.cwd(), paths.output, paths.dest.assets)
             }]),
             new CopyWebpackPlugin([{
@@ -39,9 +39,9 @@ module.exports = [
             new CleanWebpackPlugin(),
             new BrowserSyncPlugin(
                 {
-                  host: 'localhost',
-                  port: 3000,
-                  proxy: 'http://localhost:8080/'
+                    host: 'localhost',
+                    port: 3000,
+                    proxy: 'http://localhost:8080/'
                 }
             )
         ],
