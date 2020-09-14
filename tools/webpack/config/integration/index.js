@@ -12,11 +12,11 @@ const paths = require('../../../../paths.config');
 module.exports = [
     merge(base.main, {
         output: {
-          filename: 'static-entry.js',
-          path: path.join(process.cwd(), paths.integrationOutput),
-          libraryTarget: `umd`
+            filename: 'static-entry.js',
+            path: path.join(process.cwd(), paths.integrationOutput),
+            libraryTarget: 'umd'
         },
-        mode: 'production',        
+        mode: 'production',
         plugins: [
             new FileManagerPlugin({
                 onEnd: {
