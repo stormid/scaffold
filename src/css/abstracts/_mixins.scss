@@ -6,14 +6,6 @@
     max-width: var(--max-container-width);
     margin:0 auto;
     padding: 0 calc(var(--gutter)/2);
-        @media(min-width: var(--bp-sm)){
-            padding-left: var(--gutter);
-            padding-right: var(--gutter);
-        }
-        @media(min-width: calc(var(--max-container-width) + var(--gutter))){
-            padding-left: 0;
-            padding-right: 0;
-        }
 }
 
 @mixin visuallyhidden {

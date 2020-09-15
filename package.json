@@ -15,6 +15,13 @@
   },
   "author": "stormid",
   "license": "MIT",
+  "jest": {
+    "moduleNameMapper": {
+      "^@templates(.*)$": "<rootDir>/src/templates$1",
+      "^@layouts(.*)$": "<rootDir>/src/templates/layouts$1",
+      "^@components(.*)$": "<rootDir>/src/templates/components$1"
+    }
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.1.6",
