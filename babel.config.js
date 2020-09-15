@@ -27,14 +27,8 @@ module.exports = function (api) {
             [
                 '@babel/preset-env',
                 Object.assign({}, process.env.NODE_ENV === 'test'
-                    ? {
-                        loose: true,
-                        targets: {
-                            node: 8,
-                            browsers: ['> 0.25%', 'IE >= 9']
-                        }
-                    }
-                    : { modules: false }
+                    ? { loose: true }
+                    : { }
                 )
             ]
         ],
