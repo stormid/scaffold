@@ -2,30 +2,49 @@
 
 exports[`Example > Empty matches snapshot 1`] = `
 Object {
+  "__": null,
   "__b": 0,
   "__c": null,
+  "__d": undefined,
   "__e": null,
   "__k": null,
-  "__p": null,
+  "__v": [Circular],
   "constructor": undefined,
-  "key": undefined,
-  "l": null,
+  "key": null,
   "props": Object {},
-  "ref": undefined,
+  "ref": null,
+  "type": [Function],
+}
+`;
+
+exports[`Example > Error matches snapshot 1`] = `
+Object {
+  "__": null,
+  "__b": 0,
+  "__c": null,
+  "__d": undefined,
+  "__e": null,
+  "__k": null,
+  "__v": [Circular],
+  "constructor": undefined,
+  "key": null,
+  "props": Object {},
+  "ref": null,
   "type": [Function],
 }
 `;
 
 exports[`Example > Example matches snapshot 1`] = `
 Object {
+  "__": null,
   "__b": 0,
   "__c": null,
+  "__d": undefined,
   "__e": null,
   "__k": null,
-  "__p": null,
+  "__v": [Circular],
   "constructor": undefined,
   "key": undefined,
-  "l": null,
   "props": Object {
     "children": "Woof",
     "href": "#",
@@ -39,16 +58,17 @@ Object {
 
 exports[`Example > Ghost matches snapshot 1`] = `
 Object {
+  "__": null,
   "__b": 0,
   "__c": null,
+  "__d": undefined,
   "__e": null,
   "__k": null,
-  "__p": null,
+  "__v": [Circular],
   "constructor": undefined,
-  "key": undefined,
-  "l": null,
+  "key": null,
   "props": Object {},
-  "ref": undefined,
+  "ref": null,
   "type": [Function],
 }
 `;
