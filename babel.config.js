@@ -32,7 +32,9 @@ module.exports = function (api) {
                             node: 12,
                         }
                     }
-                    : { }
+                    : {
+                        exclude: ['transform-regenerator', 'transform-async-to-generator'],
+                    }
                 )
             ]
         ],
@@ -43,7 +45,7 @@ module.exports = function (api) {
             '@babel/plugin-syntax-dynamic-import',
             '@babel/plugin-transform-object-assign',
             '@babel/plugin-proposal-object-rest-spread',
-            ['module:fast-async', { spec: true }]
+            ['module:fast-async']
         ]
     };
 };
