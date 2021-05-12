@@ -62,7 +62,7 @@
     "jest": "^26.4.2",
     "jest-axe": "^4.0.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "postcss": "^7.0.6",
+    "postcss": "^8.2.10",
     "postcss-css-variables": "^0.13.0",
     "postcss-custom-properties": "^9.0.2",
     "postcss-loader": "^3.0.0",
