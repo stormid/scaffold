@@ -4,7 +4,7 @@ const ExampleNavigationItem = ({ href, active, children }) => <li class="example
     <a
         class={`example-navigation__link${active ? ` is--active` : ''}`}
         href={href}
-        aria-current={String(active)}
+        {...(active ? { "aria-current": String(active) } : {})}
     >{children}</a>
 </li>;
 
