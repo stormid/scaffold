@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { Fragment, h } from 'preact';
 import Skip from '@components/skip';
 import Header from '@components/header';
 // import ExampleNavigation from '@components/example-navigation';
@@ -6,7 +6,7 @@ import Header from '@components/header';
 import Main from '@components/main';
 import Footer from '@components/footer';
 
-const Default = ({ children, section }) => <body>
+const Default = ({ children, section }) => <Fragment>
     <Header>
         <Skip />
         {/* <ExampleNavigation ariaLabel={'Main navigation'}>
@@ -17,6 +17,6 @@ const Default = ({ children, section }) => <body>
         { children }
     </Main>
     <Footer />
-</body>;
+</Fragment>;
 
 export default Default;

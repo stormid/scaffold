@@ -72,5 +72,16 @@ module.exports = [
         //         to: path.resolve(__dirname, `../../../../build/static/js/async`)
         //     }])
         ]
+    }),
+    merge(base.polyfills, {
+        output: {
+            filename: '[name].js',
+            publicPath: paths.webpackPublicPath,
+            path: path.join(process.cwd(), paths.output, paths.dest.js)
+        },
+        mode: 'production',
+        performance: {
+            hints: 'warning'
+        },
     })
 ];

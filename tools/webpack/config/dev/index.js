@@ -62,17 +62,15 @@ module.exports = [
             path: path.join(process.cwd(), paths.output)
         },
         mode: 'development',
-        devtool: 'cheap-module-eval-source-map',
-        // optimization: {
-        //     splitChunks: {
-        //         cacheGroups: {
-        //             vendor: {
-        //                 test: /[\\/]node_modules[\\/]/,
-        //                 name: 'vendors',
-        //                 chunks: 'all'
-        //             }
-        //         }
-        //     }
-        // }
+        devtool: 'cheap-module-eval-source-map'
+    }),
+    merge(base.polyfills, {
+        output: {
+            filename: '[name].js',
+            publicPath: '/',
+            path: path.join(process.cwd(), paths.output)
+        },
+        mode: 'development',
+        devtool: 'cheap-module-eval-source-map'
     })
 ];

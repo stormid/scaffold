@@ -56,5 +56,13 @@ module.exports = [
         plugins: [
             new CleanWebpackPlugin()
         ]
+    }),
+    merge(base.polyfills, {
+        output: {
+            filename: '[name].js',
+            publicPath: paths.webpackPublicPath,
+            path: path.join(process.cwd(), paths.integrationOutput, paths.dest.js)
+        },
+        mode: 'production'
     })
 ];
