@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -10,8 +11,22 @@ module.exports = {
         entrypoints: false
     },
     plugins: [
-        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
-    ],
+        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
+		new webpack.optimize.MinChunkSizePlugin({
+			minChunkSize: 8000
+		})
+	],
+	optimization: {
+		splitChunks: {
+		  cacheGroups: {
+			polyfills: {
+			  test: /polyfills/,
+			  name: 'polyfills',
+			  chunks: 'all',
+			}
+		  }
+		}
+	},
     module: {
         rules: [
             {
