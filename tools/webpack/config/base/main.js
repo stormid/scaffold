@@ -11,22 +11,8 @@ module.exports = {
         entrypoints: false
     },
     plugins: [
-        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
-		new webpack.optimize.MinChunkSizePlugin({
-			minChunkSize: 8000
-		})
+        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
 	],
-	optimization: {
-		splitChunks: {
-		  cacheGroups: {
-			polyfills: {
-			  test: /polyfills/,
-			  name: 'polyfills',
-			  chunks: 'all',
-			}
-		  }
-		}
-	},
     module: {
         rules: [
             {

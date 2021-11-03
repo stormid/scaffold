@@ -13,13 +13,21 @@ module.exports = {
         entrypoints: false
     },
     plugins: [
-        new webpack.optimize.LimitChunkCountPlugin({
-            maxChunks: 5
-        }),
         new webpack.optimize.MinChunkSizePlugin({
-            minChunkSize: 8000
+            minChunkSize: 2000
         })
     ],
+	optimization: {
+		splitChunks: {
+		  cacheGroups: {
+			polyfills: {
+			  test: /polyfills/,
+			  name: 'polyfills',
+			  chunks: 'all',
+			}
+		  }
+		}
+	},
     module: {
         rules: [
             {
