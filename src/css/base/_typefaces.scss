@@ -11,22 +11,10 @@
        local("DroidSans"),
        local("Tahoma");
 }
-
-body {
-  font-family: "system";
-}
 body,
 button,
 input,
 select,
 textarea {
-    font: 100%/1.5 'system';
-    color: var(--off-black);
-}
-
-input,
-select,
-textarea {
-    font-size: .99rem;
-    line-height: 1rem;
+    font-family: "system";
 }
