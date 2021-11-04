@@ -45,7 +45,14 @@ module.exports = [
             new webpack.optimize.LimitChunkCountPlugin({
                 maxChunks: 5
             }),
-            new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
+            new ImageminPlugin({
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                svgo: {
+                    plugins: [{
+                        removeViewBox: false
+                    }]
+                }
+            })
         ],
     }),
     merge(base.javascript, {

@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const { getPaths } = require('../../utils');
 const paths = require('../../../../paths.config');
 
@@ -43,7 +44,15 @@ module.exports = [
                     port: 3000,
                     proxy: 'http://localhost:8080/'
                 }
-            )
+            ),
+            new ImageminPlugin({
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                svgo: {
+                    plugins: [{
+                        removeViewBox: false
+                    }]
+                }
+            })
         ],
     }),
     merge(base.javascript, {

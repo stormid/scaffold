@@ -10,9 +10,6 @@ module.exports = {
         modules: false,
         entrypoints: false
     },
-    plugins: [
-        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
-	],
     module: {
         rules: [
             {

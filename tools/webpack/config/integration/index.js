@@ -36,7 +36,14 @@ module.exports = [
                 from: path.join(process.cwd(), paths.src.img),
                 to: path.join(process.cwd(), paths.integrationOutput, paths.dest.img)
             }]),
-            new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
+            new ImageminPlugin({
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                svgo: {
+                    plugins: [{
+                        removeViewBox: false
+                    }]
+                }
+            })
         ],
     }),
     merge(base.javascript, {
