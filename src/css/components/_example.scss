@@ -1,0 +1,40 @@
+.example {
+    padding: var(--baseline) var(--gutter);
+    background-color: white;
+    position: relative;
+}
+.example__title {
+    font-size: var(--font-size-plus-1);
+    margin-bottom: calc(var(--baseline)/8);
+}
+.example__link {
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+}
+.example--ghost {
+    .example__title {
+        height: 18px;
+        background-color: var(--light-grey-1);
+        width: 150px;
+        margin-bottom: calc(var(--baseline)/2);
+    }
+    .example__summary {
+        height: 16px;
+        background-color: var(--light-grey-1);
+        width: 200px;
+    }
+}
+.example--empty {
+    border: 2px dotted var(--light-grey-2);
+    background-color: transparent;
+}
+.example--error {
+    background-color: hsl(0, 100%, 96%);
+}
