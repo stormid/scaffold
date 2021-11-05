@@ -1,0 +1,151 @@
+import { h, Fragment } from 'preact';
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs';
+import renderToString from 'preact-render-to-string';
+import Example, { Ghost, Empty, Error } from './';
+import '../../../css/components/_example.scss'
+
+<Meta title="Example" component={Example} />
+
+# Example
+
+## Default
+export const Template = ({
+    href = '#',
+    title = 'Quick brown fox',
+    summary = 'Jumps over the lazy dog'
+}) => <Example
+    href={href}
+    title={title}
+    summary={summary}
+>Woof</Example>
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{ 
+            href: '#',
+            title: 'Quick brown fox',
+            summary: 'Jumps over the lazy dog'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+### CSS
+```
+@import 'components/example';
+```
+
+### JSX
+```
+import Example from '@components/example';
+
+<Example
+    href={'#'}
+    title={'Quick brown fox'}
+    summary={'Jumps over the lazy dog'}
+>Woof</Example>
+```
+
+### HTML
+<Source code={
+    renderToString(<Example
+    href={'#'}
+    title={'Quick brown fox'}
+    summary={'Jumps over the lazy dog'}
+>Woof</Example>, {}, { pretty: true })
+} />
+
+## Loading
+export const GhostTemplate = ({}) => <Ghost />
+
+<Canvas>
+    <Story
+        name="Loading"
+    >
+        {GhostTemplate.bind({})}
+    </Story>
+</Canvas>
+
+### CSS
+```
+@import 'components/example';
+```
+
+### JSX
+```
+import { Ghost } from '@components/example';
+
+<Ghost />
+```
+
+### HTML
+<Source code={
+    renderToString(<Ghost />, {}, { pretty: true })
+} />
+
+
+## Empty
+export const EmptyTemplate = ({}) => <Empty />
+
+<Canvas>
+    <Story
+        name="Empty"
+    >
+        {EmptyTemplate.bind({})}
+    </Story>
+</Canvas>
+
+### CSS
+```
+@import 'components/example';
+```
+
+### JSX
+```
+import { Empty } from '@components/example';
+
+<Empty />
+```
+
+### HTML
+<Source code={
+    renderToString(<Empty />, {}, { pretty: true })
+} />
+
+
+
+### HTML
+<Source code={
+    renderToString(<Ghost />, {}, { pretty: true })
+} />
+
+
+## Error
+export const ErrorTemplate = ({}) => <Error />
+
+<Canvas>
+    <Story
+        name="Error"
+    >
+        {ErrorTemplate.bind({})}
+    </Story>
+</Canvas>
+
+### CSS
+```
+@import 'components/example';
+```
+
+### JSX
+```
+import { Error } from '@components/example';
+
+<Error />
+```
+
+### HTML
+<Source code={
+    renderToString(<Error />, {}, { pretty: true })
+} />
