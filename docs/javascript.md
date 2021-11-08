@@ -9,7 +9,7 @@ There are three entry points files for Webpack that create three corresponding t
 
 
 ### Main
-The main script imports an array of functions from the `src/js/index.js` file that comprise the initialisation stack of the app. By default the array of initialisation functions is run in parallel (as much as the single-threaded nature of JavaScript allows), so you cannot wholely depend on execution order of separate modules without changing the promisified initialisation.
+The main script imports an array of functions from the `src/js/index.js` file that comprise the initialisation stack of the app. By default the array of initialisation functions executes run in parallel (as much as the single-threaded nature of JavaScript allows), so you cannot rely on the execution order of separate modules without changing the promisified initialisation.
 
 
 ### Polyfills
@@ -19,12 +19,10 @@ window.Promise, Object.assign, and window.Fetch are the unsupported language fea
 
 ESM JavaScript syntax (e.g. arrow functions, const/let, async/await) that is unsupported in Internet Explorer 11 (and other older browsers) is used for authoring JavaScript in the scaffold. It is transpiled by Webpack and Babel to ES5 during the build so all browsers in our support list understandd it.
 
+The built polyfills file is imported into a scaffolded app via a script tag with the nomodule attribute, so only browsers that do not understand the attribute (https://caniuse.com/?search=nomodule) load it. 
 
 
 ### Head
 The head script adds adding the client-side Application Insights SDK (https://github.com/Microsoft/ApplicationInsights-JS) to an app that is on a dev or prod environment. Application Insights sends telemetry to Azure to monitor performance and errors in an app, so it is not useful in local development or for prototypes.
 
 The script checks for the presence of an element in the DOM with a `data-ai` attribute (usually a meta tag), and uses the value as the instrumentation key to initialise AppInsights.
-
-
-## Script loading
