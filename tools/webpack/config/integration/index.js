@@ -6,6 +6,7 @@ const FileManagerPlugin = require('filemanager-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 // const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const paths = require('../../../../paths.config');
 
@@ -37,12 +38,20 @@ module.exports = [
                 to: path.join(process.cwd(), paths.integrationOutput, paths.dest.img)
             }]),
             new ImageminPlugin({
-                test: /\.(jpe?g|png|gif|svg)$/i,
+                test: /\.(svg)$/i,
                 svgo: {
                     plugins: [{
                         removeViewBox: false
                     }]
                 }
+            }),
+            new ImageminWebpWebpackPlugin({
+                config: [{
+                        test: /\.(jpe?g|png|gif)$/i,
+                        options: {
+                            quality:  50
+                        },
+                }]
             })
         ],
     }),
