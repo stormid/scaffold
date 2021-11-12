@@ -37,14 +37,6 @@ module.exports = [
                 from: path.join(process.cwd(), paths.src.img),
                 to: path.join(process.cwd(), paths.integrationOutput, paths.dest.img)
             }]),
-            new ImageminPlugin({
-                test: /\.(svg)$/i,
-                svgo: {
-                    plugins: [{
-                        removeViewBox: false
-                    }]
-                }
-            }),
             new ImageminWebpWebpackPlugin({
                 config: [{
                         test: /\.(jpe?g|png|gif)$/i,
@@ -52,6 +44,14 @@ module.exports = [
                             quality:  50
                         },
                 }]
+            }),
+            new ImageminPlugin({
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                svgo: {
+                    plugins: [{
+                        removeViewBox: false
+                    }]
+                }
             })
         ],
     }),
