@@ -27,8 +27,8 @@ const HomePage=() =>
 		<section>
 			<h3>Navigation:</h3>
 			<p>Home</p>
-			<p><a href="/v1/">Component v1</a> - <code>&lt;Image&gt;</code> and <code>&lt;Figure&gt;</code></p>
-			<p><a href="/v2/">Component v2</a> - <code>&lt;Image&gt;</code> only</p>
+			<p><a href="/v1/">Component v1</a></p>
+			<p><a href="/v2/">Component v2</a></p>
 		</section>
 
 		<section>

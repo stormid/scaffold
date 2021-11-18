@@ -21,8 +21,8 @@ const ImageV1Page=() =>
 		<section>
 			<h3>Navigation:</h3>
 			<p><a href="/">Home</a></p>
-			<p>Component v1 - <code>&lt;Image&gt;</code> and <code>&lt;Figure&gt;</code></p>
-			<p><a href="/v2/">Component v2</a> - <code>&lt;Image&gt;</code> only</p>
+			<p>Component v1</p>
+			<p><a href="/v2/">Component v2</a></p>
 		</section>
 
 		<section>
@@ -44,7 +44,6 @@ const ImageV1Page=() =>
 				<li>loading: Defaults to <code>'lazy'</code></li>
 			</ul>
 
-			<p>In addition there is a <code>&lt;Figure&gt;</code> component which acts as a wrapper where a <code>&lt;figcation&gt;</code> and/or a long description is required, managed with <code>aria-labelledby</code> and <code>aria-describedby</code> attributes respectively.</p>
 			<h4>Supported <code>&lt;Figure&gt;</code> component properties:</h4>
 			<ul class="notes">
 				<li>children: An <code>&lt;Image&gt;</code> component</li>

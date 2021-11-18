@@ -10,7 +10,7 @@ const Image=({
 	loading='lazy'
 	}) => 
 
-<picture class={`image ${className ? className : ''}`}>
+<picture class={`${className ? className : ''}`}>
 
 	{
 		sources && sources.map(srcData => <source srcset={srcData.src} media={srcData.media} />)
