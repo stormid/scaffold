@@ -186,6 +186,49 @@ const ImageV2Page=() =>
 			</div>
 		</section>
 
+		
+		<section>
+			<h2>Example</h2>
+			<p>This example demonstrates using the <code>media</code> attribute to respect <code>prefers-reduced-motion</code>.</p>
+			<div class="row">
+				<div class="col xs-12 sm-5 md-6">
+					<Figure className='homepage-figure' caption={['Orbit driven by Sine / Cosine', <br/>,'Image: Nick Watton']}>
+						<Image 
+							alt='Orbit animation driven by sine cosine'
+							className='page-hero-image'
+							imageClass='hero-image'
+							src='/static/img/sin_cos.gif'
+							sources={[
+								{src: '/static/img/sin_cos.png', media: '(prefers-reduced-motion: reduce)'}
+							]}
+						/>
+					</Figure>
+				</div>
+				<div class="col xs-12 sm-7 md-6">
+					<h3>Notes</h3>
+					<p>To test, look up your systems accessibility settings and turn off animation. The .gif should be immediately swapped for the .png and thus the animation will stop.</p>	
+				</div>
+			</div>
+			<div class="row">
+				<h3>Code:</h3>
+			</div>
+			<div class="row">
+				<pre><code>
+					&lt;Figure className='homepage-figure' caption='Orbit driven by Sine / Cosine'&gt;<br/>
+						&emsp;&lt;Image<br/>
+						&emsp;&emsp;alt='Orbit animation driven by sine cosine'<br/>
+						&emsp;&emsp;className='page-hero-image'<br/>
+						&emsp;&emsp;imageClass='hero-image'<br/>
+						&emsp;&emsp;src='static/img/sin_cos.gif'<br/>
+						&emsp;&emsp;sources=&#123;[<br/>
+						&emsp;&emsp;&emsp;&#123;src: '/static/img/sin_cos.png', media: '(prefers-reduced-motion: reduce)'&#125;,<br/>
+						&emsp;&emsp;]&#125;<br/>
+						&emsp;/&gt;<br/>
+					&lt;Figure/&gt;
+				</code></pre>
+			</div>
+		</section>
+
 	</div>
 </DefaultLayout>;
 
