@@ -1,41 +1,41 @@
 import { h } from 'preact';
 import DefaultLayout from '@layouts/default';
 
-import Image from '@components/image2';
-import Figure from '@components/image2/figure';
+import ImageBlock from '@components/image-block';
+import {Figure} from '@components/image-block';
 
 export const meta=[{
 	name: 'description',
-	content: 'Image Component - v2'
+	content: 'Image Component - v3'
 }];
 
-const ImageV2Page=() => 
+const ImageV3Page=() => 
 <DefaultLayout section={'Home'}>
 	<div class='centered wrap'>
 
 		<section>
-			<h1>Image component proposal</h1>
-			<h2>Version 2</h2>
-			<p>Initial feedback suggested the <code>&lt;Image&gt;</code> was too opinionated / not sufficiently flexible, and the <code>&lt;Figure&gt;</code> had unneccessary features.</p>
-			<p>For the <code>&lt;Image&gt;</code> some refactoring and a more decarative handling of the <code>&lt;source srcset ...&gt;</code> data hopefully addresses these concerns somewhat.</p>
-			<p>The <code>&lt;Figure&gt;</code> is streamlined.</p>
+			<h1>ImageBlock component proposal</h1>
+			<h2>Version 3</h2>
+			<p>Further feedback suggested some BEM related improvements, and I've undertaken a little refactoring.</p>
+			<p>Changes: Renaming to <code>&lt;ImageBlock&gt;</code>, applying BEM conventions, moving the <code>&lt;Figure&gt;</code> into the <code>&lt;ImageBlock&gt;</code> file for developer ease / clarity.</p>
+			<p>The examples below are simply reworkings of v2, with the above changes.</p>
 		</section>
 
 		<section>
 			<h3>Navigation:</h3>
 			<p><a href="/">Home</a></p>
 			<p><a href="/v1/">Component v1</a></p>
-			<p>Component v2</p>
-			<p><a href="/v3/">Component v3</a></p>
+			<p><a href="/v2/">Component v2</a></p>
+			<p>Component v3</p>
 		</section>
 
 
 		<section>
-			<h4>Supported <code>&lt;Image&gt;</code> component properties:</h4>
+			<h4>Supported <code>&lt;ImageBlock&gt;</code> component properties:</h4>
 			<ul class="notes">
 				<li>alt</li>
-				<li>className: Applied to <code>&lt;picture&gt;</code> to allow correct BEM conventions</li>
-				<li>imageClass: Applied to <code>&lt;img&gt;</code></li>
+				<li>className: Applied to <code>&lt;picture&gt;</code> with correct BEM conventions</li>
+				<li><span class="strike">imageClass: Applied to <code>&lt;img&gt;</code>.</span> Better BEM removes need for this additional class</li>
 				<li>src: Default / fallback image</li>
 				<li>sources: Simplified array of the two primary <code>&lt;picture&gt;</code> &mdash;&gt; <code>&lt;source&gt;</code>...<code>&lt;/source&gt;</code> attributes:
 					<ul>
@@ -50,7 +50,7 @@ const ImageV2Page=() =>
 			<h4>Supported <code>&lt;Figure&gt;</code> component properties:</h4>
 			<ul class="notes">
 				<li>children: An <code>&lt;Image&gt;</code> component</li>
-				<li>className: Applied to <code>&lt;figure&gt;</code></li>
+				<li>className: Applied to <code>&lt;figure&gt;</code> and <code>&lt;figcation&gt;</code> with correct BEM conventions</li>
 				<li>caption: Used as <code>&lt;figcation&gt;</code> content</li>
 			</ul>
 
@@ -62,10 +62,9 @@ const ImageV2Page=() =>
 			<p>This example demonstrates a variety of <code>srcset</code> data.</p>
 			<div class="row">
 				<div class="col xs-12 sm-5 md-6">
-					<Image 
-						alt='Hero image'
-						className='page-hero-image'
-						imageClass='hero-image'
+					<ImageBlock 
+						alt='Grey placeholder'
+						className='demo-panel'
 						src='/static/img/tramway.jpg'
 						sources={[
 							{src: 'https://via.placeholder.com/1600x400.jpg', media: '(min-width:1000px)'},
@@ -122,10 +121,9 @@ const ImageV2Page=() =>
 			</div>
 			<div class="row">
 				<pre><code>
-					&lt;Image<br/>
-						&emsp;alt='Hero image'<br/>
-						&emsp;className='page-hero-image'<br/>
-						&emsp;imageClass='hero-image'<br/>
+					&lt;ImageBlock<br/>
+						&emsp;alt='Grey placeholder'<br/>
+						&emsp;className='demo-panel'<br/>
 						&emsp;src='static/img/tramway.jpg'<br/>
 						&emsp;sources=&#123;[<br/>
 							&emsp;&emsp;&#123;src: 'https://via.placeholder.com/1600x400.jpg', media: '(min-width:1000px)'&#125;,<br/>
@@ -145,11 +143,10 @@ const ImageV2Page=() =>
 			<h2>Example</h2>
 			<p>This example demonstrates the above, with a <code>&lt;Figure&gt;</code> component caption.</p>
 			<div class="row">
-				<Figure className='homepage-figure' caption='Responsive Image caption'>
-					<Image 
-						alt='Hero image'
-						className='page-hero-image'
-						imageClass='hero-image'
+				<Figure className='homepage-hero' caption='Responsive Image caption'>
+					<ImageBlock 
+						alt='Grey hero placeholder'
+						className='demo-hero'
 						src='/static/img/tramway.jpg'
 						sources={[
 							{src: 'https://via.placeholder.com/1600x400.jpg', media: '(min-width:1000px)'},
@@ -167,11 +164,10 @@ const ImageV2Page=() =>
 			</div>
 			<div class="row">
 				<pre><code>
-				&lt;Figure className='homepage-figure' caption='Responsive Image caption'&gt;<br/>
-					&emsp;&lt;Image<br/>
-					&emsp;&emsp;alt='Hero image'<br/>
-					&emsp;&emsp;className='page-hero-image'<br/>
-					&emsp;&emsp;imageClass='hero-image'<br/>
+				&lt;Figure className='homepage-hero' caption='Responsive Image caption'&gt;<br/>
+					&emsp;&lt;ImageBlock<br/>
+					&emsp;&emsp;alt='Grey hero placeholder'<br/>
+					&emsp;&emsp;className='demo-hero'<br/>
 					&emsp;&emsp;src='static/img/tramway.jpg'<br/>
 					&emsp;&emsp;sources=&#123;[<br/>
 					&emsp;&emsp;&emsp;&#123;src: 'https://via.placeholder.com/1600x400.jpg', media: '(min-width:1000px)'&#125;,<br/>
@@ -187,50 +183,7 @@ const ImageV2Page=() =>
 			</div>
 		</section>
 
-		
-		<section>
-			<h2>Example</h2>
-			<p>This example demonstrates using the <code>media</code> attribute to respect <code>prefers-reduced-motion</code>.</p>
-			<div class="row">
-				<div class="col xs-12 sm-5 md-6">
-					<Figure className='homepage-figure' caption={['Orbit driven by Sine / Cosine', <br/>,'Image: Nick Watton']}>
-						<Image 
-							alt='Orbit animation driven by sine cosine'
-							className='page-hero-image'
-							imageClass='hero-image'
-							src='/static/img/sin_cos.gif'
-							sources={[
-								{src: '/static/img/sin_cos.png', media: '(prefers-reduced-motion: reduce)'}
-							]}
-						/>
-					</Figure>
-				</div>
-				<div class="col xs-12 sm-7 md-6">
-					<h3>Notes</h3>
-					<p>To test, look up your system&rsquo;s accessibility settings and turn off animation. The .gif should be immediately swapped for the .png and thus the animation will stop.</p>	
-				</div>
-			</div>
-			<div class="row">
-				<h3>Code:</h3>
-			</div>
-			<div class="row">
-				<pre><code>
-					&lt;Figure className='homepage-figure' caption='Orbit driven by Sine / Cosine'&gt;<br/>
-						&emsp;&lt;Image<br/>
-						&emsp;&emsp;alt='Orbit animation driven by sine cosine'<br/>
-						&emsp;&emsp;className='page-hero-image'<br/>
-						&emsp;&emsp;imageClass='hero-image'<br/>
-						&emsp;&emsp;src='static/img/sin_cos.gif'<br/>
-						&emsp;&emsp;sources=&#123;[<br/>
-						&emsp;&emsp;&emsp;&#123;src: '/static/img/sin_cos.png', media: '(prefers-reduced-motion: reduce)'&#125;,<br/>
-						&emsp;&emsp;]&#125;<br/>
-						&emsp;/&gt;<br/>
-					&lt;Figure/&gt;
-				</code></pre>
-			</div>
-		</section>
-
 	</div>
 </DefaultLayout>;
 
-export default ImageV2Page;
+export default ImageV3Page;

@@ -23,6 +23,7 @@ const ImageV1Page=() =>
 			<p><a href="/">Home</a></p>
 			<p>Component v1</p>
 			<p><a href="/v2/">Component v2</a></p>
+			<p><a href="/v3/">Component v3</a></p>
 		</section>
 
 		<section>

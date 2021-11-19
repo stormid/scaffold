@@ -20,8 +20,8 @@ const HomePage=() =>
 			<p>I have created an <code>&lt;Image&gt;</code> component to leverage this approach.</p>
 			<p>In addition I also looked at a <code>&lt;Figure&gt;</code> component to act as a wrapper for the image.</p>
 
-			<p>After initial feedback I have made a simpler, more declarative component.<br/>
-			Both versions are linked below.</p>
+			<p>After feedback I have made a simpler, more declarative component, and better implimented BEM conventions for components.<br/>
+			Versions are linked below.</p>
 		</section>
 
 		<section>
@@ -29,6 +29,7 @@ const HomePage=() =>
 			<p>Home</p>
 			<p><a href="/v1/">Component v1</a></p>
 			<p><a href="/v2/">Component v2</a></p>
+			<p><a href="/v3/">Component v3</a></p>
 		</section>
 
 		<section>
