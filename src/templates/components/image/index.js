@@ -18,7 +18,7 @@ const Image=({
 	loading='lazy'
 	}) =>
 
-<picture class={`${className ? className : ''}`}>
+<picture class={className} >
 
 	{
 		sources && sources.map(srcData => <source srcset={srcData.src} media={srcData.media} />)
@@ -26,7 +26,7 @@ const Image=({
 
 	<img 
 		alt={alt}
-		class={`${className ? className : ''}`}
+		class={className}
 		decoding={decoding}
 		src={`${src}`}
 		loading={loading}
@@ -39,21 +39,23 @@ export default Image;
  * Wrapper for ImageBlock component, usually where a caption is required
  * @param {Object} children - an ImageBlock 
  * @param {string} caption - Text to display with image
- * @param {string} className - Class name 
+ * @param {string} className - Class name for the <figure>
+ * @param {string} captionClassName - Class name  for the <caption>
  */
 export const Figure = ({
 	children,
 	className,
+	captionClassName,
 	caption}) =>
 
-<figure class={`${className ? className : ''}`} >
+<figure class={className} >
 
 	{
 		children
 	}
 	
 	{caption && 
-		<figcaption class={`${className ? className : ''}`}>
+		<figcaption class={captionClassName}>
 			{caption}
 		</figcaption>
 	}

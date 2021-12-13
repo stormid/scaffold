@@ -12,5 +12,6 @@
 
 #### Figure (optional)
 - children: An Image component
-- className
+- className: applied to the <figure>
 - caption: Used as figcation content
+- captionClassName: applied to the <caption>
