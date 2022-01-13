@@ -1,6 +1,6 @@
-## Image component
+# Image component
 
-#### Image - renders a Picture element
+## Image - renders a Picture element
 - alt
 - className
 - src: Default / fallback image
@@ -10,7 +10,7 @@
 - decoding: Defaults to 'async' - 'async', 'sync', 'auto'
 - loading: Defaults to 'lazy' - 'lazy', 'eager'
 
-#### Figure (optional)
+## Figure (optional)
 - children: An Image component
 - className: applied to the <figure>
 - caption: Used as figcation content
