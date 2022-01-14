@@ -1,23 +1,21 @@
 # JavaScript
 
-## 3 output files
+## 3 files
 
-There are three entry points files for Webpack that create three corresponding transpiled JavaScript files
-1. Main `src/js/modules/main.js` initialises all other modules in the app.
+There are three entry points files for Webpack that create three corresponding transpiled and compiled JavaScript files of the same name.
+1. Index `src/js/index.js` initialises all other modules in the app.
 2. Polyfills `src/js/modules/polyfills.js` contains polyfills for older browsers.
 3. Head `src/js/head.js` contains the Application Insights script  
 
 
-### Main
-The main script imports an array of functions from the `src/js/index.js` file that comprise the initialisation stack of the app. By default the array of initialisation functions executes run in parallel (as much as the single-threaded nature of JavaScript allows), so you cannot rely on the execution order of separate modules without changing the promisified initialisation.
+### Index
+The index script is the main script in the application. All other modules (that are not polyfills or Application Insights, see below) are imported and intiialised in this script. 
 
 
 ### Polyfills
 Polyfills add features to browsers that do not support them. Internet Explorer 11 is the main polyfill target in Storm's browser support list.
 
 window.Promise, Object.assign, and window.Fetch are the unsupported language features used most commonly in Storm's frontend codebases.  Responsive images are also polyfilled where required.
-
-ESM JavaScript syntax (e.g. arrow functions, const/let, async/await) that is unsupported in Internet Explorer 11 (and other older browsers) is used for authoring JavaScript in the scaffold. It is transpiled by Webpack and Babel to ES5 during the build so all browsers in our support list understandd it.
 
 The built polyfills file is imported into a scaffolded app via a script tag with the nomodule attribute, so only browsers that do not understand the attribute (https://caniuse.com/?search=nomodule) load it. 
 
@@ -26,3 +24,16 @@ The built polyfills file is imported into a scaffolded app via a script tag with
 The head script adds adding the client-side Application Insights SDK (https://github.com/Microsoft/ApplicationInsights-JS) to an app that is on a dev or prod environment. Application Insights sends telemetry to Azure to monitor performance and errors in an app, so it is not useful in local development or for prototypes.
 
 The script checks for the presence of an element in the DOM with a `data-ai` attribute (usually a meta tag), and uses the value as the instrumentation key to initialise AppInsights.
+
+
+## Authoring 
+
+### ESM syntax
+JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/await, import/export) and is transpiled by Webpack and Babel based on the Babel config and browserlist into ES5 during the build so all browsers in our support list (particular Internet Explorer 11) can parse it.
+
+Not all ESM language features are automatically transpiled, some have to be polyfilled (see above), and not all polyfills are included in the scaffold by default. Some, for example, Array.from and newer array methods, and for...of, require additional polyfills.
+
+If in doubt, check the browser support list and the transpiled output file. 
+
+### JSX
+Since HTML templating uses JSX, JSX will also be transpiled and can be used in non-HTML template JavaScript files.
