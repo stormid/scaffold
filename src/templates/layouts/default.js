@@ -1,17 +1,12 @@
 import { Fragment, h } from 'preact';
 import Skip from '@components/skip';
 import Header from '@components/header';
-// import ExampleNavigation from '@components/example-navigation';
-// import ExampleNavigationItem from '@components/example-navigation-item';
 import Main from '@components/main';
 import Footer from '@components/footer';
 
-const Default = ({ children, section }) => <Fragment>
+const Default = ({ children }) => <Fragment>
     <Header>
         <Skip />
-        {/* <ExampleNavigation ariaLabel={'Main navigation'}>
-            <ExampleNavigationItem href="/" active={section === 'Home'}>Home</ExampleNavigationItem>
-        </ExampleNavigation> */}
     </Header>
     <Main>
         { children }
