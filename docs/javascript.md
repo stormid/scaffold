@@ -9,7 +9,7 @@ There are three entry points files for Webpack that create three corresponding t
 
 
 ### Index
-The index script is the main script in the application. All other modules (that are not polyfills or Application Insights, see below) are imported and intiialised in this script. 
+The index script is the main script in the application. All other modules (that are not polyfills or Application Insights, see below) are imported and initialised in this script. 
 
 
 ### Polyfills
@@ -17,7 +17,7 @@ Polyfills add features to browsers that do not support them. Internet Explorer 1
 
 window.Promise, Object.assign, and window.Fetch are the unsupported language features used most commonly in Storm's frontend codebases.  Responsive images are also polyfilled where required.
 
-The built polyfills file is imported into a scaffolded app via a script tag with the nomodule attribute, so only browsers that do not understand the attribute (https://caniuse.com/?search=nomodule) load it. 
+The compiled polyfills file is imported into a scaffolded app via a script tag with the nomodule attribute, so that only browsers that do not understand the attribute (https://caniuse.com/?search=nomodule) load it. 
 
 
 ### Head
@@ -31,9 +31,11 @@ The script checks for the presence of an element in the DOM with a `data-ai` att
 ### ESM syntax
 JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/await, import/export) and is transpiled by Webpack and Babel based on the Babel config and browserlist into ES5 during the build so all browsers in our support list (particular Internet Explorer 11) can parse it.
 
-Not all ESM language features are automatically transpiled, some have to be polyfilled (see above), and not all polyfills are included in the scaffold by default. Some, for example, Array.from and newer array methods, and for...of, require additional polyfills.
+Not all ESM language features are automatically transpiled, some have to be polyfilled (see above), and not all polyfills are included in the scaffold by default. Some, for example Array.from and newer array methods, and for...of, require additional polyfills.
 
 If in doubt, check the browser support list and the transpiled output file. 
 
 ### JSX
-Since HTML templating uses JSX, JSX will also be transpiled and can be used in non-HTML template JavaScript files.
+The HTML templating is based on JSX using PreactJS, so JSX transpilation is included in the scaffold and therefore JSX (and PreactJS) can be used in JavaScript files.
+
+<!-- TO do: example microfrontend -->
