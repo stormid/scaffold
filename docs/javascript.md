@@ -1,7 +1,7 @@
 # JavaScript
 
-## 3 files
 
+## Entry files
 There are three entry points files for Webpack that create three corresponding transpiled and compiled JavaScript files of the same name.
 1. Index `src/js/index.js` initialises all other modules in the app.
 2. Polyfills `src/js/modules/polyfills.js` contains polyfills for older browsers.
@@ -9,7 +9,9 @@ There are three entry points files for Webpack that create three corresponding t
 
 
 ### Index
-The index script is the main script in the application. All other modules (that are not polyfills or Application Insights, see below) are imported and initialised in this script. 
+The index script is the main script in the application. All other modules (that are not polyfills or Application Insights, see below) are imported and initialised in this script.
+
+Modules imported and used in the index.js file are added to the `src/js/modules` directory.
 
 
 ### Polyfills
@@ -33,7 +35,12 @@ JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/awa
 
 Not all ESM language features are automatically transpiled, some have to be polyfilled (see above), and not all polyfills are included in the scaffold by default. Some, for example Array.from and newer array methods, and for...of, require additional polyfills.
 
-If in doubt, check the browser support list and the transpiled output file. 
+If in doubt, check the browser support list and the transpiled output file.
+
+
+### Constants
+Constant variables, magic Strings, selectors, configuration and settings values should be declared once close to where they are used. If used across multiple modules they should be declared in the `src/js/constants/index.js` file.
+
 
 ### JSX
 The HTML templating is based on JSX using PreactJS, so JSX transpilation is included in the scaffold and therefore JSX (and PreactJS) can be used in JavaScript files.
