@@ -8,8 +8,6 @@
 - [Assets]('./assets.md)
 - [Browser support]('./browser-support.md)
 - Components
-  - [HTML]('./components/html.md')
-  - [head]('./components/head.md')
   - [Image]('./components/image.md')
   - [Heading]('./components/heading.md')
   - [Example]('./components/example.md')

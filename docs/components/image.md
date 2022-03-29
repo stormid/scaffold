@@ -1,5 +1,10 @@
 # Image component
 
+The Image component is an abstraction over the HTML Picture element to simplify the rendering of responsive images.
+
+
+
+
 ## Image - renders a Picture element
 - alt
 - className
