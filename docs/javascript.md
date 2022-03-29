@@ -31,7 +31,7 @@ The script checks for the presence of an element in the DOM with a `data-ai` att
 ## Authoring 
 
 ### ESM syntax
-JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/await, import/export) and is transpiled by Webpack and Babel based on the Babel config and browserlist into ES5 during the build so all browsers in our support list (particular Internet Explorer 11) can parse it.
+JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/await, import/export) and is transpiled by Webpack and Babel based on the Babel config and .browserslistrc into ES5 during the build so all browsers in our support list (particular Internet Explorer 11) can parse it.
 
 Not all ESM language features are automatically transpiled, some have to be polyfilled (see above), and not all polyfills are included in the scaffold by default. Some, for example Array.from and newer array methods, and for...of, require additional polyfills.
 
@@ -46,3 +46,8 @@ Constant variables, magic Strings, selectors, configuration and settings values 
 The HTML templating is based on JSX using PreactJS, so JSX transpilation is included in the scaffold and therefore JSX (and PreactJS) can be used in JavaScript files.
 
 <!-- TO do: example microfrontend -->
+
+
+
+## Next
+[Assets ⟶]('./assets.md')

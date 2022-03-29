@@ -103,7 +103,7 @@ The Scaffold uses PostCSS to post-process compiled CSS to add language features 
 - autoprefixer - adds vendor prefixes to CSS rules
 - postcss-custom-properties - adds fallback rules for browsers that do not support CSS variables
 
-Post-processing is based on the supported browser list defined in `.browserlist.rc`. 
+Post-processing is based on the supported browser list defined in `.browserslistrc`. 
 
 
 

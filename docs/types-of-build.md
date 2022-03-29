@@ -26,7 +26,7 @@ To generate a static site. The build process runs once, and outputs a static sit
 ```
 npm run ci
 ```
-To generate static assets for a server-rendered application. The build process runs once, and outputs static assets to a target folder.
+To generate static assets for a server-rendered application. The build process runs once, and outputs static assets to a target folder specified by the `integrationOutput` variable in the `paths.config.js` file.
 
 ## Watch
 ```

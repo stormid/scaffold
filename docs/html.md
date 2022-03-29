@@ -52,6 +52,25 @@ To add a Page-specific title, export a String called 'title' from a Page .js fil
 export const title = 'My Page Title';
 ```
 
+## Aliases
+Webpack allows you to define aliases that can be used for a path to a resource, rather than having to use relative paths that change if files move around.
+
+Aliases for JSX imports are set in  `tools\webpack\config\base\main.js`. The default aliases define paths to comomonly used HTML template directories:
+
+```
+'@templates': path.join(process.cwd(), 'src/templates/'),
+'@layouts': path.join(process.cwd(), 'src/templates/layouts'),
+'@components': path.join(process.cwd(), 'src/templates/components')
+```
+
+Allows importing of components without a relative or absolute path, e.g.
+
+```
+import DefaultLayout from @layouts/default;
+import Card from @components/card;
+```
+
+
 ### Meta tags
 To add Page-specific meta tags export an Array of meta Objects from a Page .js file. A meta Object consists of a content property, and either a name or property property:
 
