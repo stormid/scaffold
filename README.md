@@ -1,6 +1,6 @@
 # Frontend build
 
-Read the [documentation](./docs/index.md)
+Read the [documentation](./docs/index.md).
 
 ## Commands
 
