@@ -22,3 +22,6 @@ You will need to config ESlint in your IDE (e.g. the VS Code ESLint extension) f
 
 Linting can be manually run with the command `npm run lint`.
 
+
+## Next
+[Storybook ⟶](./storybook.md)

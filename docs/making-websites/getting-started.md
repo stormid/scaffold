@@ -25,8 +25,8 @@ This will spin up the development server and watch for changes as you build your
 See [build modes]('./../modes.md) for details about the different ways that the scaffold can run a build, including how to export your static site for deployment.
 
 
-## Requirements
-Node 12+
+## Node version
+The Scaffold will work with Node 12+ but the current target version is specified in the `.nvmrc` file. This file is compatible with NVM and NVS, the command `nvs use` will change (or attempt to change) to the node version specified in the .nvmrc file. 
 
 
 ## Next

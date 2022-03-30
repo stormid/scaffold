@@ -15,10 +15,10 @@
 ## The build system
 - [Webpack](./build-system/webpack.md)
 - [Types of build](./build-system/types-of-build.md)
+- [Configuration](./build-system/configuration.md)
   
 ## Testing
 - [Testing](./testing/index.md)
-
 
 ## Storybook
 - [Storybook](./storybook/index.md)
