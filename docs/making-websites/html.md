@@ -55,6 +55,18 @@ To add a Page-specific title, export a String called 'title' from a Page .js fil
 ```
 export const title = 'My Page Title';
 ```
+### Meta tags
+To add Page-specific meta tags export an Array of meta Objects from a Page .js file. A meta Object consists of a content property, and either a name or property property:
+
+```
+export const meta = [
+    { name: 'description', content: 'My page description' },
+    { property: 'og:title', content: 'My Page Title' },
+    { property: 'og:image', content: '/static/img/og-image.png' }
+];
+```
+
+The `<head>` element is itself a component, if more fine-grained control is required it can be edited in `src/templates/components/head`. 
 
 ## Aliases
 Webpack allows you to define aliases that can be used for a path to a resource, rather than having to use relative paths that change if files move around.
@@ -72,18 +84,6 @@ Allows importing of components without a relative or absolute path, e.g.
 ```
 import DefaultLayout from @layouts/default;
 import Card from @components/card;
-```
-
-
-### Meta tags
-To add Page-specific meta tags export an Array of meta Objects from a Page .js file. A meta Object consists of a content property, and either a name or property property:
-
-```
-export const meta = [
-    { name: 'description', content: 'My page description' },
-    { property: 'og:title', content: 'My Page Title' },
-    { property: 'og:image', content: '/static/img/og-image.png' }
-];
 ```
 
 ## Full example
