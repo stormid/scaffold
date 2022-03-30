@@ -7,32 +7,28 @@ import { h } from 'preact';
  * @param {string} loading='lazy' - 'lazy', 'eager'
  * @param {string} src - Reference to local/relative or remote image URI
  * @param {string} className - Class name
+ * @param {string} imgClassName - img element Class name
  * @param {array} [sources]	- Array of Objects for <picture> —> <source> attributes {src, media}
  **/
 const Image=({
-	className,
-	alt,
-	src,
-	sources,
-	decoding='async',
-	loading='lazy'
-	}) =>
+    className,
+    imgClassName,
+    alt,
+    src,
+    sources,
+    decoding = 'async',
+    loading = 'lazy'
+}) => <picture class={className}>
+    { sources && sources.map(srcData => <source srcset={srcData.src} media={srcData.media} />) }
+    <img
+        alt={alt}
+        class={imgClassName}
+        decoding={decoding}
+        src={`${src}`}
+        loading={loading}
+    />
+</picture>;
 
-<picture class={className} >
-
-	{
-		sources && sources.map(srcData => <source srcset={srcData.src} media={srcData.media} />)
-	}
-
-	<img 
-		alt={alt}
-		class={className}
-		decoding={decoding}
-		src={`${src}`}
-		loading={loading}
-	/>
-
-</picture>
 export default Image;
 
 /**
@@ -43,21 +39,15 @@ export default Image;
  * @param {string} captionClassName - Class name  for the <caption>
  */
 export const Figure = ({
-	children,
-	className,
-	captionClassName,
-	caption}) =>
-
-<figure class={className} >
-
-	{
-		children
-	}
-	
-	{caption && 
-		<figcaption class={captionClassName}>
-			{caption}
-		</figcaption>
-	}
-	
-</figure>
+    children,
+    className,
+    captionClassName,
+    caption
+}) => <figure class={className}>
+    { children }
+    { caption &&
+        <figcaption class={captionClassName}>
+            {caption}
+        </figcaption>
+    }
+</figure>;
