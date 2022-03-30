@@ -108,4 +108,4 @@ Post-processing is based on the supported browser list defined in `.browserslist
 
 
 ## Next
-[JavaScript ⟶]('./javascript.md')
+[JavaScript ⟶](./javascript.md)

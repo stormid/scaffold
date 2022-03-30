@@ -50,4 +50,4 @@ The HTML templating is based on JSX using PreactJS, so JSX transpilation is incl
 
 
 ## Next
-[Assets ⟶]('./assets.md')
+[Assets ⟶](./assets.md)

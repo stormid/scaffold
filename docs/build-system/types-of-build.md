@@ -36,4 +36,4 @@ For developing against a server-rendered application. The watch task runs the CI
 
 
 ## Next
-[Testing ⟶]('../testing/index.md')
+[Testing ⟶](../testing/index.md)

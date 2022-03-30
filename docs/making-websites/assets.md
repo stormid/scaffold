@@ -8,4 +8,4 @@ Input and output paths for static assets are set (and can be updated) in the `pa
 
 
 ## Next
-[Browser support ⟶]('./browser-support.md')
+[Browser support ⟶](./browser-support.md)

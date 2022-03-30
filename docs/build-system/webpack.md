@@ -15,4 +15,4 @@ Different types of Webpack build have their own configuration that extend these 
 
 
 ## Next
-[Types of build ⟶]('./types-of-build.md')
+[Types of build ⟶](./types-of-build.md)
