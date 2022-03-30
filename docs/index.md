@@ -17,6 +17,8 @@
 - [Types of build]('./build-system/types-of-build.md')
   
 ## Testing
+- [Testing]('./testing/index.md')
 
 
 ## Storybook
+- [Storybook]('./storybook/index.md')
