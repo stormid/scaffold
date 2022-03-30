@@ -1,8 +1,6 @@
 # Frontend build
 
-## Documentation
-
-https://github.com/stormid/scaffold/blob/master/docs/index.md
+Read the [documentation](./docs/index.md)
 
 ## Commands
 
