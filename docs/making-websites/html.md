@@ -4,9 +4,7 @@ The Scaffold build system looks in the pages directory (`src/templates/pages`) a
 
 JSX is the template language used in the Scaffold. It is compiled using the PreactJS (https://preactjs.com/) framework. 
 
-<div style="padding: 12px; background-color: rgba(255,255,255, .1);color: #191919">
 <b>Note</b> the component lifecycle only runs once during the scaffold build to generate an HTML string - similar to server-side rendering. If you want to use Preact on the client-side you can create a JavaScript module or microfrontend in the `src/js/modules/` directory.
-</div>
 
 <!-- 
 To do:
