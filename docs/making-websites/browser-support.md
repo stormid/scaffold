@@ -7,4 +7,8 @@ JavaScript authored in ESM syntax is transpiled to legacy-compatible ES5 by Webp
 
 Both of these transformations use the `.browserslist.rc` file to define target browsers.
 
-Unsupported JavaScript that cannot be transpiled can be (polyfilled)['./javascript.md#Polyfills] using the `src/js/modules/polyfills.js` file. 
+Unsupported JavaScript that cannot be transpiled can be (polyfilled)['./javascript.md#Polyfills] using the `src/js/modules/polyfills.js` file.
+
+
+## Next
+[Webpack ⟶]('../build-system/webpack.md')

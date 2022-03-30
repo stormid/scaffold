@@ -12,3 +12,7 @@ Different types of Webpack build have their own configuration that extend these 
 - Dev - for development using webpack devserver with hot reloading, and unminified assets
 - Build - for writing a production optimised static site to disk
 - CI - for writing production optimised static assets (minus the static HTML) to disk, post-integration with a dotnet backend
+
+
+## Next
+[Types of build ⟶]('./types-of-build.md')

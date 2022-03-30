@@ -33,3 +33,7 @@ To generate static assets for a server-rendered application. The build process r
 npm run watch
 ```
 For developing against a server-rendered application. The watch task runs the CI task and watches for changes.
+
+
+## Next
+[Testing ⟶]('../testing/index.md')

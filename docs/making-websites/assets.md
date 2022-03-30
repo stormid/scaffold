@@ -5,3 +5,7 @@ Static asssets that are not images, CSS, or JavaScript can be added to an `asset
 For example, to add locally-hosted webfonts to a project you could create a directory `src/assets/fonts` for the font files. Then you can reference the webfonts in your CSS at `/static/fonts/`.
 
 Input and output paths for static assets are set (and can be updated) in the `paths.config.js` file in the root.
+
+
+## Next
+[Browser support ⟶]('./browser-support.md')

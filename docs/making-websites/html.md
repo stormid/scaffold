@@ -33,6 +33,12 @@ Components are reusable pieces of the interface. If part of the UI appears multi
 
 Components can be composed of smaller sub-components.
 
+There are a few default and helper components in with the scaffold, including
+- [Image]('./../components/image.md) - an abstraction over responsive images using the picture tag
+- [Heading]('./../components/heading.md) - an abstraction over h1-h6 tags
+- [Example]('./../components/example.md) - a fully featured demo component
+
+
 ## Data
 
 Data and content can be imported into a Page in a number of ways
