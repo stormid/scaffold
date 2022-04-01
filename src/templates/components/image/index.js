@@ -3,29 +3,36 @@ import { h } from 'preact';
 /**
  * Responsive image component, using the <picture> element
  * @param {string} alt - Image alt tag
- * @param {string} decoding='async' - 'async', 'sync', 'auto'
- * @param {string} loading='lazy' - 'lazy', 'eager'
- * @param {string} src - Reference to local/relative or remote image URI
  * @param {string} className - Class name
+ * @param {string} decoding='async' - 'async', 'sync', 'auto'
+ * @param {string} height=null - Image height attribute
  * @param {string} imgClassName - img element Class name
+ * @param {string} loading='lazy' - 'lazy', 'eager'
  * @param {array} [sources]	- Array of Objects for <picture> —> <source> attributes {src, media}
+ * @param {string} src - Reference to local/relative or remote image URI
+ * @param {string} width=null - Image width attribute
  **/
+
 const Image=({
-    className,
-    imgClassName,
     alt,
+    className,
+    decoding = 'async',
+    imgClassName,
+    height = null,
+    loading = 'lazy',
     src,
     sources,
-    decoding = 'async',
-    loading = 'lazy'
+    width = null
 }) => <picture class={className}>
     { sources && sources.map(srcData => <source srcset={srcData.src} media={srcData.media} />) }
     <img
         alt={alt}
         class={imgClassName}
         decoding={decoding}
-        src={`${src}`}
+        height={height}
         loading={loading}
+        src={`${src}`}
+        width={width}
     />
 </picture>;
 
