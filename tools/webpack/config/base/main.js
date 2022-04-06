@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
