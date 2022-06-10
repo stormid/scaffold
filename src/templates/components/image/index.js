@@ -13,7 +13,7 @@ import { h } from 'preact';
  * @param {string} width=null - Image width attribute
  **/
 
-const Image=({
+const Image = ({
     alt,
     className,
     decoding = 'async',
@@ -37,24 +37,3 @@ const Image=({
 </picture>;
 
 export default Image;
-
-/**
- * Wrapper for ImageBlock component, usually where a caption is required
- * @param {Object} children - an ImageBlock 
- * @param {string} caption - Text to display with image
- * @param {string} className - Class name for the <figure>
- * @param {string} captionClassName - Class name  for the <caption>
- */
-export const Figure = ({
-    children,
-    className,
-    captionClassName,
-    caption
-}) => <figure class={className}>
-    { children }
-    { caption &&
-        <figcaption class={captionClassName}>
-            {caption}
-        </figcaption>
-    }
-</figure>;
