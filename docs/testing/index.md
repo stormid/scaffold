@@ -24,4 +24,4 @@ Linting can be manually run with the command `npm run lint`.
 
 
 ## Next
-[Storybook ⟶](./storybook.md)
+[Storybook ⟶](../storybook/index.md)
