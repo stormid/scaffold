@@ -1,4 +1,3 @@
-import '@stormid/outliner';
 // import './modules/toggle';
 
 // Importer(`tabs`)()
