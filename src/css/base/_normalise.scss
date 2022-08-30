@@ -173,8 +173,10 @@ figure {
 [hidden] {
     display: none;
 }
-
 :focus {
+    outline: 0 none;
+}
+:focus-visible {
     outline: 4px solid transparent;
     box-shadow: 0px 0px 0px 4px var(--highlight);
 }
