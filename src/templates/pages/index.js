@@ -8,6 +8,10 @@ export const title = 'Home';
 //     content: ''
 // }];
 
-const HomePage = () => <DefaultLayout />;
+const HomePage = () => <DefaultLayout>
+    <div class="wrap">
+        <h1>Hello world.</h1>
+    </div>
+</DefaultLayout>;
 
 export default HomePage;
