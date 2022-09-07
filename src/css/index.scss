@@ -12,11 +12,3 @@
 @import 'components/main';
 @import 'components/footer';
 @import 'components/outliner';
-
-main {
-    display: flex;
-    flex-wrap: wrap;
-}
-figure {
-    width:50%
-}
