@@ -5,6 +5,7 @@ import { h } from 'preact';
  * @param {string} alt - Image alt tag
  * @param {string} className - Class name
  * @param {string} decoding='async' - 'async', 'sync', 'auto'
+ * @param {string} fetchpriority='auto' - 'high', 'low', 'auto'
  * @param {string} height=null - Image height attribute
  * @param {string} imgClassName - img element Class name
  * @param {string} loading='lazy' - 'lazy', 'eager'
@@ -17,8 +18,9 @@ const Image = ({
     alt,
     className,
     decoding = 'async',
-    imgClassName,
+    fetchPriority = 'auto',
     height = null,
+    imgClassName,
     loading = 'lazy',
     src,
     sources,
@@ -29,6 +31,7 @@ const Image = ({
         alt={alt}
         class={imgClassName}
         decoding={decoding}
+        fetchpriority={fetchPriority}
         height={height}
         loading={loading}
         src={`${src}`}
