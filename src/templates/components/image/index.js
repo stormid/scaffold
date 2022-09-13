@@ -18,7 +18,7 @@ const Image = ({
     alt,
     className,
     decoding = 'async',
-    fetchPriority = 'auto',
+    fetchPriority = null,
     height = null,
     imgClassName,
     loading = 'lazy',

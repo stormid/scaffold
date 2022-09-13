@@ -9,7 +9,7 @@ The Image component is an abstraction over the HTML Picture element to simplify 
 | alt          | img alt text                                                                                                                                                                                     |
 | className    | picture element className                                                                                                                                                                        |
 | decoding     | img element decoding attribute, Enum: 'async'/'sync'/'auto', default 'async'                                                                                                                     |
-| fetchPriority       | img element fetchpriority attribute, Enum: 'high'/'low'/'auto', default 'auto'                                                                                                                      |
+| fetchPriority       | img element fetchpriority attribute, Enum: 'high'/'low'/'auto', default null                                                                                                                      |
 | height       | img element height attribute, Number, default null                                                                                                                     |
 | imgClassName | img element className                                                                                                                                                                            |
 | loading      | img element loading attribute, Enum: 'lazy'/'eager', default 'lazy'                                                                                                                              |
