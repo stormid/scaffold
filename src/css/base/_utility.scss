@@ -1,0 +1,69 @@
+/* 
+An indicative set of utility classes, 
+serving to illustrate naming conventions when utilizing
+and extending the set for a specific project requirements 
+*/
+
+
+// Margins
+/*
+.pull-up{
+    margin-top: calc(var(--baseline) * -1);
+}
+.pull-up--2{
+    margin-top: var(--baseline) * -2;
+}
+.push-top{
+    margin-top: var(--baseline);
+}
+.push-top--half {
+    margin-top: calc(var(--baseline) / 2);
+}
+.push-bottom {
+    margin-bottom: var(--baseline);
+}
+.push-bottom--half {
+    margin-bottom: calc(var(--baseline) / 2);
+}
+.push-right{
+    margin-left: var(--baseline);
+}
+.push-right--2{
+    margin-left: calc(var(--baseline) * 2);
+}
+*/
+
+
+// Padding
+/*
+.soft-top {
+    padding-top: var(--baseline) !important;
+}
+.soft-top--2 {
+    padding-top: calc(var(--baseline) * 2) !important;
+}
+.soft-bottom {
+    padding-bottom: var(--baseline) !important;
+}
+.soft-bottom--2 {
+    padding-bottom: calc(var(--baseline) * 2) !important;
+}
+*/
+
+
+
+// Flex utilities
+/*
+.flex__align_end{
+    display: flex !important;
+    align-self: flex-end;
+}
+.flex__justify_end{
+    display: flex !important;
+    justify-content: flex-end;
+}
+.flex__justify_center{
+    display: flex !important;
+    justify-content: center;
+}
+*/
