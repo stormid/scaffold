@@ -10,7 +10,7 @@ export const title = 'Home';
 
 const HomePage = () => <DefaultLayout>
     <div class="wrap">
-        <h1>Hello world.</h1>
+        <h1>Have it.</h1>
     </div>
 </DefaultLayout>;
 
