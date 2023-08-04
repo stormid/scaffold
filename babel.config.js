@@ -12,7 +12,7 @@ module.exports = function (api) {
                     }
                     : {
                         exclude: ['transform-regenerator', 'transform-async-to-generator'],
-                     }
+                    }
                 )
             ]
         ],

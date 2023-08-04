@@ -1,6 +1,6 @@
 const base = require('../base');
 const path = require('path');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const StaticSiteGeneratorPlugin = require('../../plugins/static-site-generator-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -20,7 +20,33 @@ module.exports = [
             libraryTarget: `umd`
         },
         mode: 'development',
-        devtool: 'cheap-module-eval-source-map',
+        devtool: 'eval-source-map',
+        devServer: {
+            static: path.join(process.cwd(), paths.output, paths.dest.assets),
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.(s)?css$/,
+                    use: [
+                        {
+                            loader: MiniCssExtractPlugin.loader
+                        },
+                        'css-loader',
+                        'postcss-loader',
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                implementation: require('sass'),
+                                sassOptions: {
+                                    fiber: false,
+                                },
+                            },
+                        }
+                    ]
+                }
+            ]
+        },
         plugins: [
             new StaticSiteGeneratorPlugin({
                 paths: getPaths(paths.src.templates)
@@ -30,14 +56,18 @@ module.exports = [
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
             }),
-            new CopyWebpackPlugin([{
-                from: path.join(process.cwd(), paths.src.assets),
-                to: path.join(process.cwd(), paths.output, paths.dest.assets)
-            }]),
-            new CopyWebpackPlugin([{
-                from: path.join(process.cwd(), paths.src.img),
-                to: path.join(process.cwd(), paths.output, paths.dest.img)
-            }]),
+            // new CopyWebpackPlugin([{
+            //     from: path.join(process.cwd(), paths.src.assets),
+            //     to: path.join(process.cwd(), paths.output, paths.dest.assets)
+            // }]),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: path.join(process.cwd(), paths.src.img),
+                        to: path.join(process.cwd(), paths.output, paths.dest.img)
+                    }
+                ]
+            }),
             new CleanWebpackPlugin(),
             new BrowserSyncPlugin(
                 {
@@ -71,15 +101,15 @@ module.exports = [
             path: path.join(process.cwd(), paths.output)
         },
         mode: 'development',
-        devtool: 'cheap-module-eval-source-map'
+        devtool: 'eval-source-map'
     }),
-    merge(base.polyfills, {
-        output: {
-            filename: '[name].js',
-            publicPath: '/',
-            path: path.join(process.cwd(), paths.output)
-        },
-        mode: 'development',
-        devtool: 'cheap-module-eval-source-map'
-    })
+    // merge(base.polyfills, {
+    //     output: {
+    //         filename: '[name].js',
+    //         publicPath: '/',
+    //         path: path.join(process.cwd(), paths.output)
+    //     },
+    //     mode: 'development',
+    //     devtool: 'cheap-module-eval-source-map'
+    // })
 ];

@@ -1,6 +1,6 @@
 const base = require('../base');
 const path = require('path');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const StaticSiteGeneratorPlugin = require('../../plugins/static-site-generator-webpack-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
@@ -21,13 +21,38 @@ module.exports = [
             libraryTarget: 'umd'
         },
         mode: 'production',
+        module: {
+            rules: [
+                {
+                    test: /\.(s)?css$/,
+                    use: [
+                        {
+                            loader: MiniCssExtractPlugin.loader
+                        },
+                        'css-loader',
+                        'postcss-loader',
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                implementation: require('sass'),
+                                sassOptions: {
+                                    fiber: false,
+                                },
+                            },
+                        }
+                    ]
+                }
+            ]
+        },
         plugins: [
             new StaticSiteGeneratorPlugin({
                 paths: getPaths(paths.src.templates)
             }),
             new FileManagerPlugin({
-                onEnd: {
-                    delete: [ path.join(process.cwd(), paths.output, 'static-entry.js') ]
+                events: {
+                    onEnd: {
+                        delete: [ path.join(process.cwd(), paths.output, 'static-entry.js') ]
+                    }
                 }
             }),
             new MiniCssExtractPlugin({
@@ -35,23 +60,31 @@ module.exports = [
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
             }),
-            new CopyWebpackPlugin([{
-                from: path.join(process.cwd(), paths.src.assets),
-                to: path.join(process.cwd(), paths.output, paths.dest.assets)
-            }]),
-            new CopyWebpackPlugin([{
-                from: path.join(process.cwd(), paths.src.img),
-                to: path.join(process.cwd(), paths.output, paths.dest.img)
-            }]),
+            // new CopyWebpackPlugin({
+            //     patterns: [
+            //         {
+            //             from: path.join(process.cwd(), paths.src.assets),
+            //             to: path.join(process.cwd(), paths.output, paths.dest.assets)
+            //         }
+            //     ]
+            // }),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: path.join(process.cwd(), paths.src.img),
+                        to: path.join(process.cwd(), paths.output, paths.dest.img)
+                    }
+                ]
+            }),
             new webpack.optimize.LimitChunkCountPlugin({
                 maxChunks: 5
             }),
             new ImageminWebpWebpackPlugin({
                 config: [{
-                        test: /\.(jpe?g|png|gif)$/i,
-                        options: {
-                            quality:  50
-                        },
+                    test: /\.(jpe?g|png|gif)$/i,
+                    options: {
+                        quality: 50
+                    },
                 }]
             }),
             new ImageminPlugin({
@@ -82,15 +115,15 @@ module.exports = [
         //     }])
         ]
     }),
-    merge(base.polyfills, {
-        output: {
-            filename: '[name].js',
-            publicPath: paths.webpackPublicPath,
-            path: path.join(process.cwd(), paths.output, paths.dest.js)
-        },
-        mode: 'production',
-        performance: {
-            hints: 'warning'
-        },
-    })
+    // merge(base.polyfills, {
+    //     output: {
+    //         filename: '[name].js',
+    //         publicPath: paths.webpackPublicPath,
+    //         path: path.join(process.cwd(), paths.output, paths.dest.js)
+    //     },
+    //     mode: 'production',
+    //     performance: {
+    //         hints: 'warning'
+    //     },
+    // })
 ];
