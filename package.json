@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --config tools/webpack/config/build",
     "ci": "webpack --config tools/webpack/config/integration",
-    "dev": "webpack serve --config tools/webpack/config/dev --hot --open",
+    "dev": "webpack serve --config tools/webpack/config/dev --hot",
     "lint": "node_modules/.bin/eslint src -c .eslintrc --ext js",
     "start": "npm run dev",
     "storybook": "start-storybook -p 6006",
@@ -79,7 +79,7 @@
     "webpack-merge": "^5.9.0"
   },
   "dependencies": {
-    "@microsoft/applicationinsights-web": "^2.2.4",
+    "@microsoft/applicationinsights-web": "^2.8.15",
     "@stormid/toggle": "^1.0.0-alpha.18",
     "es6-object-assign": "^1.1.0",
     "promise-polyfill": "^8.1.0"
