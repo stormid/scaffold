@@ -86,7 +86,6 @@
     "@microsoft/applicationinsights-web": "^2.2.4",
     "@stormid/toggle": "^1.0.0-alpha.18",
     "es6-object-assign": "^1.1.0",
-    "picturefill": "^3.0.3",
     "promise-polyfill": "^8.1.0"
   }
 }
