@@ -45,23 +45,26 @@ module.exports = [
             new FileManagerPlugin({
                 events: {
                     onEnd: {
-                        delete: [ path.join(process.cwd(), paths.integrationOutput, 'static-entry.js') ]
+                        delete: [{
+                            source: path.join(process.cwd(), paths.integrationOutput, 'static-entry.js'),
+                            options: { force: true },
+                        }]
                     }
-                }
+                },
             }),
             new MiniCssExtractPlugin({
                 filename: path.join(paths.dest.css, 'index.css'),
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
             }),
-            new CopyWebpackPlugin({
-                patterns: [
-                    {
-                        from: path.join(process.cwd(), paths.src.assets),
-                        to: path.join(process.cwd(), paths.integrationOutput, paths.dest.assets)
-                    }
-                ]
-            }),
+            // new CopyWebpackPlugin({
+            //     patterns: [
+            //         {
+            //             from: path.join(process.cwd(), paths.src.assets),
+            //             to: path.join(process.cwd(), paths.integrationOutput, paths.dest.assets)
+            //         }
+            //     ]
+            // }),
             new CopyWebpackPlugin({
                 patterns: [
                     {

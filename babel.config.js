@@ -21,8 +21,7 @@ module.exports = function (api) {
                 pragma: 'h'
             }],
             '@babel/plugin-syntax-dynamic-import',
-            '@babel/plugin-proposal-object-rest-spread',
-            '@babel/plugin-proposal-class-properties'
+            '@babel/plugin-proposal-object-rest-spread'
         ].concat(process.env.NODE_ENV === 'test' ? [] : ['module:fast-async'])
     };
 };

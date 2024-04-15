@@ -1,7 +1,7 @@
 const source = 'src';
 const output = 'build';
 const staticAssets = 'static';
-const integrationOutput = '../src/SampleProject';
+const integrationOutput = '../SampleIntegrationOutput';
 
 const src = {
     img: `${source}/img`,

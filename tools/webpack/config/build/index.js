@@ -109,21 +109,17 @@ module.exports = [
         },
         plugins: [
             new CleanWebpackPlugin()
-        //     new CopyWebpackPlugin([{
-        //         from: path.resolve(__dirname, '../../../../src/js/async'),
-        //         to: path.resolve(__dirname, `../../../../build/static/js/async`)
-        //     }])
         ]
     }),
-    // merge(base.polyfills, {
-    //     output: {
-    //         filename: '[name].js',
-    //         publicPath: paths.webpackPublicPath,
-    //         path: path.join(process.cwd(), paths.output, paths.dest.js)
-    //     },
-    //     mode: 'production',
-    //     performance: {
-    //         hints: 'warning'
-    //     },
-    // })
+    merge(base.polyfills, {
+        output: {
+            filename: '[name].js',
+            publicPath: paths.webpackPublicPath,
+            path: path.join(process.cwd(), paths.output, paths.dest.js)
+        },
+        mode: 'production',
+        performance: {
+            hints: 'warning'
+        },
+    })
 ];
