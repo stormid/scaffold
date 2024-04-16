@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
+// const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const { getPaths } = require('../../utils');
 const paths = require('../../../../paths.config');
 
@@ -68,14 +68,14 @@ module.exports = [
                     }
                 ]
             }),
-            new ImageminWebpWebpackPlugin({
-                config: [{
-                    test: /\.(jpe?g|png|gif)$/i,
-                    options: {
-                        quality: 75
-                    },
-                }]
-            }),
+            // new ImageminWebpWebpackPlugin({
+            //     config: [{
+            //         test: /\.(jpe?g|png|gif)$/i,
+            //         options: {
+            //             quality: 75
+            //         },
+            //     }]
+            // }),
             new CleanWebpackPlugin(),
             new BrowserSyncPlugin(
                 {
