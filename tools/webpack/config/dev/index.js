@@ -6,8 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const { getPaths } = require('../../utils');
 const paths = require('../../../../paths.config');
 
@@ -68,6 +68,14 @@ module.exports = [
                     }
                 ]
             }),
+            new ImageminWebpWebpackPlugin({
+                config: [{
+                    test: /\.(jpe?g|png|gif)$/i,
+                    options: {
+                        quality: 75
+                    },
+                }]
+            }),
             new CleanWebpackPlugin(),
             new BrowserSyncPlugin(
                 {
@@ -75,24 +83,57 @@ module.exports = [
                     port: 3000,
                     proxy: 'http://localhost:8080/'
                 }
-            ),
-            new ImageminWebpWebpackPlugin({
-                config: [{
-                        test: /\.(jpe?g|png|gif)$/i,
-                        options: {
-                            quality:  50
-                        },
-                }]
-            }),
-            new ImageminPlugin({
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                svgo: {
-                    plugins: [{
-                        removeViewBox: false
-                    }]
-                }
-            })
+            )
         ],
+        optimization: {
+            minimizer: [
+                new ImageMinimizerPlugin({
+                    minimizer: {
+                        implementation: ImageMinimizerPlugin.sharpMinify,
+                        options: {
+                            encodeOptions: {
+                                jpeg: {
+                                    // https://sharp.pixelplumbing.com/api-output#jpeg
+                                    quality: 80,
+                                },
+                                webp: {
+                                    // https://sharp.pixelplumbing.com/api-output#webp
+                                    quality: 80,
+                                },
+                                avif: {
+                                    // https://sharp.pixelplumbing.com/api-output#avif
+                                    quality: 50,
+                                },
+            
+                                // png by default sets the quality to 100%, which is same as lossless
+                                // https://sharp.pixelplumbing.com/api-output#png
+                                png: {},
+            
+                                // gif does not support lossless compression at all
+                                // https://sharp.pixelplumbing.com/api-output#gif
+                                gif: {},
+                            },
+                        },
+                    },
+                }),
+                new ImageMinimizerPlugin({
+                    minimizer: {
+                        implementation: ImageMinimizerPlugin.svgoMinify,
+                        options: {
+                            encodeOptions: {
+                                // Pass over SVGs multiple times to ensure all optimizations are applied. False by default
+                                multipass: true,
+                                plugins: [
+                                    // set of built-in plugins enabled by default
+                                    // see: https://github.com/svg/svgo#default-preset
+                                    'preset-default',
+                                ],
+                            },
+                        },
+                    },
+                }),
+            ],
+        },
     }),
     merge(base.javascript, {
         output: {
