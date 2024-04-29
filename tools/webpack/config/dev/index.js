@@ -1,6 +1,7 @@
 const base = require('../base');
 const path = require('path');
 const { merge } = require('webpack-merge');
+const webpack = require('webpack');
 const StaticSiteGeneratorPlugin = require('../../plugins/static-site-generator-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -17,7 +18,8 @@ module.exports = [
             filename: '[name].js',
             path: path.join(process.cwd(), paths.output),
             publicPath: '/',
-            libraryTarget: `umd`
+            libraryTarget: `umd`,
+            assetModuleFilename: 'fonts/[name][ext]'
         },
         mode: 'development',
         devtool: 'eval-source-map',
@@ -32,7 +34,12 @@ module.exports = [
                         {
                             loader: MiniCssExtractPlugin.loader
                         },
-                        'css-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                url: false
+                            }
+                        },
                         'postcss-loader',
                         {
                             loader: 'sass-loader',
@@ -44,10 +51,22 @@ module.exports = [
                             },
                         }
                     ]
+                },
+                {
+                    test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                    dependency: { not: ['url'] },
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: `${paths.dest.assets}/fonts`,
+                        publicPath: `/${paths.dest.assets}/fonts`,
+                        esModule: false
+                    },
+                    type: 'javascript/auto'
                 }
             ]
         },
         plugins: [
+            new webpack.IgnorePlugin({ resourceRegExp: /\.mdx$/, }),
             new StaticSiteGeneratorPlugin({
                 paths: getPaths(paths.src.templates)
             }),
@@ -56,26 +75,20 @@ module.exports = [
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
             }),
-            // new CopyWebpackPlugin([{
-            //     from: path.join(process.cwd(), paths.src.assets),
-            //     to: path.join(process.cwd(), paths.output, paths.dest.assets)
-            // }]),
             new CopyWebpackPlugin({
                 patterns: [
                     {
                         from: path.join(process.cwd(), paths.src.img),
-                        to: path.join(process.cwd(), paths.output, paths.dest.img)
+                        to: path.join(process.cwd(), paths.output, paths.dest.img),
+                        noErrorOnMissing: true
+                    },
+                    {
+                        from: path.join(process.cwd(), paths.src.assets),
+                        to: path.join(process.cwd(), paths.output, paths.dest.assets),
+                        noErrorOnMissing: true
                     }
                 ]
             }),
-            // new ImageminWebpWebpackPlugin({
-            //     config: [{
-            //         test: /\.(jpe?g|png|gif)$/i,
-            //         options: {
-            //             quality: 75
-            //         },
-            //     }]
-            // }),
             new CleanWebpackPlugin(),
             new BrowserSyncPlugin(
                 {

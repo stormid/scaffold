@@ -26,7 +26,12 @@ module.exports = [
                         {
                             loader: MiniCssExtractPlugin.loader
                         },
-                        'css-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                url: false
+                            }
+                        },
                         'postcss-loader',
                         {
                             loader: 'sass-loader',
@@ -38,6 +43,17 @@ module.exports = [
                             },
                         }
                     ]
+                },
+                {
+                    test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                    dependency: { not: ['url'] },
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: `${paths.dest.assets}/fonts`,
+                        publicPath: `/${paths.dest.assets}/fonts`,
+                        esModule: false
+                    },
+                    type: 'javascript/auto'
                 }
             ]
         },
@@ -57,30 +73,20 @@ module.exports = [
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
             }),
-            // new CopyWebpackPlugin({
-            //     patterns: [
-            //         {
-            //             from: path.join(process.cwd(), paths.src.assets),
-            //             to: path.join(process.cwd(), paths.integrationOutput, paths.dest.assets)
-            //         }
-            //     ]
-            // }),
             new CopyWebpackPlugin({
                 patterns: [
                     {
                         from: path.join(process.cwd(), paths.src.img),
-                        to: path.join(process.cwd(), paths.integrationOutput, paths.dest.img)
+                        to: path.join(process.cwd(), paths.integrationOutput, paths.dest.img),
+                        noErrorOnMissing: true
+                    },
+                    {
+                        from: path.join(process.cwd(), paths.src.assets),
+                        to: path.join(process.cwd(), paths.integrationOutput, paths.dest.assets),
+                        noErrorOnMissing: true
                     }
                 ]
-            }),
-            // new ImageminWebpWebpackPlugin({
-            //     config: [{
-            //         test: /\.(jpe?g|png|gif)$/i,
-            //         options: {
-            //             quality: 50
-            //         },
-            //     }]
-            // })
+            })
         ],
         optimization: {
             minimizer: [
