@@ -1,11 +1,16 @@
-@mixin column($num) {
-	width: column-calc($num);
-}
-
 @mixin wrap {
     max-width: var(--max-container-width);
     margin:0 auto;
     padding: 0 calc(var(--gutter)/2);
+}
+
+@mixin column($num) {
+	grid-column: auto / span $num;
+}
+
+// Grid mixins kept for backwards compatibility with previous flexbox implementation
+@mixin row {
+    display: grid;
 }
 
 @mixin visuallyhidden {
