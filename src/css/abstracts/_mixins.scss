@@ -1,6 +1,7 @@
 @mixin wrap {
+    width: 100%;
     max-width: var(--max-container-width);
-    margin:0 auto;
+    margin: 0 auto;
     padding: 0 calc(var(--gutter)/2);
 }
 
