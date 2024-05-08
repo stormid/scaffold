@@ -8,6 +8,13 @@
     gap: var(--gutter);
 }
 
+.row + .row, 
+.row + .wrap:has(> .col),
+.wrap:has(> .col) + .row, 
+.wrap:has(> .col) + .wrap:has(> .col) {
+    margin-top: var(--gutter);
+}
+
 @each $grid-name, $mq-breakpoint in $grid-names {
     @if $mq-breakpoint == default {
         @each $class in map-get($grid-classes,  $grid-name){
