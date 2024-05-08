@@ -8,8 +8,13 @@
     gap: var(--gutter);
 }
 
+.grid + .grid, 
+.grid + .row, 
+.grid + .wrap:has(> .col),
 .row + .row, 
 .row + .wrap:has(> .col),
+.row + .grid,
+.wrap:has(> .col) + .grid,
 .wrap:has(> .col) + .row, 
 .wrap:has(> .col) + .wrap:has(> .col) {
     margin-top: var(--gutter);
