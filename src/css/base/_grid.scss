@@ -2,7 +2,7 @@
     @include wrap;
 }
 
-.row, div.row, .grid, .wrap:has(> .col) {
+.row, .grid, .wrap:has(> .col) {
     display: grid;
     grid-template-columns: repeat($columns, 1fr);
     gap: var(--gutter);
