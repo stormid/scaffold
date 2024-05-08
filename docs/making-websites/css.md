@@ -45,7 +45,7 @@ Breakpoints and their corresponding classNames are defined by the $mq-breakpoint
 ### Grid classNames
 A `.grid` containing element will set up a CSS grid.
 
-Each child element should have a `.col` className to indicate that it should be a column, with one or more utility column size classNames to indicate width at different breakpoints.
+Each child element should have one or more utility column size class names to indicate width at different breakpoints.
 
 Based on the default 12 column grid, 1 column will be 1/12th of the width of the containing element, 12 columns the full width.
 
@@ -55,20 +55,20 @@ Grid utility class names are generated using a mixin.  A number of utility class
 Single row with two elements, they are full width on on two rows on small screens, two-up on one row at the medium breakpoint and up
 ```
 <div class="grid">
-    <div class="col xs-12 md-6"></div>
-    <div class="col xs-12 md-6"></div>
+    <div class="xs-12 md-6"></div>
+    <div class="xs-12 md-6"></div>
 </div>
 ```
 
 Multiple rows, elements are full width on separate rows on small screens, two per-row at the medium breakpoint, and three per-row at the large breakpoint and up
 ```
 <div class="grid">
-    <div class="col xs-12 md-6 lg-4"></div>
-    <div class="col xs-12 md-6 lg-4"></div>
-    <div class="col xs-12 md-6 lg-4"></div>
-    <div class="col xs-12 md-6 lg-4"></div>
-    <div class="col xs-12 md-6 lg-4"></div>
-    <div class="col xs-12 md-6 lg-4"></div>
+    <div class="xs-12 md-6 lg-4"></div>
+    <div class="xs-12 md-6 lg-4"></div>
+    <div class="xs-12 md-6 lg-4"></div>
+    <div class="xs-12 md-6 lg-4"></div>
+    <div class="xs-12 md-6 lg-4"></div>
+    <div class="xs-12 md-6 lg-4"></div>
 </div>
 ```
 
