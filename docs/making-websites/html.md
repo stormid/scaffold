@@ -1,30 +1,26 @@
 # Creating pages
 
-The Scaffold build system looks in the pages directory (`src/templates/pages`) and compiles static HTML files for each JSX .js template file it finds. The structure of the folders and template names are preserved in the compiled HTML.
+The Scaffold build system looks in the pages directory (`src/templates/pages`) and compiles static HTML files for each .js template file it finds. The structure of the folders and template names are preserved in the compiled HTML.
 
-JSX is the template language used in the Scaffold. It is compiled using the PreactJS (https://preactjs.com/) framework. 
+HTML templates are authored in JSX in the Scaffold, and compiled using the PreactJS (https://preactjs.com/) framework. 
 
-<b>Note</b> the component lifecycle only runs once during the scaffold build to generate an HTML string - similar to server-side rendering. If you want to use Preact on the client-side you can create a JavaScript module or microfrontend in the `src/js/modules/` directory.
-
-<!-- 
-To do:
-- add microfrontend example in JS folder
--->
+<b>Note</b> the component lifecycle only runs once during the Scaffold build to generate an HTML string - similar to server-side rendering. If you want to use Preact on the client-side you can create a JavaScript module or microfrontend in the `src/js/modules/` directory.
 
 ## Templates
 
 Generally three types of template are used.
-### Pages
-The entry points for each page in the website - one for each page on the website. The structure of the static build site follows the structure of the pages directory.
 
-Most often the page template will render the `<main>` of the HTML document.
+### Pages
+Page templates are the entry points for each page in the website - one for each page on the website. The structure of the static build site follows the structure of the pages directory.
+
+Most often the page template will render the content of the `<main>` of the HTML document.
 
 The Scaffold expects the Page content to be returned in the default export - see the example below.
 
 ### Layouts
-Define the general structure of the page. Layout templates tend to render the global elements of the page such as the `<header>`, primary `<nav>`, and `<footer`.
+Layout templates define the general structure of the page. Layout templates tend to render the global elements of the page such as the `<header>`, primary `<nav>`, and `<footer`. Page templates are rendered as children of the layout template - see the example below.
 
-Layout templates are useful when a page should have a different overall structure - login pages and error pages for example. 
+Different layout templates are useful when a page should have a different overall structure - login pages and error pages for example. 
 
 ### Components
 Components are reusable pieces of the interface. If part of the UI appears multiple times across the codebase it is a candidate component.
@@ -33,7 +29,7 @@ Components can be composed of smaller sub-components.
 
 There are a few default and helper components in with the scaffold, including
 - [Image](./components/image.md) - an abstraction over responsive images using the picture tag
-- [Heading](./components/heading.md) - an abstraction over h1-h6 tags
+- [Heading](./components/heading.md) - an screen reader optimised abstraction over h1-h6 tags
 - [Example](./components/example.md) - a fully featured demo component
 
 
@@ -55,6 +51,7 @@ To add a Page-specific title, export a String called 'title' from a Page .js fil
 ```
 export const title = 'My Page Title';
 ```
+
 ### Meta tags
 To add Page-specific meta tags export an Array of meta Objects from a Page .js file. A meta Object consists of a content property, and either a name or property property:
 
@@ -66,12 +63,12 @@ export const meta = [
 ];
 ```
 
-The `<head>` element is itself a component, if more fine-grained control is required it can be edited in `src/templates/components/head`. 
+The `<head>` element is itself a component, it can be edited in `src/templates/components/head`.
 
 ## Aliases
 Webpack allows you to define aliases that can be used for a path to a resource, rather than having to use relative paths that change if files move around.
 
-Aliases for JSX imports are set in  `tools\webpack\config\base\main.js`. The default aliases define paths to comomonly used HTML template directories:
+Aliases for JSX imports are set in  `tools\webpack\config\base\main.js`. The default aliases define paths to commonly used HTML template directories:
 
 ```
 '@templates': path.join(process.cwd(), 'src/templates/'),
@@ -79,7 +76,7 @@ Aliases for JSX imports are set in  `tools\webpack\config\base\main.js`. The def
 '@components': path.join(process.cwd(), 'src/templates/components')
 ```
 
-Allows importing of components without a relative or absolute path, e.g.
+This allows importing of components without a relative or absolute path, e.g.
 
 ```
 import DefaultLayout from @layouts/default;
