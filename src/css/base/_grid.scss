@@ -2,7 +2,10 @@
     @include wrap;
 }
 
-.row, .grid, .wrap:has(> .col) {
+
+//.grid should be the default grid container, but previous classnames have
+// been included to ease the transition from flexbox
+.grid, .row, .wrap:has(> .col) {
     display: grid;
     grid-template-columns: repeat($columns, 1fr);
     gap: var(--gutter);
