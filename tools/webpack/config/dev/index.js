@@ -25,6 +25,7 @@ module.exports = [
         devtool: 'eval-source-map',
         devServer: {
             static: path.join(process.cwd(), paths.output, paths.dest.assets),
+            port: 8081
         },
         module: {
             rules: [
