@@ -2,25 +2,10 @@
     @include wrap;
 }
 
-
-//.grid should be the default grid container, but previous classnames have
-// been included to ease the transition from flexbox
-.grid, .row, .wrap:has(> .col) {
+.grid{
     display: grid;
     grid-template-columns: repeat($columns, 1fr);
     gap: var(--gutter);
-}
-
-.grid + .grid, 
-.grid + .row, 
-.grid + .wrap:has(> .col),
-.row + .row, 
-.row + .wrap:has(> .col),
-.row + .grid,
-.wrap:has(> .col) + .grid,
-.wrap:has(> .col) + .row, 
-.wrap:has(> .col) + .wrap:has(> .col) {
-    margin-top: var(--gutter);
 }
 
 @each $grid-name, $mq-breakpoint in $grid-names {
