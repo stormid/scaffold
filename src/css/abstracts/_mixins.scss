@@ -8,11 +8,6 @@
 	grid-column: auto / span $num;
 }
 
-// Grid mixins kept for backwards compatibility with previous flexbox implementation
-@mixin row {
-    display: grid;
-}
-
 @mixin visuallyhidden {
     position: absolute;
     opacity: 0;
