@@ -43,9 +43,11 @@ Breakpoints and their corresponding classNames are defined by the $mq-breakpoint
 ### Grid classNames
 A `.grid` containing element will set up a CSS grid.
 
-Each child element should have a `.col` className to indicate that it should be a column, with one or more column size classNames to indicate width at different breakpoints.
+Each child element should have a `.col` className to indicate that it should be a column, with one or more utility column size classNames to indicate width at different breakpoints.
 
 Based on the default 12 column grid, 1 column will be 1/12th of the width of the containing element, 12 columns the full width.
+
+Grid utility class names are generated using a mixin.  A number of utility classes are included by default.  These can be adjusted by updating the $grid-classes variable in `src/css/abstracts/_constants.scss` to give a more targeted list based on project requirements.
 
 #### Examples
 Single row, with two element, full screen on small screens, two-up at the medium breakpoint and up
@@ -66,10 +68,6 @@ Multiple rows, elements full screen on small screens, two-up at the medium break
     <div class="col xs-12 md-6 lg-4"></div>
     <div class="col xs-12 md-6 lg-4"></div>
 </div>
-```
-### Column calcultion function
-Grid classNames are generated using the column calculation function.  A number of these are included by default, and these can be added or removed by updating the $grid-classes variable in `src/css/abstracts/_constants.scss` 
-
 ```
 
 ## PostCSS
