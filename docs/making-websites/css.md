@@ -10,14 +10,13 @@ There are intentionally few existing styles, instead a few defaults are included
 - use a BEM methodology for class naming
 - use CSS variables not SCSS variables, for easier debugging and interop with JavaScript and DOM
 - use mixins sparingly, they can generate a lot of repeat CSS
-- use flexbox for layout, CSS Grid is not included in our browser support matrix
+- Use CSS Grid for overall page layout, and flexbox for component layout
 
 ## Structure
 SCSS partials are organised by type
 
 - abstracts
   - constants - the fundamental design tokens of the UI
-  - functions - SCSS helper functions
   - mixins - SCSS mixins
 - base
   - grid - the base grid system with utility grid classes
@@ -40,10 +39,6 @@ The fundamental tokens of the user interface should be defined in `src/css/abstr
 The grid system is based on constants defined in the `src/css/abstracts/_constants.scss` file. By default a 12 column grid with 24px horizontal spacing, and 1.5rem vertical spacing.
 
 Breakpoints and their corresponding classNames are defined by the $mq-breakpoints, $grid-names and $grid-classes variables.
-
-There are two ways to use the grid system
-- use the classNames generated in `src/css/base/_grid.scss`
-- use the column calculation helper function
 
 ### Grid classNames
 A `.grid` containing element will set up a CSS grid.
