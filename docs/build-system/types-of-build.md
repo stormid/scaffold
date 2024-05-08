@@ -14,7 +14,7 @@ npm start
 
 For developing a static site locally. The webpackdev server keeps files in memory, and hot reloads when it detects changes. Browsersync also runs to allow the devserver to be mirrored across devices.
 
-By default the devserver runs on `localhost:8080`, and BrowserSync on `locahost:3000`. Read the console messages for output 
+By default the devserver runs on `localhost:8081`, and BrowserSync on `locahost:3000`. Read the console messages for output 
 
 ## Build
 ```
