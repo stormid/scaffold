@@ -41,7 +41,6 @@ module.exports = [
                                 url: false
                             }
                         },
-                        'postcss-loader',
                         {
                             loader: 'sass-loader',
                             options: {
@@ -54,7 +53,7 @@ module.exports = [
                     ]
                 },
                 {
-                    test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                    test: /\.(eot|woff|woff2|svg|ttf)([?]?.*)$/,
                     dependency: { not: ['url'] },
                     loader: 'file-loader',
                     options: {
@@ -157,14 +156,5 @@ module.exports = [
         },
         mode: 'development',
         devtool: 'eval-source-map'
-    }),
-    // merge(base.polyfills, {
-    //     output: {
-    //         filename: '[name].js',
-    //         publicPath: '/',
-    //         path: path.join(process.cwd(), paths.output)
-    //     },
-    //     mode: 'development',
-    //     devtool: 'cheap-module-eval-source-map'
-    // })
+    })
 ];

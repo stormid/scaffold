@@ -5,7 +5,7 @@
 .grid{
     display: grid;
     grid-template-columns: repeat($columns, 1fr);
-    gap: var(--gutter);
+    gap: var(--baseline) var(--gutter);
 }
 
 @each $grid-name, $mq-breakpoint in $grid-names {

@@ -11,6 +11,14 @@ export const title = 'Home';
 const HomePage = () => <DefaultLayout>
     <div class="wrap">
         <h1>Test.</h1>
+        <div class="grid">
+            <div class="sm-6">
+                <p>Test</p>
+            </div>
+            <div class="sm-6">
+                <p>Test</p>
+            </div>
+        </div>
     </div>
 </DefaultLayout>;
 

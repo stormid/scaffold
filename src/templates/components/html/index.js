@@ -13,7 +13,6 @@ const Html = ({
     <Head title={title} meta={meta} css={css} />
     <Body>
         {children}
-        <script nomodule src={`${basePath}/polyfills.js`} />
         <script src={`${basePath}/index.js`} />
     </Body>
 </html>;

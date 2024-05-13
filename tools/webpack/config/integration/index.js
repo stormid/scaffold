@@ -32,7 +32,6 @@ module.exports = [
                                 url: false
                             }
                         },
-                        'postcss-loader',
                         {
                             loader: 'sass-loader',
                             options: {
@@ -45,7 +44,7 @@ module.exports = [
                     ]
                 },
                 {
-                    test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                    test: /\.(eot|woff|woff2|svg|ttf)([?]?.*)$/,
                     dependency: { not: ['url'] },
                     loader: 'file-loader',
                     options: {
@@ -148,13 +147,5 @@ module.exports = [
         plugins: [
             new CleanWebpackPlugin()
         ]
-    }),
-    merge(base.polyfills, {
-        output: {
-            filename: '[name].js',
-            publicPath: paths.webpackPublicPath,
-            path: path.join(process.cwd(), paths.integrationOutput, paths.dest.js)
-        },
-        mode: 'production'
     })
 ];
