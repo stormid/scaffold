@@ -1,7 +1,6 @@
 const RawSource = require('webpack-sources').RawSource;
 const evaluate = require('eval');
 const path = require('path');
-// const { promisify } = require('util');7
 const { Compilation } = require('webpack');
 
 class StaticSiteGeneratorWebpackPlugin {
@@ -16,7 +15,7 @@ class StaticSiteGeneratorWebpackPlugin {
     apply(compiler) {
         const pluginName = 'StaticSiteGeneratorWebpackPlugin';
 
-        compiler.hooks.thisCompilation.tap(pluginName, (compilation) => {
+        compiler.hooks.thisCompilation.tap(pluginName, compilation => {
             compilation.hooks.processAssets.tapPromise(
                 {
                     name: pluginName,
@@ -60,7 +59,7 @@ class StaticSiteGeneratorWebpackPlugin {
 }
 
 async function renderPaths(userLocals, paths, render, assets, webpackStats, compilation) {
-    const renderPromises = paths.map(async (outputPath) => {
+    const renderPromises = paths.map(async outputPath => {
         const locals = {
             path: outputPath,
             assets,
@@ -160,23 +159,5 @@ const makeObject = (key, value) => {
     obj[key] = value;
     return obj;
 };
-
-const addThisCompilationHandler = (compiler, callback) => {
-    if (compiler.hooks) {
-        /* istanbul ignore next */
-        compiler.hooks.thisCompilation.tap('static-site-generator-webpack-plugin', callback);
-    } else {
-        compiler.plugin('this-compilation', callback);
-    }
-};
-
-function addOptimizeAssetsHandler(compilation, callback) {
-    if (compilation.hooks) {
-        /* istanbul ignore next */
-        compilation.hooks.optimizeAssets.tapAsync('static-site-generator-webpack-plugin',callback);
-    } else {
-        compilation.plugin('optimize-assets', callback);
-    }
-}
 
 module.exports = StaticSiteGeneratorWebpackPlugin;

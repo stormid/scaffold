@@ -6,8 +6,6 @@ const FileManagerPlugin = require('filemanager-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-// const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const paths = require('../../../../paths.config');
 
 module.exports = [
