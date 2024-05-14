@@ -1,7 +1,7 @@
 {
   "name": "@stormid/scaffold",
   "version": "1.0.0",
-  "description": "Project scaffold and UI build system",
+  "description": "Static site builder and UI build system",
   "scripts": {
     "build": "webpack --config tools/webpack/config/build",
     "ci": "webpack --config tools/webpack/config/integration",
