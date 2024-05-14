@@ -35,11 +35,11 @@ module.exports = [
                         {
                             loader: 'sass-loader',
                             options: {
-                                implementation: require('sass'),
+                                implementation: require('sass-embedded'),
                                 sassOptions: {
-                                    fiber: false,
-                                },
-                            },
+                                    api: 'modern-compiler'
+                                }
+                            }
                         }
                     ]
                 },

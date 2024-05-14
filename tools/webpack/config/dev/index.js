@@ -22,7 +22,7 @@ module.exports = [
             assetModuleFilename: 'fonts/[name][ext]'
         },
         mode: 'development',
-        devtool: 'eval-source-map',
+        devtool: 'source-map',
         devServer: {
             static: path.join(process.cwd(), paths.output, paths.dest.assets),
             port: 8081
@@ -38,16 +38,18 @@ module.exports = [
                         {
                             loader: 'css-loader',
                             options: {
-                                url: false
+                                url: false,
+                                sourceMap: true
                             }
                         },
                         {
                             loader: 'sass-loader',
                             options: {
-                                implementation: require('sass'),
+                                implementation: require('sass-embedded'),
+                                sourceMap: true,
                                 sassOptions: {
-                                    fiber: false,
-                                },
+                                    api: 'modern-compiler'
+                                }
                             },
                         }
                     ]
