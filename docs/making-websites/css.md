@@ -2,7 +2,7 @@
 
 The Scaffold is set up to generate a CSS file `index.css` from the SCSS entry point `src/css/index.scss`.
 
-There are intentionally few existing styles, only a few defaults are included. Though the Scaffold supports the full gamut of SCSS, by convention we aim to write SCSS in a way that is close to standard CSS.
+There are intentionally few existing styles, instead a few defaults are included. Though the Scaffold supports the full gamut of SCSS, by convention we aim to write SCSS in a way that is close to standard CSS.
 
 ## Conventions
 - use minimal nesting, to keep specificity low and readability/maintainability high
@@ -10,13 +10,14 @@ There are intentionally few existing styles, only a few defaults are included. T
 - use a BEM methodology for class naming
 - use CSS variables not SCSS variables, for easier debugging and interop with JavaScript and DOM
 - use mixins sparingly, they can generate a lot of repeat CSS
-- use CSS grid for two dimensional layout, flexbox for one dimensional layout
+- use flexbox for layout, CSS Grid is not included in our browser support matrix
 
 ## Structure
 SCSS partials are organised by type
 
 - abstracts
   - constants - the fundamental design tokens of the UI
+  - functions - SCSS helper functions
   - mixins - SCSS mixins
 - base
   - grid - the base grid system with utility grid classes
@@ -24,7 +25,7 @@ SCSS partials are organised by type
   - typefaces
   - typescale  
 - components - the basic blocks of the UI
-- vendor - third party styles
+- vendor - thrid party styles
 
 ## CSS variables
 
@@ -36,41 +37,65 @@ The fundamental tokens of the user interface should be defined in `src/css/abstr
 
 
 ## Grid
-The Scaffold grid system is implemented using CSS grid.
+Our current browser support list does not include CSS Grid support, instead the Scaffold grid system is implemented using flexbox.
 
 The grid system is based on constants defined in the `src/css/abstracts/_constants.scss` file. By default a 12 column grid with 24px horizontal spacing, and 1.5rem vertical spacing.
 
-Breakpoints and their corresponding classNames are defined by the $mq-breakpoints, $grid-names and $grid-classes variables.
+Breakpoints and their corresponding classNames are defined by the $mq-breakpoints and $grid-names variables.
+
+There are two ways to use the grid system
+- use the classNames generated in `src/css/base/_grid.scss`
+- use the column calculation helper function
 
 ### Grid classNames
-A `.grid` containing element will set up a CSS grid.
+A `.grid` containing element will provide negative margins and flex-wrapping for a multi-row grid.
 
-Each child element should have one or more utility column size class names to indicate width at different breakpoints.
+A `'row` element will provide negative margins and a single row grid.
+
+Each child element should have a `.col` className to indicate that it should be a column, with one or more column size classNames to indicate width at different breakpoints.
 
 Based on the default 12 column grid, 1 column will be 1/12th of the width of the containing element, 12 columns the full width.
 
-Grid utility class names are generated using a mixin.  A number of utility classes are included by default.  These can be adjusted by updating the $grid-classes variable in `src/css/abstracts/_constants.scss` to give a more targeted list based on project requirements.
-
 #### Examples
-Single row with two elements, they are full width on on two rows on small screens, two-up on one row at the medium breakpoint and up
+Single row, with two element, full screen on small screens, two-up at the medium breakpoint and up
 ```
-<div class="grid">
-    <div class="xs-12 md-6"></div>
-    <div class="xs-12 md-6"></div>
+<div class="row">
+    <div class="col xs-12 md-6"></div>
+    <div class="col xs-12 md-6"></div>
 </div>
 ```
 
-Multiple rows, elements are full width on separate rows on small screens, two per-row at the medium breakpoint, and three per-row at the large breakpoint and up
+Multiple rows, elements full screen on small screens, two-up at the medium breakpoint, three-up at the large breakpoint and up
 ```
-<div class="grid">
-    <div class="xs-12 md-6 lg-4"></div>
-    <div class="xs-12 md-6 lg-4"></div>
-    <div class="xs-12 md-6 lg-4"></div>
-    <div class="xs-12 md-6 lg-4"></div>
-    <div class="xs-12 md-6 lg-4"></div>
-    <div class="xs-12 md-6 lg-4"></div>
+<div class="row">
+    <div class="col xs-12 md-6 lg-4"></div>
+    <div class="col xs-12 md-6 lg-4"></div>
+    <div class="col xs-12 md-6 lg-4"></div>
+    <div class="col xs-12 md-6 lg-4"></div>
+    <div class="col xs-12 md-6 lg-4"></div>
+    <div class="col xs-12 md-6 lg-4"></div>
 </div>
 ```
+### Column calcultion function
+Grid classNames are generated using the column calculation function. The same function can be used to get accurate grid widths for any custom class.
+
+The function is a SCSS function which accepts the number of columns and horizontal spacing (defaulting to the gutter constant) as arguments. 
+
+#### Example
+Push an element to the right by 2 columns and set the width to fill the rest.
+```
+.inset {
+    margin-left: column-calc(2);
+    width: column-calc(10);
+}
+```
+
+
+### Optimisation
+
+Grid CSS generated by the loop in `src/css/base/_grid.scss` may be too much code for some UIs, or create a lot of unused classes. In such circumstances the code that generates the classNames can be deleted, and any classNames used manually added to the grid partial.
+
+
 
 ## PostCSS
 The Scaffold uses PostCSS to post-process compiled CSS to add language features to support legacy browsers. In particular
@@ -79,6 +104,7 @@ The Scaffold uses PostCSS to post-process compiled CSS to add language features 
 - postcss-custom-properties - adds fallback rules for browsers that do not support CSS variables
 
 Post-processing is based on the supported browser list defined in `.browserslistrc`. 
+
 
 
 ## Next

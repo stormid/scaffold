@@ -1,25 +1,36 @@
 .wrap {
     @include wrap;
 }
-
-.grid{
-    display: grid;
-    grid-template-columns: repeat($columns, 1fr);
-    gap: var(--baseline) var(--gutter);
+.grid {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin-left: calc(var(--gutter)*-.5);
+    margin-right: calc(var(--gutter)*-.5);
+}
+.row {
+    display: flex;
+    align-items: stretch;
+    margin-left: calc(var(--gutter)*-.5);
+    margin-right: calc(var(--gutter)*-.5);
+}
+.col {
+    margin-left: calc(var(--gutter)*.5);
+    margin-right: calc(var(--gutter)*.5);
 }
 
 @each $grid-name, $mq-breakpoint in $grid-names {
     @if $mq-breakpoint == default {
-        @each $class in map-get($grid-classes,  $grid-name){
-            .#{$grid-name}-#{$class} {
-                grid-column: auto / span $class;
+        @for $i from 1 through $columns {
+            .#{$grid-name}-#{$i} {
+                @include column($i);
             }
         }
     } @else {
         @media(min-width:map-get($mq-breakpoints,  $mq-breakpoint)) {
-            @each $class in map-get($grid-classes,  $grid-name){
-                .#{$grid-name}-#{$class} {
-                    grid-column: auto / span $class;
+            @for $i from 1 through $columns {
+                .#{$grid-name}-#{$i} {
+                    @include column($i);
                 }
             }
         }

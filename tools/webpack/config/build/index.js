@@ -33,6 +33,7 @@ module.exports = [
                                 url: false
                             }
                         },
+                        'postcss-loader',
                         {
                             loader: 'sass-loader',
                             options: {
@@ -155,9 +156,20 @@ module.exports = [
         mode: 'production',
         performance: {
             hints: 'warning'
+        }
+    }),
+    merge(base.polyfills, {
+        output: {
+            filename: '[name].js',
+            publicPath: paths.webpackPublicPath,
+            path: path.join(process.cwd(), paths.output, paths.dest.js)
+        },
+        mode: 'production',
+        performance: {
+            hints: 'warning'
         },
         plugins: [
             new CleanWebpackPlugin()
-        ]
+        ],
     })
 ];
