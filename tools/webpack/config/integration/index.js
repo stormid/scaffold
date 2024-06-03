@@ -138,6 +138,8 @@ module.exports = [
     merge(base.javascript, {
         output: {
             filename: '[name].js',
+            chunkFilename: `[name].[chunkhash].js`,
+            chunkFormat: 'module',
             publicPath: paths.webpackPublicPath,
             path: path.join(process.cwd(), paths.integrationOutput, paths.dest.js)
         },

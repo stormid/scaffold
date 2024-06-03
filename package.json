@@ -57,7 +57,6 @@
   },
   "dependencies": {
     "@microsoft/applicationinsights-web": "^3.2.1",
-    "@stormid/toggle": "^1.0.0-alpha.18",
-    "sass-embedded": "^1.77.1"
+    "@stormid/toggle": "^1.0.0-alpha.18"
   }
 }
