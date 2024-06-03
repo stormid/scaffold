@@ -4,18 +4,18 @@ The Image component is an abstraction over the HTML Picture element to simplify 
 
 ## Props
 
-| Prop         | Description                                                                                                                                                                                      |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| alt          | img alt text                                                                                                                                                                                     |
-| className    | picture element className                                                                                                                                                                        |
-| decoding     | img element decoding attribute, Enum: 'async'/'sync'/'auto', default 'async'                                                                                                                     |
-| fetchPriority       | img element fetchpriority attribute, Enum: 'high'/'low'/'auto', default null                                                                                                                      |
-| height       | img element height attribute, Number, default null                                                                                                                     |
-| imgClassName | img element className                                                                                                                                                                            |
-| loading      | img element loading attribute, Enum: 'lazy'/'eager', default 'lazy'                                                                                                                              |
-| sources      | picture element source attribute, an Array of Objects with two properties <ul><li>src: String reference to local/relative or remote image URI</li><li>media: String for media property</li></ul> |
-| src          | img src attribute                                                                                                                                                                                |
-| width       | img element width attribute, Number, default null                                                                                                                     |
+| Prop          | Description                                                                                                                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| alt           | img alt text                                                                                                                                                                                     |
+| className     | picture element className                                                                                                                                                                        |
+| decoding      | img element decoding attribute, Enum: 'async'/'sync'/'auto', default 'async'                                                                                                                     |
+| fetchPriority | img element fetchpriority attribute, Enum: 'high'/'low'/'auto', default null                                                                                                                     |
+| height        | img element height attribute, Number, default null                                                                                                                                               |
+| imgClassName  | img element className                                                                                                                                                                            |
+| loading       | img element loading attribute, Enum: 'lazy'/'eager', default 'lazy'                                                                                                                              |
+| sources       | picture element source attribute, an Array of Objects with two properties <ul><li>src: String reference to local/relative or remote image URI</li><li>media: String for media property</li></ul> |
+| src           | img src attribute                                                                                                                                                                                |
+| width         | img element width attribute, Number, default null                                                                                                                                                |
 
 ## Example
 

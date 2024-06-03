@@ -72,14 +72,5 @@ Multiple rows, elements are full width on separate rows on small screens, two pe
 </div>
 ```
 
-## PostCSS
-The Scaffold uses PostCSS to post-process compiled CSS to add language features to support legacy browsers. In particular
-
-- autoprefixer - adds vendor prefixes to CSS rules
-- postcss-custom-properties - adds fallback rules for browsers that do not support CSS variables
-
-Post-processing is based on the supported browser list defined in `.browserslistrc`. 
-
-
 ## Next
 [JavaScript ⟶](./javascript.md)
