@@ -12,5 +12,4 @@ Read the [documentation](./docs/index.md).
 | `npm run build`     | write static site to disk                     |
 | `npm run ci`        | write static assets to disk for production/CI |
 | `npm run watch`     | watch and write assets to disk for production |
-| `npm run storybook` | start Storybook                               |
 | `npm t`             | run tests                                     |

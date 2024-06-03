@@ -3,8 +3,8 @@
 
 ## Entry files
 There are three entry points files for Webpack that create three corresponding transpiled and compiled JavaScript files of the same name.
-1. Index `src/js/index.js` initialises all other modules in the app.
-2. Polyfills `src/js/modules/polyfills.js` contains polyfills for older browsers.
+1. Index `src/js/index.js` initialises the main modules in the app
+2. Polyfills `src/js/modules/polyfills.js` contains polyfills for older browsers
 3. Head `src/js/head.js` contains the Application Insights script  
 
 
@@ -43,10 +43,7 @@ Constant variables, magic Strings, selectors, configuration and settings values 
 
 
 ### JSX
-The HTML templating is based on JSX using PreactJS, so JSX transpilation is included in the scaffold and therefore JSX (and PreactJS) can be used in JavaScript files.
-
-<!-- TO do: example microfrontend -->
-
+The HTML templating is based on JSX using PreactJS, so JSX transpilation is included in the Scaffold and therefore JSX (and PreactJS) can be used in JavaScript files.
 
 
 ## Next

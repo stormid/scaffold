@@ -7,7 +7,7 @@ module.exports = {
         index: path.join(process.cwd(), `${paths.src.js}/index.js`),
         appinsights: path.join(process.cwd(), `${paths.src.js}/appinsights/index.js`)
     },
-    target: 'web',
+    target: 'browserslist',
     stats: {
         modules: false,
         entrypoints: false
