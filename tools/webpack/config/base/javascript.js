@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const paths = require(path.join(process.cwd(), `./paths.config`));
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -12,11 +13,11 @@ module.exports = {
         modules: false,
         entrypoints: false
     },
-    plugins: [
-        new webpack.optimize.MinChunkSizePlugin({
-            minChunkSize: 30000
-        })
-    ],
+    // plugins: [
+    //     new webpack.optimize.MinChunkSizePlugin({
+    //         minChunkSize: 30000
+    //     })
+    // ],
     module: {
         rules: [
             {
@@ -26,5 +27,18 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    optimization: {
+        splitChunks: {
+            enforceSizeThreshold: 0,
+        },
+        minimizer: [new TerserPlugin({
+            extractComments: false,
+            terserOptions: {
+                format: {
+                  comments: false,
+                }
+            }
+        })]
+    },
 };
