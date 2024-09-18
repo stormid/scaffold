@@ -1,7 +1,7 @@
 const path = require('node:path');
 const webpack = require('webpack');
 const StaticSiteGeneratorPlugin = require('../../plugins/static-site-generator-webpack-plugin');
-const { getPaths } = require('../../utils');
+const { getPaths } = require('../../../utils');
 const paths = require('../../../../paths.config');
 
 module.exports = {
