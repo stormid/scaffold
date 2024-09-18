@@ -1,7 +1,11 @@
-const path = require('path');
+const path = require('node:path');
+const webpack = require('webpack');
+const StaticSiteGeneratorPlugin = require('../../plugins/static-site-generator-webpack-plugin');
+const { getPaths } = require('../../utils');
+const paths = require('../../../../paths.config');
 
 module.exports = {
-    entry: path.resolve(__dirname, '../../plugins/static-entry.js'),
+    entry: { html: path.resolve(__dirname, '../../entry/html.js') },
     target: 'node',
     stats: {
         modules: false,
@@ -14,15 +18,15 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
-            },
-            {
-                test: /\.(ico)$/,
-                use: {
-                    loader: 'file-loader'
-                }
             }
         ]
     },
+    plugins: [
+        new webpack.IgnorePlugin({ resourceRegExp: /\.mdx$/, }),
+        new StaticSiteGeneratorPlugin({
+            paths: getPaths(paths.src.templates)
+        })
+    ],
     resolve: {
         alias: {
             '@templates': path.join(process.cwd(), 'src/templates/'),

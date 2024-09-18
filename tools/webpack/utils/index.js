@@ -4,7 +4,7 @@
 */
 const getPaths = baseDir => {
     const fs = require('fs');
-    const path = require('path');
+    const path = require('node:path');
     const folder = path.resolve(__dirname, `../../../${baseDir}`);
     const read = dir => {
         const contents = fs.readdirSync(dir);
