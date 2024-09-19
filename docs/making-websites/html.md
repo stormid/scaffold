@@ -29,7 +29,7 @@ Components can be composed of smaller sub-components.
 
 There are a few default and helper components in with the scaffold, including
 - [Image](./components/image.md) - an abstraction over responsive images using the picture tag
-- [Heading](./components/heading.md) - an screen reader optimised abstraction over h1-h6 tags
+- [Heading](./components/heading.md) - a screen reader optimised abstraction over h1-h6 tags
 - [Example](./components/example.md) - a fully featured demo component
 
 
@@ -41,7 +41,7 @@ Data and content can be imported into a Page in a number of ways
 - from an asynchronous data source, such as an external API (requires returning a Promise from the default Page function).
 
 
-## Head elements
+## Head
 
 Title and meta tags can be added to a Page using named exports.
 
@@ -53,7 +53,7 @@ export const title = 'My Page Title';
 ```
 
 ### Meta tags
-To add Page-specific meta tags export an Array of meta Objects from a Page .js file. A meta Object consists of a content property, and either a name or property property:
+To add Page-specific meta tags export an Array of meta Objects from a Page .js file. A meta Object consists of a 'content' property, and either a 'name' or 'property' property:
 
 ```
 export const meta = [
@@ -68,7 +68,7 @@ The `<head>` element is itself a component, it can be edited in `src/templates/c
 ## Aliases
 Webpack allows you to define aliases that can be used for a path to a resource, rather than having to use relative paths that change if files move around.
 
-Aliases for JSX imports are set in  `tools\webpack\config\base\main.js`. The default aliases define paths to commonly used HTML template directories:
+Aliases for JSX imports are set in  `tools\webpack\config\base\html.js`. The default aliases define paths to commonly used HTML template directories:
 
 ```
 '@templates': path.join(process.cwd(), 'src/templates/'),

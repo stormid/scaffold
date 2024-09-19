@@ -9,7 +9,7 @@ Webpack config can be changed in `tools/webpack/config`.
 All paths relating to source and destination in the build can be changed in `paths.config.js`.
 
 ## Browser support
-Browser support targets can be changed in `.browserslistrc` for JavaScript and CSS transpilation,  `babel.config.js` for JavaScript transpilation, and `postcss.config.js` for CSS post-processing.
+Browser support targets can be changed in `.browserslistrc` for JavaScript and CSS transpilation, `babel.config.js` for JavaScript transpilation, and `postcss.config.js` for CSS post-processing.
 
 If changing to an evergreen-only browser support consider removing the polyfills JavaScript output, and whether the transpilation and bundling steps are necessary at all.
 

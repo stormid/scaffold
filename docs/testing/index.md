@@ -14,5 +14,3 @@ A snapshot test is included in the Example component in `src/templates/component
 ESlint is included in the Scaffold, as is the opinionated [@stormid/eslint-config](https://github.com/stormid/eslint-config).
 
 You will need to config ESlint in your IDE (e.g. the VS Code ESLint extension) for lint-based code highlighting and suggestions.
-
-Linting can be manually run with the command `npm run lint`.

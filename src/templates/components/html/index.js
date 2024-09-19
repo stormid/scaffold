@@ -6,11 +6,10 @@ const Html = ({
     lang = 'en',
     title,
     meta,
-    css,
     basePath,
     children
 }) => <html lang={lang}>
-    <Head title={title} meta={meta} css={css} />
+    <Head title={title} meta={meta} />
     <Body>
         {children}
         <script src={`${basePath}/index.js`} />

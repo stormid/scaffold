@@ -6,7 +6,7 @@ There are intentionally few existing styles, only a few defaults are included. T
 
 ## Conventions
 - use minimal nesting, to keep specificity low and readability/maintainability high
-- use classNames as much as possible, to keep specificity low
+- use single classNames for selectors as much as possible to keep specificity low
 - use a BEM methodology for class naming
 - use CSS variables not SCSS variables, for easier debugging and interop with JavaScript and DOM
 - use mixins sparingly, they can generate a lot of repeat CSS

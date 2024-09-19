@@ -1,6 +1,6 @@
 const RawSource = require('webpack-sources').RawSource;
 const evaluate = require('eval');
-const path = require('path');
+const path = require('node:path');
 const { Compilation } = require('webpack');
 
 class StaticSiteGeneratorWebpackPlugin {
