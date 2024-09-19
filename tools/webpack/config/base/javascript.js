@@ -1,5 +1,4 @@
 const path = require('node:path');
-const webpack = require('webpack');
 const paths = require(path.join(process.cwd(), `./paths.config`));
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -36,7 +35,7 @@ module.exports = {
             extractComments: false,
             terserOptions: {
                 format: {
-                  comments: false,
+                    comments: false,
                 }
             }
         })]
