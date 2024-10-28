@@ -1,5 +1,4 @@
 @import 'abstracts/constants';
-@import 'abstracts/mixins';
 
 @import 'base/normalise';
 @import 'base/grid';
@@ -10,5 +9,6 @@
 @import 'components/skip';
 @import 'components/header';
 @import 'components/main';
+/* @import 'components/example'; */
 @import 'components/footer';
 @import 'components/outliner';
