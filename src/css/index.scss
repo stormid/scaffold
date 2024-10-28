@@ -1,14 +1,14 @@
-@import 'abstracts/constants';
-@import 'abstracts/mixins';
+@use 'abstracts/constants';
 
-@import 'base/normalise';
-@import 'base/grid';
-@import 'base/typefaces';
-@import 'base/typescale';
-@import 'base/utility';
+@use 'base/normalise';
+@use 'base/grid';
+@use 'base/typefaces';
+@use 'base/typescale';
+@use 'base/utility';
  
-@import 'components/skip';
-@import 'components/header';
-@import 'components/main';
-@import 'components/footer';
-@import 'components/outliner';
+@use 'components/skip';
+@use 'components/header';
+@use 'components/main';
+@use 'components/example';
+@use 'components/footer';
+@use 'components/outliner';
