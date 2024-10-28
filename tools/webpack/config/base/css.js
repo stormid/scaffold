@@ -30,7 +30,7 @@ module.exports = {
                 type: 'javascript/auto'
             },
             {
-                test: /\.(s)?css$/,
+                test: /\.css$/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader
@@ -39,15 +39,6 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             url: false
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            implementation: require('sass-embedded'),
-                            sassOptions: {
-                                api: 'modern-compiler'
-                            }
                         }
                     }
                 ]

@@ -1,0 +1,39 @@
+/*
+.visually-hidden {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+}
+.visible {    
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: auto;
+    overflow:inherit;
+    clip:auto;
+}
+.push-top {
+    margin-top: var(--baseline);
+}
+.push-top--half {
+    margin-top: calc(var(--baseline) / 2);
+}
+.push-bottom {
+    margin-bottom: var(--baseline);
+}
+.push-bottom--half {
+    margin-bottom: calc(var(--baseline) / 2);
+}
+.push-bottom--double {
+    margin-bottom: calc(var(--baseline) / 2);
+}
+*/
