@@ -9,6 +9,6 @@
 @import 'components/skip';
 @import 'components/header';
 @import 'components/main';
-/* @import 'components/example'; */
+@import 'components/example';
 @import 'components/footer';
 @import 'components/outliner';
