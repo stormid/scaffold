@@ -104,6 +104,7 @@ body {
 html {
     color-scheme: light dark;
     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
     -ms-text-size-adjust: 100%;
     text-rendering: optimizeSpeed;
     height: 100%;
@@ -230,11 +231,6 @@ q:after {
 
 address {
 	font-style: var(--regular-weight);
-}
-legend {
-    border: 0;
-    padding: 0;
-    white-space: normal;
 }
 	
 figure {
