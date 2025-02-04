@@ -27,7 +27,9 @@ module.exports = [
                 {
                     host: 'localhost',
                     port: 3000,
-                    proxy: 'http://localhost:8081/'
+                    injectChanges: false,
+                    proxy: 'http://localhost:8081/',
+                    files: ['src/css/**/*']
                 }
             )
         ]

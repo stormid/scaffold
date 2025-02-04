@@ -4,6 +4,7 @@ const { merge } = require('webpack-merge');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const paths = require('../../../../paths.config');
 
 module.exports = [
@@ -62,6 +63,20 @@ module.exports = [
                 ]
             })
         ],
+        optimization: {
+            minimizer: [
+                new CssMinimizerPlugin({
+                    minimizerOptions: {
+                        preset: [
+                            'default',
+                            {
+                                discardComments: { removeAll: true },
+                            },
+                        ],
+                    },
+                }),
+            ],
+        },
     }),
     merge(base.javascript, {
         output: {
