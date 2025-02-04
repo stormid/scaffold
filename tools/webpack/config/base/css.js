@@ -40,7 +40,17 @@ module.exports = {
                         options: {
                             url: false
                         }
-                    }
+                    },
+                    //for sass/scss support
+                    // {    
+                    //     loader: 'sass-loader',
+                    //     options: {
+                    //         implementation: require('sass-embedded'),
+                    //         sassOptions: {
+                    //             api: 'legacy'
+                    //         }
+                    //     }
+                    // }
                 ]
             },
             {
