@@ -1,6 +1,6 @@
 const source = 'src';
 const output = 'build';
-const staticAssets = '/static';
+const staticAssets = 'static';
 const integrationOutput = '../SampleIntegrationOutput';
 
 const src = {
