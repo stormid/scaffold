@@ -1,9 +1,11 @@
-const RawSource = require('webpack-sources').RawSource;
+const { Compilation, sources } = require('@rspack/core');
+const RawSource = sources.RawSource;
 const evaluate = require('eval');
 const path = require('node:path');
-const { Compilation } = require('webpack');
 
-class StaticSiteGeneratorWebpackPlugin {
+const toError = err => (err instanceof Error ? err : new Error(typeof err === 'string' ? err : String(err)));
+
+class StaticSiteGeneratorPlugin {
     constructor(options) {
         options = options || {};
         this.entry = options.entry;
@@ -13,7 +15,7 @@ class StaticSiteGeneratorWebpackPlugin {
     }
 
     apply(compiler) {
-        const pluginName = 'StaticSiteGeneratorWebpackPlugin';
+        const pluginName = 'StaticSiteGeneratorPlugin';
 
         compiler.hooks.thisCompilation.tap(pluginName, compilation => {
             compilation.hooks.processAssets.tapPromise(
@@ -23,7 +25,9 @@ class StaticSiteGeneratorWebpackPlugin {
                 },
                 async () => {
                     const webpackStats = compilation.getStats();
-                    const webpackStatsJson = webpackStats.toJson();
+                    // Rspack omits assetsByChunkName from the default toJson() output,
+                    // so request asset + chunk-group info explicitly.
+                    const webpackStatsJson = webpackStats.toJson({ all: false, assets: true, chunkGroups: true });
 
                     try {
                         const asset = findAsset(this.entry, compilation, webpackStatsJson);
@@ -31,8 +35,6 @@ class StaticSiteGeneratorWebpackPlugin {
                         if (asset === null) {
                             throw new Error('Source file not found: "' + this.entry + '"');
                         }
-
-                        const assets = getAssetsFromCompilation(compilation, webpackStatsJson);
 
                         const source = asset.source();
                         let render = evaluate(source, /* filename: */ this.entry, /* scope: */ this.globals, /* includeGlobals: */ true);
@@ -45,12 +47,12 @@ class StaticSiteGeneratorWebpackPlugin {
                             throw new Error(
                                 'Export from "' +
                                     this.entry +
-                                    '" must be a function that returns an HTML string. Is output.libraryTarget in the configuration set to "umd"?'
+                                    '" must be a function that returns an HTML string. Is output.library.type in the configuration set to "umd"?'
                             );
                         }
-                        await renderPaths(this.locals, this.paths, render, assets, webpackStats, compilation);
+                        await renderPaths(this.locals, this.paths, render, webpackStats, compilation);
                     } catch (err) {
-                        compilation.errors.push(err.stack);
+                        compilation.errors.push(toError(err));
                     }
                 }
             );
@@ -58,11 +60,10 @@ class StaticSiteGeneratorWebpackPlugin {
     }
 }
 
-async function renderPaths(userLocals, paths, render, assets, webpackStats, compilation) {
+async function renderPaths(userLocals, paths, render, webpackStats, compilation) {
     const renderPromises = paths.map(async outputPath => {
         const locals = {
             path: outputPath,
-            assets,
             webpackStats,
         };
 
@@ -73,27 +74,20 @@ async function renderPaths(userLocals, paths, render, assets, webpackStats, comp
         }
 
         try {
-            const renderPromise = render.length < 2
-                ? Promise.resolve(render(locals))
-                : Promise.fromNode(render.bind(null, locals));
-            return renderPromise.then(output => {
-                const outputByPath = typeof output === 'object' ? output : makeObject(outputPath, output);
-                const assetGenerationPromises = Object.keys(outputByPath).map(key => {
-                    const rawSource = outputByPath[key];
-                    const assetName = pathToAssetName(key);
+            const output = await Promise.resolve(render(locals));
+            const outputByPath = typeof output === 'object' ? output : makeObject(outputPath, output);
 
-                    if (compilation.assets[assetName]) return;
-                    if (rawSource === '') return;
+            Object.keys(outputByPath).forEach(key => {
+                const rawSource = outputByPath[key];
+                const assetName = pathToAssetName(key);
 
-                    compilation.assets[assetName] = new RawSource(rawSource);
-                });
+                if (compilation.getAsset(assetName)) return;
+                if (rawSource === '') return;
 
-                return Promise.all(assetGenerationPromises);
+                compilation.emitAsset(assetName, new RawSource(rawSource));
             });
-
-           
         } catch (err) {
-            compilation.errors.push(err.stack);
+            compilation.errors.push(toError(err));
         }
     });
 
@@ -116,32 +110,14 @@ const findAsset = (src, compilation, webpackStatsJson) => {
     if (!chunkValue) {
         return null;
     }
-    // Webpack outputs an array for each chunk when using sourcemaps
-    if (chunkValue instanceof Array) {
-        // Is the main bundle always the first element?
-        chunkValue = chunkValue.find(filename => /\.js$/.test(filename));
+    // Webpack outputs an array for each chunk when using sourcemaps.
+    // Under the dev server, HMR also injects a `*.hot-update.js` delta and
+    // lists it *before* the real bundle — that delta exports the HMR runtime
+    // payload, not the render function, so skip it and take the real bundle.
+    if (Array.isArray(chunkValue)) {
+        chunkValue = chunkValue.find(filename => filename.endsWith('.js') && !filename.includes('.hot-update.'));
     }
     return compilation.assets[chunkValue];
-};
-
-// Shamelessly stolen from html-webpack-plugin - Thanks @ampedandwired :)
-const getAssetsFromCompilation = (compilation, webpackStatsJson) => {
-    const assets = {};
-    for (const chunk in webpackStatsJson.assetsByChunkName) {
-        let chunkValue = webpackStatsJson.assetsByChunkName[chunk];
-        // Webpack outputs an array for each chunk when using sourcemaps
-        if (chunkValue instanceof Array) {
-            // Is the main bundle always the first JS element?
-            chunkValue = chunkValue.find(filename => /\.js$/.test(filename));
-        }
-
-        if (compilation.options.output.publicPath) {
-            chunkValue = compilation.options.output.publicPath + chunkValue;
-        }
-        assets[chunk] = chunkValue;
-    }
-
-    return assets;
 };
 
 const pathToAssetName = outputPath => {
@@ -160,4 +136,4 @@ const makeObject = (key, value) => {
     return obj;
 };
 
-module.exports = StaticSiteGeneratorWebpackPlugin;
+module.exports = StaticSiteGeneratorPlugin;

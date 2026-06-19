@@ -13,7 +13,7 @@
   - [Example](./making-websites/components/example.md)
 
 ## The build system
-- [Webpack](./build-system/webpack.md)
+- [Rspack](./build-system/rspack.md)
 - [Types of build](./build-system/types-of-build.md)
 - [Configuration](./build-system/configuration.md)
   

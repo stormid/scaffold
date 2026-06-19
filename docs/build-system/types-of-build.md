@@ -1,7 +1,7 @@
 # Build modes
 
 The scaffold has four build modes:
-- `dev` - runs the webpackdev server and watches for changes
+- `dev` - runs the Rspack dev server and watches for changes
 - `build` - runs the build process once and outputs a static site
 - `ci` - runs the build process once and outputs a static assets (not HTML) to a target folder
 - `watch` - runs ci task and watches for changes 
@@ -12,9 +12,9 @@ The scaffold has four build modes:
 npm start
 ```
 
-For developing a static site locally. The webpackdev server keeps files in memory, and hot reloads when it detects changes, Browsersync also runs to allow the devserver to be mirrored across devices.
+For developing a static site locally. The Rspack dev server keeps files in memory, hot reloads JavaScript when it detects changes, and live-reloads the page when CSS changes (via the dev server's `watchFiles` option).
 
-By default the devserver runs on `localhost:8081`, and BrowserSync on `locahost:3000`. Read the console messages for output.
+By default the dev server runs on `localhost:8081`. Read the console messages for output.
 
 ## Build
 ```

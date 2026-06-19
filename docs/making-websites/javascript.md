@@ -2,7 +2,7 @@
 
 
 ## Entry files
-There are two entry points files for Webpack that create two corresponding transpiled and compiled JavaScript files of the same name.
+There are two entry points files for Rspack that create two corresponding transpiled and compiled JavaScript files of the same name.
 1. Index `src/js/index.js` initialises the main modules in the app
 2. AppInsights `src/js/appinsights/index.js` contains the Application Insights script for client-side telemetry
 
@@ -22,7 +22,7 @@ The script checks for the presence of an element in the DOM with a `data-ai` att
 ## Authoring 
 
 ### ESM syntax
-JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/await, import/export) and is transpiled by Webpack and Babel based on the Babel config and .browserslistrc.
+JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/await, import/export) and is transpiled by Rspack's built-in SWC loader based on the .browserslistrc. (Tests are transpiled by SWC too, via `@swc/jest`.)
 
 Not all ESM language features are automatically transpiled, some have to be polyfilled. If in doubt, check the browser support list and the transpiled output file.
 

@@ -16,8 +16,8 @@ const head = ({
     {css && <link rel="stylesheet" href={`${css}`} />}
     {children}
     {meta && meta.map(item => {
-        if (item.name) return <meta name={item.name} content={item.content} />;
-        if (item.property) return <meta property={item.property} content={item.content} />;
+        if (item.name) return <meta key={item.name} name={item.name} content={item.content} />;
+        if (item.property) return <meta key={item.property} property={item.property} content={item.content} />;
     })}
 </head>;
 

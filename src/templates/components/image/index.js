@@ -26,7 +26,7 @@ const Image = ({
     sources,
     width = null
 }) => <picture class={className}>
-    { sources && sources.map(srcData => <source srcset={srcData.src} media={srcData.media} />) }
+    { sources && sources.map(srcData => <source key={srcData.src} srcset={srcData.src} media={srcData.media} />) }
     <img
         alt={alt}
         class={imgClassName}

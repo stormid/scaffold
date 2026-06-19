@@ -1,82 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Example > Empty matches snapshot 1`] = `
-{
-  "__": null,
-  "__b": 0,
-  "__c": null,
-  "__d": undefined,
-  "__e": null,
-  "__i": -1,
-  "__k": null,
-  "__u": 0,
-  "__v": 2,
-  "constructor": undefined,
-  "key": undefined,
-  "props": {},
-  "ref": undefined,
-  "type": [Function],
-}
-`;
+exports[`Example > Empty matches snapshot 1`] = `"<div class="example example--empty"></div>"`;
 
-exports[`Example > Error matches snapshot 1`] = `
-{
-  "__": null,
-  "__b": 0,
-  "__c": null,
-  "__d": undefined,
-  "__e": null,
-  "__i": -1,
-  "__k": null,
-  "__u": 0,
-  "__v": 3,
-  "constructor": undefined,
-  "key": undefined,
-  "props": {},
-  "ref": undefined,
-  "type": [Function],
-}
-`;
+exports[`Example > Error matches snapshot 1`] = `"<div class="example example--error">Something went wrong :(</div>"`;
 
-exports[`Example > Example matches snapshot 1`] = `
-{
-  "__": null,
-  "__b": 0,
-  "__c": null,
-  "__d": undefined,
-  "__e": null,
-  "__i": -1,
-  "__k": null,
-  "__u": 0,
-  "__v": 4,
-  "constructor": undefined,
-  "key": undefined,
-  "props": {
-    "children": "Woof",
-    "href": "#",
-    "summary": "Jumps over the lazy dog",
-    "title": "Quick brown fox",
-  },
-  "ref": undefined,
-  "type": [Function],
-}
-`;
+exports[`Example > Example matches snapshot 1`] = `"<div class="example"><div class="example__bd"><h1 class="example__title"><a href="#" class="example__link">Quick brown fox</a></h1><div class="example__summary">Jumps over the lazy dog</div>Woof</div></div>"`;
 
-exports[`Example > Ghost matches snapshot 1`] = `
-{
-  "__": null,
-  "__b": 0,
-  "__c": null,
-  "__d": undefined,
-  "__e": null,
-  "__i": -1,
-  "__k": null,
-  "__u": 0,
-  "__v": 1,
-  "constructor": undefined,
-  "key": undefined,
-  "props": {},
-  "ref": undefined,
-  "type": [Function],
-}
-`;
+exports[`Example > Ghost matches snapshot 1`] = `"<div class="example example--ghost"><div class="example__bd"><div class="example__title"></div><div class="example__summary"></div></div></div>"`;

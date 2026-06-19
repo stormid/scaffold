@@ -4,4 +4,4 @@ Scaffold browser support follows the Storm ID default browser support list, and 
 IE11 is not supported by default, but a version of the Scaffold that does support it is available in the `ie11` branch on GitHub.
 
 ## Next
-[Webpack ⟶](../build-system/webpack.md)
+[Rspack ⟶](../build-system/rspack.md)

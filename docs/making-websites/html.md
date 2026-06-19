@@ -66,9 +66,9 @@ export const meta = [
 The `<head>` element is itself a component, it can be edited in `src/templates/components/head`.
 
 ## Aliases
-Webpack allows you to define aliases that can be used for a path to a resource, rather than having to use relative paths that change if files move around.
+Rspack allows you to define aliases that can be used for a path to a resource, rather than having to use relative paths that change if files move around.
 
-Aliases for JSX imports are set in  `tools\webpack\config\base\html.js`. The default aliases define paths to commonly used HTML template directories:
+Aliases for JSX imports are set in  `tools\rspack\config\base\html.js`. The default aliases define paths to commonly used HTML template directories:
 
 ```
 '@templates': path.join(process.cwd(), 'src/templates/'),

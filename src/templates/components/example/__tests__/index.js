@@ -1,27 +1,22 @@
 import { h } from 'preact';
+import { render } from 'preact-render-to-string';
 import Example, { Ghost, Empty, Error } from '../';
-import render from 'preact-render-to-json';
 
 test('Example > Ghost matches snapshot', () => {
-    const tree = render(<Ghost />);
-    expect(tree).toMatchSnapshot();
+    expect(render(<Ghost />)).toMatchSnapshot();
 });
 
 test('Example > Empty matches snapshot', () => {
-    const tree = render(<Empty />);
-    expect(tree).toMatchSnapshot();
+    expect(render(<Empty />)).toMatchSnapshot();
 });
 
 test('Example > Error matches snapshot', () => {
-    const tree = render(<Error />);
-    expect(tree).toMatchSnapshot();
+    expect(render(<Error />)).toMatchSnapshot();
 });
 
 test('Example > Example matches snapshot', () => {
-    const tree = render(<Example href={'#'}
-	title={'Quick brown fox'}
-	summary={'Jumps over the lazy dog'}
-                        >Woof</Example>);
-    expect(tree).toMatchSnapshot();
+    expect(render(<Example href={'#'}
+        title={'Quick brown fox'}
+        summary={'Jumps over the lazy dog'}
+    >Woof</Example>)).toMatchSnapshot();
 });
-

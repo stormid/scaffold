@@ -11,6 +11,12 @@ A snapshot test is included in the Example component in `src/templates/component
 
 
 ## Linting
-ESlint is included in the Scaffold, as is the opinionated [@stormid/eslint-config](https://github.com/stormid/eslint-config).
+[Oxlint](https://oxc.rs/docs/guide/usage/linter) is included in the Scaffold. Run it with:
 
-You will need to config ESlint in your IDE (e.g. the VS Code ESLint extension) for lint-based code highlighting and suggestions.
+```
+npm run lint
+```
+
+Use `npm run lint:fix` to auto-fix what it can. The rules are configured in `.oxlintrc.json`.
+
+You will need to config Oxlint in your IDE (e.g. the [VS Code Oxc extension](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)) for lint-based code highlighting and suggestions.
