@@ -2,6 +2,7 @@ const base = require('../base');
 const path = require('node:path');
 const { merge } = require('../../../utils');
 const rspack = require('@rspack/core');
+const { cssMinimizer } = require('../css-minimizer');
 const DeleteAssetsPlugin = require('../../plugins/delete-assets-plugin');
 const paths = require('../../../../paths.config');
 
@@ -29,7 +30,12 @@ module.exports = [
                     }
                 ]
             })
-        ]
+        ],
+        optimization: {
+            minimizer: [
+                cssMinimizer()
+            ]
+        }
     }),
     merge(base.javascript, {
         output: {

@@ -1,18 +1,10 @@
 const base = require('../base');
 const path = require('node:path');
-const browserslist = require('browserslist');
 const { merge } = require('../../../utils');
 const rspack = require('@rspack/core');
+const { cssMinimizer } = require('../css-minimizer');
 const DeleteAssetsPlugin = require('../../plugins/delete-assets-plugin');
 const paths = require('../../../../paths.config');
-
-// Read the browser query from .browserslistrc and hand it to Lightning CSS, which
-// resolves it with its own bundled caniuse data and then adds exactly the prefixes
-// those browsers need and downlevels modern syntax (nesting, @layer) for them.
-// Pass the query (not browserslist()'s resolved versions, which Lightning CSS's
-// older bundled data can fail to parse). Keeps .browserslistrc the single source
-// of truth for JS + CSS browser support.
-const cssTargets = (browserslist.findConfig(process.cwd()) || {}).defaults || ['> 5%'];
 
 module.exports = [
     merge(base.html, {
@@ -52,11 +44,7 @@ module.exports = [
         ],
         optimization: {
             minimizer: [
-                new rspack.LightningCssMinimizerRspackPlugin({
-                    minimizerOptions: {
-                        targets: cssTargets
-                    }
-                })
+                cssMinimizer()
             ],
         },
     }),
