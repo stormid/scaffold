@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["import", "react", "jest", "unicorn", "oxc"],
+  "plugins": ["import", "react", "unicorn", "oxc"],
   "categories": {
     "correctness": "error",
     "suspicious": "warn",
@@ -11,27 +11,17 @@
     "browser": true,
     "node": true
   },
-  "settings": {
-    "react": {
-      "pragma": "h",
-      "fragmentPragma": "Fragment"
-    }
-  },
   "rules": {
     "eqeqeq": "error",
     "no-var": "error",
     "no-console": ["error", { "allow": ["warn", "error"] }],
-    "no-unused-vars": ["error", { "args": "none", "varsIgnorePattern": "^h$" }],
+    "no-unused-vars": ["error", { "args": "none" }],
     "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
     "unicorn/no-empty-file": "off",
     "react/react-in-jsx-scope": "off"
   },
   "ignorePatterns": ["build/", "node_modules/"],
   "overrides": [
-    {
-      "files": ["**/__tests__/**/*.js", "**/*.test.js", "**/*.spec.js"],
-      "env": { "jest": true }
-    },
     {
       "files": ["tools/rspack/entry/**/*.js"],
       "rules": {
