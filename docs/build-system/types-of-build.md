@@ -12,9 +12,9 @@ The scaffold has four build modes:
 npm start
 ```
 
-For developing a static site locally. The Rspack dev server keeps files in memory, hot reloads JavaScript when it detects changes, and live-reloads the page when CSS changes (via the dev server's `watchFiles` option).
+For developing a static site locally. The Rspack dev server keeps files in memory and live-reloads the page whenever source (templates, JS or CSS) changes.
 
-By default the dev server runs on `localhost:8081`. Read the console messages for output.
+On start it finds the first free port (from `8080`) and opens a browser window at the served URL — read the console for the exact address.
 
 ## Build
 ```

@@ -20,7 +20,11 @@ module.exports = [
         devtool: 'source-map',
         devServer: {
             static: path.join(process.cwd(), paths.output, paths.dest.assets),
-            port: 8081,
+            // Pick the first free port (from 8080) so `npm start` never fails on
+            // an in-use port; the chosen URL is printed to the console.
+            port: 'auto',
+            // Open a browser window at the served URL on start.
+            open: true,
             // HMR is disabled deliberately: pages are server-rendered to static
             // HTML by the (node-target) html compiler, so there are no client
             // modules to hot-swap. With `hot: true` the dev-server client always
