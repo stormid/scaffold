@@ -9,7 +9,7 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "start": "npm run dev",
-    "test": "node --import ./tools/testing/register.mjs --import ./tools/testing/dom.mjs --test",
+    "test": "node --import ./tools/testing/register.mjs --test",
     "watch": "npm run watch-dev",
     "watch-dev": "rspack build --config tools/rspack/config/integration/index.js --watch"
   },

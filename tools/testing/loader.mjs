@@ -4,11 +4,14 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { join } from 'node:path';
 import { transform } from '@swc/core';
 
-// Path aliases, mirroring the rspack build (tools/rspack/config/base/html.js).
+// Path aliases, mirroring the rspack build (tools/rspack/config/base/html.js),
+// plus a test-only `@testing` alias for shared test helpers (e.g. the opt-in
+// happy-dom setup).
 const ALIASES = {
     '@templates': join(process.cwd(), 'src/templates'),
     '@layouts': join(process.cwd(), 'src/templates/layouts'),
     '@components': join(process.cwd(), 'src/templates/components'),
+    '@testing': join(process.cwd(), 'tools/testing'),
 };
 
 // Mirrors the build's JSX transform: Preact via the automatic JSX runtime.
