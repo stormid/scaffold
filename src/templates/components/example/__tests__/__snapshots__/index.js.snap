@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
-
-exports[`Example > Empty matches snapshot 1`] = `"<div class="example example--empty"></div>"`;
-
-exports[`Example > Error matches snapshot 1`] = `"<div class="example example--error">Something went wrong :(</div>"`;
-
-exports[`Example > Example matches snapshot 1`] = `"<div class="example"><div class="example__bd"><h1 class="example__title"><a href="#" class="example__link">Quick brown fox</a></h1><div class="example__summary">Jumps over the lazy dog</div>Woof</div></div>"`;
-
-exports[`Example > Ghost matches snapshot 1`] = `"<div class="example example--ghost"><div class="example__bd"><div class="example__title"></div><div class="example__summary"></div></div></div>"`;

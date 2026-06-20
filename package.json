@@ -9,50 +9,20 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "start": "npm run dev",
-    "test": "jest",
+    "test": "node --import ./tools/testing/register.mjs --test",
     "watch": "npm run watch-dev",
     "watch-dev": "rspack build --config tools/rspack/config/integration/index.js --watch"
   },
   "author": "stormid",
   "license": "MIT",
-  "jest": {
-    "transformIgnorePatterns": [],
-    "transform": {
-      "^.+\\.jsx?$": [
-        "@swc/jest",
-        {
-          "jsc": {
-            "parser": {
-              "syntax": "ecmascript",
-              "jsx": true
-            },
-            "transform": {
-              "react": {
-                "pragma": "h",
-                "runtime": "classic"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "moduleNameMapper": {
-      "^@templates(.*)$": "<rootDir>/src/templates$1",
-      "^@layouts(.*)$": "<rootDir>/src/templates/layouts$1",
-      "^@components(.*)$": "<rootDir>/src/templates/components$1"
-    },
-    "testEnvironment": "jsdom"
-  },
   "devDependencies": {
     "@rspack/cli": "^2.0.8",
     "@rspack/core": "^2.0.8",
     "@rspack/dev-server": "^2.0.3",
     "@swc/core": "^1.15.41",
-    "@swc/jest": "^0.2.39",
+    "browserslist": "^4.28.2",
     "css-loader": "^7.1.4",
     "eval": "^0.1.8",
-    "jest": "^30.0.0",
-    "jest-environment-jsdom": "^30.0.0",
     "oxlint": "^1.70.0",
     "preact": "^10.21.0",
     "preact-render-to-string": "^6.4.2",
