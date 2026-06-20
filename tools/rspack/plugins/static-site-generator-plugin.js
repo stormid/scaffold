@@ -1,6 +1,23 @@
+const vm = require('node:vm');
+const Module = require('node:module');
 const { Compilation, sources } = require('@rspack/core');
 const RawSource = sources.RawSource;
-const evaluate = require('eval');
+
+// Evaluate a compiled CommonJS/UMD bundle in-process and return its exports.
+// Rspack 2 doesn't expose `compilation.executeModule` as a callable method, so
+// the SSG still runs the emitted html bundle — but via Node's built-in vm
+// rather than a third-party eval package. The bundle is self-contained (the
+// `node` target inlines its dependencies); `require`/`__dirname` are provided
+// for the rare built-in reference.
+const evaluateModule = (source, filename, dirname) => {
+    const wrapped = vm.runInThisContext(
+        `(function (exports, require, module, __filename, __dirname) {\n${source}\n})`,
+        { filename }
+    );
+    const mod = { exports: {} };
+    wrapped(mod.exports, Module.createRequire(filename), mod, filename, dirname);
+    return mod.exports;
+};
 
 const toError = err => (err instanceof Error ? err : new Error(typeof err === 'string' ? err : String(err)));
 
@@ -33,7 +50,8 @@ class StaticSiteGeneratorPlugin {
                         }
 
                         const source = asset.source();
-                        let render = evaluate(source, /* filename: */ this.entry, /* scope: */ undefined, /* includeGlobals: */ true);
+                        const filename = `${compiler.context}/${this.entry}.js`;
+                        let render = evaluateModule(source, filename, compiler.context);
 
                         if (Object.prototype.hasOwnProperty.call(render, 'default')) {
                             render = render.default;

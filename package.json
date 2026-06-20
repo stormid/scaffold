@@ -22,7 +22,6 @@
     "@swc/core": "^1.15.41",
     "browserslist": "^4.28.2",
     "css-loader": "^7.1.4",
-    "eval": "^0.1.8",
     "oxlint": "^1.70.0",
     "preact": "^10.21.0",
     "preact-render-to-string": "^6.4.2",
