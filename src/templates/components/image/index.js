@@ -1,11 +1,9 @@
-import { h } from 'preact';
-
 /**
  * Responsive image component, using the <picture> element
  * @param {string} alt - Image alt tag
  * @param {string} className - Class name
  * @param {string} decoding='async' - 'async', 'sync', 'auto'
- * @param {string} fetchpriority='auto' - 'high', 'low', 'auto'
+ * @param {string} fetchPriority=null - 'high', 'low', 'auto'
  * @param {string} height=null - Image height attribute
  * @param {string} imgClassName - img element Class name
  * @param {string} loading='lazy' - 'lazy', 'eager'

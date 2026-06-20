@@ -1,7 +1,6 @@
 const { Compilation, sources } = require('@rspack/core');
 const RawSource = sources.RawSource;
 const evaluate = require('eval');
-const path = require('node:path');
 
 const toError = err => (err instanceof Error ? err : new Error(typeof err === 'string' ? err : String(err)));
 
@@ -10,8 +9,6 @@ class StaticSiteGeneratorPlugin {
         options = options || {};
         this.entry = options.entry;
         this.paths = Array.isArray(options.paths) ? options.paths : [options.paths || '/'];
-        this.locals = options.locals;
-        this.globals = options.globals;
     }
 
     apply(compiler) {
@@ -24,10 +21,9 @@ class StaticSiteGeneratorPlugin {
                     stage: Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
                 },
                 async () => {
-                    const webpackStats = compilation.getStats();
                     // Rspack omits assetsByChunkName from the default toJson() output,
                     // so request asset + chunk-group info explicitly.
-                    const webpackStatsJson = webpackStats.toJson({ all: false, assets: true, chunkGroups: true });
+                    const webpackStatsJson = compilation.getStats().toJson({ all: false, assets: true, chunkGroups: true });
 
                     try {
                         const asset = findAsset(this.entry, compilation, webpackStatsJson);
@@ -37,7 +33,7 @@ class StaticSiteGeneratorPlugin {
                         }
 
                         const source = asset.source();
-                        let render = evaluate(source, /* filename: */ this.entry, /* scope: */ this.globals, /* includeGlobals: */ true);
+                        let render = evaluate(source, /* filename: */ this.entry, /* scope: */ undefined, /* includeGlobals: */ true);
 
                         if (Object.prototype.hasOwnProperty.call(render, 'default')) {
                             render = render.default;
@@ -50,7 +46,7 @@ class StaticSiteGeneratorPlugin {
                                     '" must be a function that returns an HTML string. Is output.library.type in the configuration set to "umd"?'
                             );
                         }
-                        await renderPaths(this.locals, this.paths, render, webpackStats, compilation);
+                        await renderPaths(this.paths, render, compilation);
                     } catch (err) {
                         compilation.errors.push(toError(err));
                     }
@@ -60,21 +56,10 @@ class StaticSiteGeneratorPlugin {
     }
 }
 
-async function renderPaths(userLocals, paths, render, webpackStats, compilation) {
+async function renderPaths(paths, render, compilation) {
     const renderPromises = paths.map(async outputPath => {
-        const locals = {
-            path: outputPath,
-            webpackStats,
-        };
-
-        for (const prop in userLocals) {
-            if (Object.prototype.hasOwnProperty.call(userLocals, prop)) {
-                locals[prop] = userLocals[prop];
-            }
-        }
-
         try {
-            const output = await Promise.resolve(render(locals));
+            const output = await render({ path: outputPath });
             const outputByPath = typeof output === 'object' ? output : makeObject(outputPath, output);
 
             Object.keys(outputByPath).forEach(key => {
@@ -95,9 +80,10 @@ async function renderPaths(userLocals, paths, render, webpackStats, compilation)
 }
 
 const findAsset = (src, compilation, webpackStatsJson) => {
+    const assetsByChunkName = webpackStatsJson.assetsByChunkName || {};
+
     if (!src) {
-        const chunkNames = Object.keys(webpackStatsJson.assetsByChunkName);
-        src = chunkNames[0];
+        src = Object.keys(assetsByChunkName)[0];
     }
     const asset = compilation.assets[src];
 
@@ -105,7 +91,7 @@ const findAsset = (src, compilation, webpackStatsJson) => {
         return asset;
     }
 
-    let chunkValue = webpackStatsJson.assetsByChunkName[src];
+    let chunkValue = assetsByChunkName[src];
 
     if (!chunkValue) {
         return null;
@@ -124,7 +110,9 @@ const pathToAssetName = outputPath => {
     let outputFileName = outputPath.replace(/^(\/|\\)/, ''); // Remove leading slashes for webpack-dev-server
 
     if (!/\.(html?)$/i.test(outputFileName)) {
-        outputFileName = path.join(outputFileName, 'index.html');
+        // Always join with '/': asset names are URL-like and must not pick up
+        // OS-specific separators (path.join would yield '\' on Windows).
+        outputFileName = `${outputFileName.replace(/\/$/, '')}/index.html`;
     }
 
     return outputFileName;

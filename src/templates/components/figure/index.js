@@ -1,5 +1,3 @@
-import { h } from 'preact';
-
 /**
  * Wrapper for flow content (eg Image component), usually where a caption is required
  * Any flow content is permitted: https://html.spec.whatwg.org/multipage/dom.html#flow-content-2

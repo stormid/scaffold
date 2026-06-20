@@ -1,5 +1,3 @@
-import { h } from 'preact';
-
 const head = ({
     charset = 'utf-8',
     title,
@@ -18,6 +16,7 @@ const head = ({
     {meta && meta.map(item => {
         if (item.name) return <meta key={item.name} name={item.name} content={item.content} />;
         if (item.property) return <meta key={item.property} property={item.property} content={item.content} />;
+        return null;
     })}
 </head>;
 

@@ -1,5 +1,3 @@
-import { h } from 'preact';
-
 const Skip = ({
     href = '#main',
     label = 'Skip to main content'

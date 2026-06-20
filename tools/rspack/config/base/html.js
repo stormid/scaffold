@@ -24,7 +24,8 @@ module.exports = {
                         },
                         transform: {
                             react: {
-                                pragma: 'h'
+                                runtime: 'automatic',
+                                importSource: 'preact'
                             }
                         },
                         target: 'es2022'
@@ -37,6 +38,10 @@ module.exports = {
     plugins: [
         new rspack.IgnorePlugin({ resourceRegExp: /\.mdx$/, }),
         new StaticSiteGeneratorPlugin({
+            // Name of the entry chunk (see `entry` above) the render function is
+            // bundled into — passed explicitly so findAsset never has to guess
+            // from chunk ordering.
+            entry: 'html',
             paths: getPaths(paths.src.templates)
         })
     ],

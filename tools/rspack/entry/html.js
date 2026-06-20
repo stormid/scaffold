@@ -1,27 +1,22 @@
-const h = require(`preact`).h;
-const render = require('preact-render-to-string').render;
-const Html = require(`./template`);
+import { render } from 'preact-render-to-string';
+import Html from './template';
 
-module.exports = function(locals) {
-    const bodyTemplate = require(`../../../src/templates/pages/${locals.path}`).default;
-    if (!bodyTemplate) {
-        console.error('\x1b[41m%s\x1b[0m', `Page template ${locals.path} does not export a default function`);
-        return Promise.resolve(``);
+export default async function (locals) {
+    // Dynamic require → webpack bundles every page under templates/pages as a
+    // context module, so this resolves from the bundle, not the real FS.
+    const page = require(`../../../src/templates/pages/${locals.path}`);
+    const { default: bodyTemplate, title = '', meta = [] } = page;
+
+    if (typeof bodyTemplate !== 'function') {
+        // Throw so the failure surfaces as a compilation error (and a missing
+        // page) instead of silently emitting nothing.
+        throw new Error(`Page template "${locals.path}" does not export a default function`);
     }
-    try {
-        const body = bodyTemplate();
-        // const assets = Object.keys(locals.webpackStats.compilation.assets);
-        // const css = assets.filter(value => value.match(/\.css$/));
-        const title = require(`../../../src/templates/pages/${locals.path}`).title || '';
-        const meta = require(`../../../src/templates/pages/${locals.path}`).meta || '';
-        return new Promise((resolve, reject) => {
-            if (body.then) {
-                body.then(Res => {
-                    resolve(`<!DOCTYPE html>${render(<Html htmlBody={Res} title={title} meta={meta} />)}`);
-                });
-            } else resolve(`<!DOCTYPE html>${render(<Html htmlBody={body} title={title} meta={meta} />)}`);
-        });
-    } catch (e){
-        return Promise.reject(`HTML render error: ${e}`);
-    }
-};
+
+    // `await` handles both sync pages (returns a vnode) and async pages
+    // (returns a promise) — and lets a rejection propagate to the plugin
+    // instead of hanging the build.
+    const body = await bodyTemplate();
+
+    return `<!DOCTYPE html>${render(<Html htmlBody={body} title={title} meta={meta} />)}`;
+}

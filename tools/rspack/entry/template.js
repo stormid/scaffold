@@ -1,9 +1,7 @@
-const h = require('preact').h;
-const Html = require('../../../src/templates/components/html').default;
-const paths = require('../../../paths.config');
+import Html from '../../../src/templates/components/html';
+import paths from '../../../paths.config';
 
-const html = ({ htmlBody, css, title, meta }) => <Html
-    css={css}
+const html = ({ htmlBody, title, meta }) => <Html
     title={title}
     meta={meta}
     basePath={`/${paths.dest.js}`}
@@ -11,4 +9,4 @@ const html = ({ htmlBody, css, title, meta }) => <Html
     {htmlBody}
 </Html>;
 
-module.exports = html;
+export default html;

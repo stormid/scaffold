@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import Head from '../head';
 import Body from '../body';
 
