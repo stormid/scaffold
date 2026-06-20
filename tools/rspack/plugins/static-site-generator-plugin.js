@@ -125,15 +125,20 @@ const findAsset = (src, compilation, webpackStatsJson) => {
 };
 
 const pathToAssetName = outputPath => {
-    let outputFileName = outputPath.replace(/^(\/|\\)/, ''); // Remove leading slashes for webpack-dev-server
+    const name = outputPath.replace(/^(\/|\\)/, ''); // strip leading slash for the dev server
 
-    if (!/\.(html?)$/i.test(outputFileName)) {
-        // Always join with '/': asset names are URL-like and must not pick up
-        // OS-specific separators (path.join would yield '\' on Windows).
-        outputFileName = `${outputFileName.replace(/\/$/, '')}/index.html`;
-    }
+    // Already an explicit .html/.htm filename.
+    if (/\.html?$/i.test(name)) return name;
 
-    return outputFileName;
+    // A directory (trailing slash) or the site root ('') maps to a directory
+    // index — `about/` -> `about/index.html`, '' -> `index.html`. This is how
+    // `<dir>/index.js` page files get pretty URLs.
+    if (name === '' || name.endsWith('/')) return `${name}index.html`;
+
+    // A bare page file maps to a same-named html file — `404` -> `404.html`,
+    // `offline` -> `offline.html`. Use this (e.g. `pages/404.js`) for files a
+    // host serves directly, like a 404 page.
+    return `${name}.html`;
 };
 
 const makeObject = (key, value) => {
