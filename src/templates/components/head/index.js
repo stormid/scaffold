@@ -11,6 +11,8 @@ const head = ({
     <meta name="viewport" content={viewport} />
     <link rel="shortcut icon" href={favicon} />
     <title>{title}</title>
+    {title && <meta property="og:title" content={title} />}
+    <meta property="og:type" content="website" />
     {css && <link rel="stylesheet" href={`${css}`} />}
     {children}
     {meta && meta.map(item => {
