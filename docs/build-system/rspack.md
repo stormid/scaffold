@@ -11,7 +11,7 @@ There are three Rspack base configuration files corresponding to three broad cat
 - HTML - for HTML generation from JSX templates
 
 Different types of Rspack build have their own configuration that extend these base configurations:
-- Dev - for development using the Rspack dev server with hot module replacement, and unminified assets
+- Dev - for development using the Rspack dev server with live reload, and unminified assets
 - Build - for writing a production optimised static site to disk
 - CI - for writing production optimised static assets (minus the static HTML) to disk for integration with a backend
 

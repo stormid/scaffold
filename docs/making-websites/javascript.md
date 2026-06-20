@@ -22,7 +22,7 @@ The script checks for the presence of an element in the DOM with a `data-ai` att
 ## Authoring 
 
 ### ESM syntax
-JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/await, import/export) and is transpiled by Rspack's built-in SWC loader based on the .browserslistrc. (Tests are transpiled by SWC too, via `@swc/jest`.)
+JavaScript is authored in ESM syntax (i.e. arrow functions, const/let, async/await, import/export) and is transpiled by Rspack's built-in SWC loader based on the .browserslistrc. (Tests are transpiled by SWC too, via the loader hook in `tools/testing`.)
 
 Not all ESM language features are automatically transpiled, some have to be polyfilled. If in doubt, check the browser support list and the transpiled output file.
 

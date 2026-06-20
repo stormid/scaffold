@@ -17,10 +17,11 @@ The CSS partials are plain `.css` files, imported by `src/css/index.css` and org
 - abstracts
   - constants - the fundamental design tokens of the UI
 - base
-  - normalise - for normalising browser default styles
+  - normalise - vendored [modern-normalize](https://github.com/sindresorhus/modern-normalize), normalising browser default styles
+  - reset - small project base styles and opinionated, accessibility-minded resets (imported after normalise)
   - grid - the base grid system with utility grid classes
   - typefaces
-  - typescale
+  - typescale - for applying the type scale to elements (the scale tokens themselves live in `abstracts/constants`)
   - utility
 - components - the basic blocks of the UI
 

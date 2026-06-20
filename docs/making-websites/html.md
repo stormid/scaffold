@@ -86,14 +86,13 @@ import Card from '@components/card';
 
 ## Full example
 ```
-import { h } from 'preact';
 import DefaultLayout from '@layouts/default';
 import { List, Item } from '@components/List';
 
 export const title = 'Example';
 
 export const meta = [{
-    name: 'My example page',
+    name: 'description',
     content: 'My example page'
 }];
 
