@@ -29,6 +29,7 @@ Components can be composed of smaller sub-components.
 
 There are a few default and helper components in with the scaffold, including
 - [Image](./components/image.md) - an abstraction over responsive images using the picture tag
+- [Figure](./components/figure.md) - a wrapper around the HTML figure element, with an optional caption
 - [Heading](./components/heading.md) - a screen reader optimised abstraction over h1-h6 tags
 - [Example](./components/example.md) - a fully featured demo component
 
@@ -68,7 +69,7 @@ The `<head>` element is itself a component, it can be edited in `src/templates/c
 ## Aliases
 Rspack allows you to define aliases that can be used for a path to a resource, rather than having to use relative paths that change if files move around.
 
-Aliases for JSX imports are set in  `tools\rspack\config\base\html.js`. The default aliases define paths to commonly used HTML template directories:
+Aliases for JSX imports are set in `tools/rspack/config/base/html.js`. The default aliases define paths to commonly used HTML template directories:
 
 ```
 '@templates': path.join(process.cwd(), 'src/templates/'),
@@ -79,8 +80,8 @@ Aliases for JSX imports are set in  `tools\rspack\config\base\html.js`. The defa
 This allows importing of components without a relative or absolute path, e.g.
 
 ```
-import DefaultLayout from @layouts/default;
-import Card from @components/card;
+import DefaultLayout from '@layouts/default';
+import Card from '@components/card';
 ```
 
 ## Full example
@@ -104,7 +105,7 @@ const Example = () => <DefaultLayout>
     </List>
 </DefaultLayout>;
 
-export dafault Example;
+export default Example;
 
 ```
 

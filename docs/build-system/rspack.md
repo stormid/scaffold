@@ -26,11 +26,11 @@ Three small custom plugins live in `tools/rspack/plugins`:
 ### Entry files
 Rspack is a JavaScript bundler and build system, so each configuration requires at least one JavaScript entry file.
 
-The JavaScript build entry files are `src/js/index.js` and `src/js/appinsights/index.js`, as described in  [Types of build ⟶](../making-websites/javascript.md).
+The JavaScript build entry files are `src/js/index.js` and `src/js/appinsights/index.js`, as described in [JavaScript ⟶](../making-websites/javascript.md).
 
-The CSS build entry file is `tools\rspack\entry\css.js`.
+The CSS build entry file is `tools/rspack/entry/css.js`.
 
-The HTML build entry file is `tools\rspack\entry\html.js`.
+The HTML build entry file is `tools/rspack/entry/html.js`.
 
 ## Next
 [Types of build ⟶](./types-of-build.md)

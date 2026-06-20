@@ -9,6 +9,7 @@
 - [Browser support](./making-websites/browser-support.md)
 - Components
   - [Image](./making-websites/components/image.md)
+  - [Figure](./making-websites/components/figure.md)
   - [Heading](./making-websites/components/heading.md)
   - [Example](./making-websites/components/example.md)
 
@@ -19,6 +20,3 @@
   
 ## Testing
 - [Testing](./testing/index.md)
-
-## Storybook
-- [Storybook](./storybook/index.md)

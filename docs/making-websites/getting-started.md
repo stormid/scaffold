@@ -22,11 +22,11 @@ npm start
 
 This will spin up the development server and watch for changes as you build your website.
 
-See [build modes]('./../modes.md) for details about the different ways that the scaffold can run a build, including how to export your static site for deployment.
+See [build modes](../build-system/types-of-build.md) for details about the different ways that the scaffold can run a build, including how to export your static site for deployment.
 
 
 ## Node version
-The Scaffold will work with Node 16+ but the current target version is specified in the `.nvmrc` file. This file is compatible with NVM and NVS, the command `nvs use` will change (or attempt to change) to the node version specified in the .nvmrc file. 
+The Scaffold runs on Rspack 2, which requires Node.js 20.19+ or 22.12+. The current target version is specified in the `.nvmrc` file (Node 22). This file is compatible with NVM and NVS — the command `nvm use` (or `nvs use`) will change (or attempt to change) to the node version specified in the `.nvmrc` file. 
 
 
 ## Next
