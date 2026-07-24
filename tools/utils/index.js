@@ -8,13 +8,24 @@ const getPaths = baseDir => {
     const folder = path.resolve(__dirname, `../../${baseDir}`);
     const read = dir => {
         const contents = fs.readdirSync(dir);
-        return contents.reduce((files, file) => fs.statSync(path.resolve(__dirname, path.join(dir, file))).isDirectory()
-            ? files.concat(read(path.join(dir, file)))
-            : files.concat(path.join(dir, file).replace(/(index)?\.js/, '')),
-        []);
+        return contents.reduce((files, file) => {
+            const full = path.join(dir, file);
+            return fs.statSync(full).isDirectory()
+                ? files.concat(read(full))
+                : files.concat(full);
+        }, []);
     };
-    
-    return read(folder).map(file => path.relative(baseDir, file).split(path.sep).join('/'));
+
+    return read(folder)
+        .filter(file => file.endsWith('.js'))
+        .map(file => {
+            const rel = path.relative(folder, file).split(path.sep).join('/');
+            // An `index.js` is a directory index, so emit a trailing slash
+            // (the root `index.js` becomes '') — pathToAssetName then produces
+            // `<dir>/index.html` and the page gets a pretty URL. Any other file
+            // keeps its own name for `<dir>/<filename>.html`.
+            return rel.replace(/(^|\/)index\.js$/, '$1').replace(/\.js$/, '');
+        });
 };
 
 const isObject = value => value && typeof value === 'object' && !Array.isArray(value);
