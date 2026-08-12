@@ -1,11 +1,13 @@
 /*
-* @params baseDir, String, directory relative to project root
+* @params baseDir, String, directory relative to the current working directory
+* (i.e. the project root, the same base the Rspack configs and paths.config.js
+* resolve against — an absolute path is also accepted)
 * @returns Array of paths describing directory structure without filenames based on contents of src/template/pages
 */
 const getPaths = baseDir => {
     const fs = require('node:fs');
     const path = require('node:path');
-    const folder = path.resolve(__dirname, `../../${baseDir}`);
+    const folder = path.resolve(process.cwd(), baseDir);
     const read = dir => {
         const contents = fs.readdirSync(dir);
         return contents.reduce((files, file) => {

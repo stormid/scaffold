@@ -1,6 +1,19 @@
+/*
+ * Flex and grid items default to `min-width: auto`, which refuses to shrink
+ * below the longest unbreakable string in the item — a long URL then widens
+ * the track and scrolls the whole page sideways. The `overflow-wrap` in
+ * base/reset cannot prevent this on its own: `break-word` deliberately does
+ * not contribute its break opportunities to min-content sizing. Zeroing the
+ * minimum lets the item take the width it is given, at which point
+ * `overflow-wrap` breaks the string.
+ *
+ * Any other flex or grid container a project adds needs the same treatment on
+ * its items.
+ */
 .wrap {
     width: 100%;
     max-width: var(--max-container-width);
+    min-width: 0;
     margin: 0 auto;
     padding: 0 calc(var(--gutter)/2);
 }
@@ -9,6 +22,10 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: var(--baseline) var(--gutter);
+}
+
+.grid > * {
+    min-width: 0;
 }
 .xs-12 {
     grid-column: auto/span 12

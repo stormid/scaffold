@@ -1,0 +1,87 @@
+/*
+ * Applies the type scale and the vertical rhythm from abstracts/constants to
+ * the elements that carry running text.
+ *
+ * Setting an explicit size on every heading level also removes the legacy
+ * behaviour where an h1 nested in a sectioning element renders smaller than a
+ * top-level one — headings size by level here, not by nesting depth.
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* The body line-height of 1.5 is too loose at display sizes */
+    line-height: 1.2;
+    font-weight: var(--bold-weight);
+}
+
+h1 {
+    font-size: var(--font-size-plus-3);
+}
+
+h2 {
+    font-size: var(--font-size-plus-2);
+}
+
+h3 {
+    font-size: var(--font-size-plus-1);
+}
+
+/*
+ * h4-h6 share the body size deliberately: the scale has no steps between 1rem
+ * and 1.414rem, and inventing them would break the √2 ratio. They remain bold,
+ * so they still read as headings. Pages needing six visually distinct levels
+ * should add steps to the scale in abstracts/constants rather than hardcoding
+ * sizes here.
+ */
+h4,
+h5,
+h6 {
+    font-size: var(--font-size-baseline);
+}
+
+/*
+ * Vertical rhythm. Browser defaults space these in `em`, so spacing changes
+ * with font-size and never lines up between elements; one --baseline below
+ * every block keeps the spacing consistent and token-driven. Inline margins
+ * are zeroed too, which is what removes the UA's 40px indent on figure.
+ */
+p,
+ul,
+ol,
+dl,
+figure,
+pre,
+table {
+    margin: 0 0 var(--baseline);
+}
+
+/*
+ * Blockquote keeps a horizontal indent. Nothing else here distinguishes a
+ * quotation from body text, so zeroing its inline margins along with the rest
+ * would render quotes identically to paragraphs.
+ */
+blockquote {
+    margin: 0 var(--gutter) var(--baseline);
+}
+
+/* Headings also take a larger gap above, to separate them from the section before */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: calc(var(--baseline) * 1.5) 0 var(--baseline);
+}
+
+/*
+ * No gap above a heading that opens its container. Wrapping the elements in
+ * :where() keeps this at class-level specificity, so a component can still set
+ * its own heading margins without having to out-specify the base styles.
+ */
+:where(h1, h2, h3, h4, h5, h6):first-child {
+    margin-top: 0;
+}
