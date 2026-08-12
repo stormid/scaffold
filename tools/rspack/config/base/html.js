@@ -42,7 +42,10 @@ module.exports = {
             // bundled into — passed explicitly so findAsset never has to guess
             // from chunk ordering.
             entry: 'html',
-            paths: getPaths(paths.src.templates)
+            // A function, not a fixed array: the pages directory is re-read on
+            // every compilation, so a page added while the dev server is running
+            // is rendered on the next rebuild instead of 404ing until restart.
+            paths: () => getPaths(paths.src.templates)
         })
     ],
     resolve: {

@@ -24,6 +24,15 @@ test('Example > Example renders title, summary and children', () => {
             title={'Quick brown fox'}
             summary={'Jumps over the lazy dog'}
         >Woof</Example>),
-        '<div class="example"><div class="example__bd"><h1 class="example__title"><a href="#" class="example__link">Quick brown fox</a></h1><div class="example__summary">Jumps over the lazy dog</div>Woof</div></div>'
+        '<div class="example"><div class="example__bd"><h2 class="example__title"><a href="#" class="example__link">Quick brown fox</a></h2><div class="example__summary">Jumps over the lazy dog</div>Woof</div></div>'
+    );
+});
+
+test('Example > Example renders the title at the requested heading level', () => {
+    // A repeating component must not hardcode its heading level — the page
+    // owns the document outline, so `level` has to reach the rendered tag.
+    assert.match(
+        render(<Example href={'#'} title={'Quick brown fox'} level={3} />),
+        /<h3 class="example__title">/
     );
 });

@@ -1,39 +1,52 @@
 /*
+ * Hides content visually while leaving it available to screen readers — for
+ * labels, headings and link text that give assistive technology context the
+ * visual design conveys some other way.
+ *
+ * `display: none` and `visibility: hidden` would remove it from the
+ * accessibility tree as well, so the element is instead clipped to a 1px box
+ * that stays in the layout and in the tree. `white-space: nowrap` stops long
+ * text wrapping inside that box and being read out with stray line breaks.
+ */
 .visually-hidden {
     position: absolute;
-    opacity: 0;
     width: 1px;
     height: 1px;
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
     border: 0;
 }
-.visible {    
-    position: static;
-    visibility: visible;
-    opacity: 1;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: auto;
-    overflow:inherit;
-    clip:auto;
+
+/*
+ * Constrains a block of running text to a comfortable measure (--measure,
+ * ~40em). Body text spanning the full 1200px container runs to roughly 150
+ * characters a line, well beyond the 45-75 that is comfortable to read, so
+ * apply this to any long-form prose container.
+ */
+.measure {
+    max-width: var(--measure);
 }
+
+/* Spacing helpers, in multiples of the --baseline vertical rhythm */
 .push-top {
     margin-top: var(--baseline);
 }
+
 .push-top--half {
     margin-top: calc(var(--baseline) / 2);
 }
+
 .push-bottom {
     margin-bottom: var(--baseline);
 }
+
 .push-bottom--half {
     margin-bottom: calc(var(--baseline) / 2);
 }
+
 .push-bottom--double {
-    margin-bottom: calc(var(--baseline) / 2);
+    margin-bottom: calc(var(--baseline) * 2);
 }
-*/

@@ -13,7 +13,11 @@
 }
 .skip__btn:focus {
     pointer-events:all;
-    outline: 0;
+    /*
+     * No `outline: 0` here — it would outrank the transparent outline set by
+     * :focus-visible in base/reset.css, and that outline is the only focus
+     * indicator that survives forced-colors mode, where box-shadow is dropped.
+     */
     position: fixed;
     height: auto;
     width: auto;

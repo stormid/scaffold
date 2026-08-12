@@ -1,4 +1,5 @@
 import DefaultLayout from '@layouts/default';
+import Heading from '@components/heading';
 import Example, { Ghost, Empty, ErrorState } from '@components/example';
 
 export const title = 'Home';
@@ -10,7 +11,7 @@ export const title = 'Home';
 
 const HomePage = () => <DefaultLayout>
     <div class="wrap">
-        <h1>Hello world.</h1>
+        <Heading>Hello world.</Heading>
         <Ghost />
         <Empty />
         <ErrorState />

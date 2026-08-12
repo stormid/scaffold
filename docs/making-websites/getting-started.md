@@ -26,7 +26,9 @@ See [build modes](../build-system/types-of-build.md) for details about the diffe
 
 
 ## Node version
-The Scaffold runs on Rspack 2, which requires Node.js 20.19+ or 22.12+. The current target version is specified in the `.nvmrc` file (Node 22). This file is compatible with NVM and NVS — the command `nvm use` (or `nvs use`) will change (or attempt to change) to the node version specified in the `.nvmrc` file. 
+The Scaffold requires **Node.js 22.12 or later**, declared in the `engines` field of `package.json` — `npm i` warns (`EBADENGINE`) on anything older. Rspack 2 itself also accepts 20.19+, but Oxlint's native binding needs Node 22, so 22.12 is the effective floor.
+
+The target version is specified in the `.nvmrc` file (Node 22). This file is compatible with NVM and NVS — the command `nvm use` (or `nvs use`) will change (or attempt to change) to the node version specified in the `.nvmrc` file. 
 
 
 ## Next

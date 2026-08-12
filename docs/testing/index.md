@@ -13,7 +13,11 @@ node --import ./tools/testing/register.mjs --test
 - use JSX, transformed with the same automatic Preact JSX runtime as the build, and
 - import via the `@templates` / `@layouts` / `@components` path aliases.
 
-A test is included in the Example component at `src/templates/components/example/__tests__`. Each state is rendered to an HTML string with `preact-render-to-string` and asserted directly:
+Tests live in `__tests__` directories next to the code they cover, and are picked up anywhere in the project:
+- `src/templates/components/example/__tests__` - component rendering
+- `tools/utils/__tests__` and `tools/rspack/plugins/__tests__` - the build system's own logic (config merging, the page-list scan, and the route-to-filename mapping that gives pages their URLs)
+
+Component tests render each state to an HTML string with `preact-render-to-string` and assert on it directly:
 
 ```js
 import { test } from 'node:test';

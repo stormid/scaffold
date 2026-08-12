@@ -1,6 +1,6 @@
 /*
- * Project base styles and opinionated resets, applied after modern-normalize.
- * Imported after normalise.css so these rules win on equal specificity.
+ * Project base styles and opinionated resets, imported after normalise.css so
+ * these rules win on equal specificity.
  */
 html {
     height: 100%;
@@ -9,19 +9,42 @@ html {
 
 body {
     min-height: 100%;
+    font-family: var(--font-family-default);
     line-height: 1.5;
     background-color: var(--light-grey-1);
     color: var(--default-color);
+    /*
+     * Inherited, so this covers the whole document: long unbroken strings —
+     * URLs, reference numbers, email addresses — wrap instead of overflowing
+     * their container and forcing the page to scroll sideways.
+     */
+    overflow-wrap: break-word;
 }
 
-/* Smooth in-page scrolling, unless the user prefers reduced motion */
 @media (prefers-reduced-motion: no-preference) {
     html:focus-within {
         scroll-behavior: smooth;
     }
 }
 
-/* Media elements behave as blocks and never overflow their container */
+/*
+ * Underline by default so links in running text are distinguishable without
+ * relying on colour alone (WCAG 1.4.1), and drop it on hover and on focus,
+ * where the pointer or the focus ring already marks the target.
+ *
+ * :focus-visible rather than :focus, because the ring is only drawn for
+ * keyboard focus — on a plain :focus a mouse click would strip the underline
+ * with nothing shown in its place.
+ */
+a {
+    text-decoration: underline;
+}
+
+a:hover,
+a:focus-visible {
+    text-decoration: none;
+}
+
 img,
 picture,
 svg,
@@ -31,27 +54,25 @@ video {
     height: auto;
 }
 
-/* Form controls inherit typography from their context */
 input,
 button,
 textarea,
-select {
+select,
+optgroup {
     font: inherit;
 }
 
 /*
- * Remove list markers only where authors opt in with role="list".
- * Stripping list-style globally removes list semantics in Safari/VoiceOver,
- * so the marker is kept by default and dropped explicitly when wanted.
+ * Markers are kept by default and dropped only where an author opts in:
+ * stripping list-style globally removes list semantics in Safari/VoiceOver.
  */
 :where(ol, ul)[role='list'] {
     list-style: none;
 }
 
 /*
- * Accessible focus: a visible ring only for keyboard focus. The transparent
- * outline keeps a focus indicator in Windows High Contrast / forced-colors
- * mode (where box-shadow is dropped). Mouse focus gets no ring.
+ * A visible ring for keyboard focus only. The transparent outline preserves an
+ * indicator in forced-colors mode, where box-shadow is dropped.
  */
 :focus-visible {
     outline: 4px solid transparent;
@@ -62,7 +83,6 @@ select {
     outline: none;
 }
 
-/* Respect reduced-motion: neutralise animations and transitions */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

@@ -25,7 +25,17 @@ class StaticSiteGeneratorPlugin {
     constructor(options) {
         options = options || {};
         this.entry = options.entry;
-        this.paths = Array.isArray(options.paths) ? options.paths : [options.paths || '/'];
+        // Kept unresolved: `paths` may be a function, which is re-invoked on
+        // every compilation (see resolvePaths). That is what lets a page added
+        // while the dev server is running be rendered without a restart — a
+        // fixed array would freeze the page list at config-load time.
+        this.paths = options.paths;
+    }
+
+    resolvePaths() {
+        const paths = typeof this.paths === 'function' ? this.paths() : this.paths;
+
+        return Array.isArray(paths) ? paths : [paths || '/'];
     }
 
     apply(compiler) {
@@ -64,7 +74,7 @@ class StaticSiteGeneratorPlugin {
                                     '" must be a function that returns an HTML string. Is output.library.type in the configuration set to "umd"?'
                             );
                         }
-                        await renderPaths(this.paths, render, compilation);
+                        await renderPaths(this.resolvePaths(), render, compilation);
                     } catch (err) {
                         compilation.errors.push(toError(err));
                     }
@@ -148,3 +158,5 @@ const makeObject = (key, value) => {
 };
 
 module.exports = StaticSiteGeneratorPlugin;
+// Exposed for unit testing — see tools/rspack/plugins/__tests__.
+module.exports.pathToAssetName = pathToAssetName;

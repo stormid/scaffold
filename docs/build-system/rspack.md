@@ -2,7 +2,7 @@
 
 The Scaffold is based on [Rspack](https://rspack.dev) (a Rust-based, webpack-compatible bundler) and can be extended and customised using Rspack configuration and plugins. Rspack configuration and plugin files are located in the `tools/rspack` folder.
 
-> Note: the build runs on Rspack 2, which requires Node.js 20.19+ or 22.12+ (see `.nvmrc`).
+> Note: the build runs on Rspack 2 and requires Node.js 22.12+ (see `.nvmrc` and the `engines` field in `package.json`).
 
 ### Configuration
 There are three Rspack base configuration files corresponding to three broad categories of file that the scaffold builds:
@@ -26,7 +26,7 @@ Three small custom plugins live in `tools/rspack/plugins`:
 ### Entry files
 Rspack is a JavaScript bundler and build system, so each configuration requires at least one JavaScript entry file.
 
-The JavaScript build entry files are `src/js/index.js` and `src/js/appinsights/index.js`, as described in [JavaScript ⟶](../making-websites/javascript.md).
+The JavaScript build entry file is `src/js/index.js`. The `ci` and `watch` builds add a second entry, `src/js/appinsights/index.js`, as described in [JavaScript ⟶](../making-websites/javascript.md).
 
 The CSS build entry file is `tools/rspack/entry/css.js`.
 

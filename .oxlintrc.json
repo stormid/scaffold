@@ -17,7 +17,6 @@
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-unused-vars": ["error", { "args": "none" }],
     "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
-    "unicorn/no-empty-file": "off",
     "react/react-in-jsx-scope": "off"
   },
   "ignorePatterns": ["build/", "node_modules/"],
@@ -26,6 +25,18 @@
       "files": ["tools/rspack/entry/**/*.js"],
       "rules": {
         "import/no-unassigned-import": "off"
+      }
+    },
+    {
+      "files": ["**/__tests__/**"],
+      "rules": {
+        "import/no-unassigned-import": "off"
+      }
+    },
+    {
+      "files": ["src/js/index.js"],
+      "rules": {
+        "unicorn/no-empty-file": "off"
       }
     }
   ]

@@ -1,6 +1,12 @@
 :root {
-    --font-family-default: sans-serif;
-    
+    /*
+     * The project typeface, applied to body in base/reset.css. This is the
+     * system UI font stack — the same one modern-normalize sets on html — so
+     * text renders in the host OS's own interface font and no webfont is
+     * downloaded. Change this token to change the typeface everywhere.
+     */
+    --font-family-default: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
     /* Type scale — √2 modular ratio (DIN A-series), 1rem baseline */
     --font-size-plus-4: 4rem;       /* 64.0px — hero / display */
     --font-size-plus-3: 2.828rem;   /* 45.3px — h1            */
@@ -8,7 +14,11 @@
     --font-size-plus-1: 1.414rem;   /* 22.6px — h3            */
     --font-size-baseline: 1rem;     /* 16.0px — body          */
     --font-size-minus-1: 0.707rem;  /* 11.3px — caption       */
-    --font-size-minus-2: 0.5rem;    /*  8.0px — fine print    */
+    /*
+     * The scale stops here. The next step down (0.5rem / 8px) is too small to
+     * read, so it is not offered as a token — add it back only if a design
+     * genuinely calls for it.
+     */
 
     --baseline: 1.5rem;
     --gutter: 24px;
@@ -24,7 +34,14 @@
     --dark-grey-2: hsl(0, 0%, 30%);
     --dark-grey-3: hsl(0, 0%, 20%);
     --off-black: hsl(0, 0%, 10%);
-    --highlight: hsl(49, 98%, 56%);
+    /*
+     * Focus indicator colour (see :focus-visible in base/reset.css).
+     * WCAG 2.2 SC 1.4.11 requires a focus indicator to have at least 3:1
+     * contrast against adjacent colours. This value gives 3.7:1 against the
+     * body background (--light-grey-1) and 4:1 against white — if you retint
+     * it, re-check both or the default focus ring stops being conformant.
+     */
+    --highlight: hsl(49, 98%, 30%);
     --default-color: hsl(0, 0%, 10%);
 
     --light-weight: 300;
@@ -41,7 +58,4 @@
     --bp-lg: 1200px;
     --bp-xl: 1400px;
 }
-
-
-
 

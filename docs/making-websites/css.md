@@ -20,12 +20,34 @@ The CSS partials are plain `.css` files, imported by `src/css/index.css` and org
   - normalise - vendored [modern-normalize](https://github.com/sindresorhus/modern-normalize), normalising browser default styles
   - reset - small project base styles and opinionated, accessibility-minded resets (imported after normalise)
   - grid - the base grid system with utility grid classes
-  - typefaces
-  - typescale - for applying the type scale to elements (the scale tokens themselves live in `abstracts/constants`)
-  - utility
+  - typescale - applies the type scale to headings, and the vertical rhythm to blocks of running text (the tokens themselves live in `abstracts/constants`)
+  - utility - single-purpose helper classes
 - components - the basic blocks of the UI
 
 To add a new partial, create the `.css` file and add an `@import` for it in `src/css/index.css`.
+
+### Typefaces
+The project typeface is the `--font-family-default` token in `abstracts/constants`, applied to `body` in `base/reset`. It defaults to the system UI font stack, so text renders in the host operating system's own interface font and no webfont is downloaded. To use a custom typeface, add a partial with your `@font-face` rules (see [Assets](./assets.md) for where to put the font files) and point the token at it.
+
+### Headings and vertical rhythm
+`base/typescale` sizes `h1`-`h3` from the type scale. `h4`-`h6` share the body size on purpose — the √2 scale has no steps between `1rem` and `1.414rem` — and are distinguished by weight. If a design needs six visually distinct levels, add steps to the scale in `abstracts/constants` rather than hardcoding sizes.
+
+Headings and blocks of running text (`p`, lists, `figure`, `table`, `blockquote`, `pre`) are spaced in multiples of `--baseline` rather than the browser's `em`-based defaults, so spacing stays consistent regardless of font-size. Headings take a larger gap above, except when they open their container. That last rule is wrapped in `:where()` to keep it at class-level specificity, so a component can set its own heading margins without having to out-specify the base styles.
+
+### Utilities
+`base/utility` provides:
+
+| Class                | Purpose                                                                                  |
+| -------------------- | ---------------------------------------------------------------------------------------- |
+| `.visually-hidden`   | hides content visually but keeps it in the accessibility tree, for screen reader-only text |
+| `.measure`           | constrains prose to `--measure` (~40em), a comfortable line length for reading            |
+| `.push-top`          | one `--baseline` of space above (`--half` variant for half)                               |
+| `.push-bottom`       | one `--baseline` of space below (`--half` and `--double` variants)                        |
+
+Note that `.wrap` constrains content to 1200px, which is much wider than is comfortable to read — apply `.measure` to any long-form prose container.
+
+### Focus styles
+`base/reset` draws the keyboard focus indicator with `--highlight`, defined in `abstracts/constants`. WCAG 2.2 SC 1.4.11 requires a focus indicator to contrast at least 3:1 with the colours next to it, so if you retint `--highlight` for a project, check it against both the page background and any component backgrounds it will appear on.
 
 ## CSS variables
 

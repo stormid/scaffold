@@ -22,11 +22,15 @@ npm run build
 ```
 To generate a static site. The build process runs once, and outputs a static site to a target folder (default `/build`).
 
+The output folder is not emptied first, so HTML for a page deleted from `src/templates/pages` stays behind from an earlier build. Delete the output folder by hand if you need a build that contains nothing stale.
+
 ## CI
 ```
 npm run ci
 ```
 To generate static assets for a server-rendered application. The build process runs once, and outputs static assets to a target folder specified by the `integrationOutput` variable in the `paths.config.js` file.
+
+This is the only mode that builds the [Application Insights](../making-websites/javascript.md#appinsights) bundle, since client-side telemetry only makes sense in a deployed application.
 
 ## Watch
 ```
