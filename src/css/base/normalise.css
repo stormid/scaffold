@@ -1,352 +1,213 @@
+/*! modern-normalize v3.0.1 | MIT License | https://github.com/sindresorhus/modern-normalize */
+/*
+ * Vendored verbatim from modern-normalize. To update, replace the rules below
+ * with a newer modern-normalize release.
+ */
+
+/*
+Document
+========
+*/
+
 *,
-*:before,
-*:after { 
-	-moz-box-sizing: border-box; 
-	-webkit-box-sizing: border-box; 
+::before,
+::after {
 	box-sizing: border-box;
 }
 
-html,
-body,
-div,
-span,
-applet
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-font,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th, 
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video,
-main {
-	background: transparent;
-	border: 0;
-	font-size: 100%;
-	margin: 0;
-	padding: 0;
-	vertical-align: baseline;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-}
-
-html, 
-body {
-    background-color: var(--light-grey-1);
-}
-
 html {
-    color-scheme: light dark;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -ms-text-size-adjust: 100%;
-    text-rendering: optimizeSpeed;
-    height: 100%;
-        &:focus-within {
-            scroll-behavior: smooth;
-        } 
+	/* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
+	font-family:
+		system-ui,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+	line-height: 1.15; /* 1. Correct the line height in all browsers. */
+	-webkit-text-size-adjust: 100%; /* 2. Prevent adjustments of font size after orientation changes in iOS. */
+	tab-size: 4; /* 3. Use a more readable tab size (opinionated). */
 }
+
+/*
+Sections
+========
+*/
+
 body {
-    min-height: 100%;
-    min-width: 100%;
-    font-size: 100%;
-    line-height: 1.5;
-    color: var(--default-color);
+	margin: 0; /* Remove the margin in all browsers. */
 }
 
-    
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main { 
-	display:block;
-}
-    
-ol, ul {
-	list-style: none;
+/*
+Text-level semantics
+====================
+*/
+
+/**
+Add the correct font weight in Chrome and Safari.
+*/
+
+b,
+strong {
+	font-weight: bolder;
 }
 
-ins {
-    text-decoration: none;
+/**
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the odd 'em' font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+	font-family:
+		ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace; /* 1 */
+	font-size: 1em; /* 2 */
 }
 
-mark {
-    font-style: italic;
-    font-weight: var(--bold-weight);
+/**
+Add the correct font size in all browsers.
+*/
+
+small {
+	font-size: 80%;
 }
 
-del {
-    text-decoration: line-through;
-}
-	
-dfn {
-    font-style: italic;
-}
-	
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-	
-td { 
-	vertical-align: top; 
-}
-
-hr {
-	border: 0;
-    display: block;
-    height: 1px; 
-    margin: 0;
-    padding: 0;
-}
-	
-legend {
-    border: 0;
-    padding: 0;
-    white-space: normal;
-}
-	
-figure {
-    margin: 0;
-}
-
-[hidden] {
-    display: none;
-}
-:focus {
-    outline: 0 none;
-}
-:focus-visible {
-    outline: 4px solid transparent;
-    box-shadow: 0px 0px 0px 4px var(--highlight);
-}
-
-img {
-    display:block;
-	border: 0;
-    max-width: 100%;
-    height:auto;
-}
-
-a:hover,
-a:focus,
-a:active {
-    text-decoration: none;
-    text-decoration-skip-ink: auto;
-}
-
-strong, 
-b {
-	font-weight:var(--bold-weight);
-}
-
-em, 
-i {
-	font-style:italic;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: var(--regular-weight);
-}
-
-blockquote, q {
-	quotes: none;
-}
-    
-blockquote:before, 
-blockquote:after,
-q:before, 
-q:after {
-	content: '';
-	content: none;
-}
-
-address {
-	font-style: var(--regular-weight);
-}
-	
-figure {
-    margin: 0;
-}
+/**
+Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
 
 sub,
 sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-}
-	
-sup {
-    top: -0.5em;
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
 }
 
 sub {
-    bottom: -0.25em;
+	bottom: -0.25em;
 }
-	
-input, 
+
+sup {
+	top: -0.5em;
+}
+
+/*
+Tabular data
+============
+*/
+
+/**
+Correct table border color inheritance in Chrome and Safari. (https://issues.chromium.org/issues/40615503, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
+
+table {
+	border-color: currentcolor;
+}
+
+/*
+Forms
+=====
+*/
+
+/**
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
+
 button,
-select {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-}
-	
-input, 
-button, 
-select {
-	border: 0 none;
-	border-radius: 0;
-	padding: 0;
-	vertical-align: middle;
-}
-
-select::-ms-expand {
-  display:none;
-}
-
-input[type="search"] {
-	border-radius: 0;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-}
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-  	display: none;
-}
-	
-input[type="checkbox"] {
-	-moz-appearance: checkbox;
-	-webkit-appearance: checkbox;
-}
-	
-input[type="radio"] {
-	-moz-appearance: radio;
-	-webkit-appearance: radio;
-}
-
-select {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-}
-
-button::-moz-focus-inner, 
-input::-moz-focus-inner { 
-	border: 0; 
-	padding: 0; 
-}
-
 input,
+optgroup,
+select,
+textarea {
+	font-family: inherit; /* 1 */
+	font-size: 100%; /* 1 */
+	line-height: 1.15; /* 1 */
+	margin: 0; /* 2 */
+}
+
+/**
+Correct the inability to style clickable types in iOS and Safari.
+*/
+
 button,
-textarea,
-select {
-    font: inherit;
-    letter-spacing: inherit;
-    word-spacing: inherit;
-}
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-    border:0 none;
-    cursor: pointer;
-    -webkit-appearance: button;
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	-webkit-appearance: button;
 }
 
-a[disabled],
-button[disabled],
-input[disabled] {
-	cursor: default;
-	pointer-events: none;
+/**
+Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
+
+legend {
+	padding: 0;
 }
 
-textarea { 
-	overflow: auto; 
-	vertical-align: top; 
-	resize: vertical; 
-    width:100%;
+/**
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+	vertical-align: baseline;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    html:focus-within {
-        scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-  }
+/**
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+	height: auto;
+}
+
+/**
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+	-webkit-appearance: textfield; /* 1 */
+	outline-offset: -2px; /* 2 */
+}
+
+/**
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+/**
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to 'inherit' in Safari.
+*/
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button; /* 1 */
+	font: inherit; /* 2 */
+}
+
+/*
+Interactive
+===========
+*/
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+	display: list-item;
+}

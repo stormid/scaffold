@@ -1,5 +1,3 @@
-import { h } from 'preact';
-
 const head = ({
     charset = 'utf-8',
     title,
@@ -13,11 +11,14 @@ const head = ({
     <meta name="viewport" content={viewport} />
     <link rel="shortcut icon" href={favicon} />
     <title>{title}</title>
+    {title && <meta property="og:title" content={title} />}
+    <meta property="og:type" content="website" />
     {css && <link rel="stylesheet" href={`${css}`} />}
     {children}
     {meta && meta.map(item => {
-        if (item.name) return <meta name={item.name} content={item.content} />;
-        if (item.property) return <meta property={item.property} content={item.content} />;
+        if (item.name) return <meta key={item.name} name={item.name} content={item.content} />;
+        if (item.property) return <meta key={item.property} property={item.property} content={item.content} />;
+        return null;
     })}
 </head>;
 

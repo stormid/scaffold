@@ -1,4 +1,4 @@
-## Figure
+# Figure component
 
 The Figure component is a wrapper around the HTML figure element. The figure element is self-contained (like a complete sentence) and is typically referenced as a single unit from the main flow of the document. Most often used to annotate illustrations, diagrams, photos, poems, and code listings.
 
@@ -26,7 +26,7 @@ Then use them
 
 ```
 <Figure
-	caption={'Stock photography site portayal of healthy living'}
+	caption={'Stock photography site portrayal of healthy living'}
 	className={'figure'}
 >
 	<Image
@@ -50,10 +50,10 @@ Renders
 ```
 <figure class="figure">
 	<picture class="picture">
-		<source srcset="/static/img/image.jpg" media="(min-width: 768px)" />
-		<source srcset="/static/img/image-small.jpg" media="(max-width: 767px)" />
-		<img src="/static/img/image-low-res.jpg" alt="Woman laughing alone with a salad in her hand" decoding="auto" loading="eager" height="300" width="800">
+		<source srcset="/static/img/portrait.jpg" media="(min-width: 768px)" />
+		<source srcset="/static/img/portrait-small.jpg" media="(max-width: 767px)" />
+		<img src="/static/img/portrait-low-res.jpg" alt="Woman laughing alone with a salad in her hand" decoding="auto" loading="eager" height="300" width="800">
 	</picture>
-	<figcaption>Stock photography site portayal of healthy living</figcaption>
+	<figcaption>Stock photography site portrayal of healthy living</figcaption>
 </figure>
 ```

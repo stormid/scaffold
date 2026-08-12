@@ -1,15 +1,14 @@
 :root {
     --font-family-default: sans-serif;
     
-    --font-size-plus-4: 1rem;
-    --font-size-plus-3: 1rem;
-    --font-size-plus-2: 1rem;
-    --font-size-plus-1: 1rem;
-    --font-size-baseline: 1rem;
-    --font-size-minus-1: 1rem;
-    --font-size-minus-2: 1rem;
-    --font-size-minus-3: 1rem;
-    --font-size-minus-4: 1rem;
+    /* Type scale — √2 modular ratio (DIN A-series), 1rem baseline */
+    --font-size-plus-4: 4rem;       /* 64.0px — hero / display */
+    --font-size-plus-3: 2.828rem;   /* 45.3px — h1            */
+    --font-size-plus-2: 2rem;       /* 32.0px — h2            */
+    --font-size-plus-1: 1.414rem;   /* 22.6px — h3            */
+    --font-size-baseline: 1rem;     /* 16.0px — body          */
+    --font-size-minus-1: 0.707rem;  /* 11.3px — caption       */
+    --font-size-minus-2: 0.5rem;    /*  8.0px — fine print    */
 
     --baseline: 1.5rem;
     --gutter: 24px;

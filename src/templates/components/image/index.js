@@ -1,11 +1,9 @@
-import { h } from 'preact';
-
 /**
  * Responsive image component, using the <picture> element
  * @param {string} alt - Image alt tag
  * @param {string} className - Class name
  * @param {string} decoding='async' - 'async', 'sync', 'auto'
- * @param {string} fetchpriority='auto' - 'high', 'low', 'auto'
+ * @param {string} fetchPriority=null - 'high', 'low', 'auto'
  * @param {string} height=null - Image height attribute
  * @param {string} imgClassName - img element Class name
  * @param {string} loading='lazy' - 'lazy', 'eager'
@@ -26,7 +24,7 @@ const Image = ({
     sources,
     width = null
 }) => <picture class={className}>
-    { sources && sources.map(srcData => <source srcset={srcData.src} media={srcData.media} />) }
+    { sources && sources.map(srcData => <source key={srcData.src} srcset={srcData.src} media={srcData.media} />) }
     <img
         alt={alt}
         class={imgClassName}

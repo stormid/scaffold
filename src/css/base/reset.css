@@ -1,0 +1,75 @@
+/*
+ * Project base styles and opinionated resets, applied after modern-normalize.
+ * Imported after normalise.css so these rules win on equal specificity.
+ */
+html {
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    min-height: 100%;
+    line-height: 1.5;
+    background-color: var(--light-grey-1);
+    color: var(--default-color);
+}
+
+/* Smooth in-page scrolling, unless the user prefers reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+    html:focus-within {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Media elements behave as blocks and never overflow their container */
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Form controls inherit typography from their context */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/*
+ * Remove list markers only where authors opt in with role="list".
+ * Stripping list-style globally removes list semantics in Safari/VoiceOver,
+ * so the marker is kept by default and dropped explicitly when wanted.
+ */
+:where(ol, ul)[role='list'] {
+    list-style: none;
+}
+
+/*
+ * Accessible focus: a visible ring only for keyboard focus. The transparent
+ * outline keeps a focus indicator in Windows High Contrast / forced-colors
+ * mode (where box-shadow is dropped). Mouse focus gets no ring.
+ */
+:focus-visible {
+    outline: 4px solid transparent;
+    box-shadow: 0 0 0 4px var(--highlight);
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Respect reduced-motion: neutralise animations and transitions */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

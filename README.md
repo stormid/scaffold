@@ -13,3 +13,5 @@ Read the [documentation](./docs/index.md).
 | `npm run ci`        | write static assets to disk for production/CI |
 | `npm run watch`     | watch and write assets to disk for production |
 | `npm t`             | run tests                                     |
+| `npm run lint`      | lint with oxlint                              |
+| `npm run lint:fix`  | lint and auto-fix with oxlint                 |

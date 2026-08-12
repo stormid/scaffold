@@ -1,6 +1,5 @@
-import { h } from 'preact';
 import DefaultLayout from '@layouts/default';
-import Example, { Ghost, Empty, Error } from '@components/example';
+import Example, { Ghost, Empty, ErrorState } from '@components/example';
 
 export const title = 'Home';
 
@@ -14,7 +13,7 @@ const HomePage = () => <DefaultLayout>
         <h1>Hello world.</h1>
         <Ghost />
         <Empty />
-        <Error />
+        <ErrorState />
         <Example href={'#'}
             title={'Quick brown fox'}
             summary={'Jumps over the lazy dog'} />
