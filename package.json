@@ -31,7 +31,7 @@
     "preact": "^10.21.0",
     "preact-render-to-string": "^6.4.2",
     "sharp": "^0.35.3",
-    "svgo": "^3.3.2"
+    "svgo": "^3.3.5"
   },
   "dependencies": {
     "@microsoft/applicationinsights-web": "^3.4.1",
