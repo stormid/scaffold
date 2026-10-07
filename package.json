@@ -28,8 +28,8 @@
     "css-loader": "^7.1.4",
     "happy-dom": "^20.10.6",
     "oxlint": "^1.70.0",
-    "preact": "^10.21.0",
-    "preact-render-to-string": "^6.4.2",
+    "preact": "^11.0.0",
+    "preact-render-to-string": "^6.8.0",
     "sharp": "^0.35.3",
     "svgo": "^3.3.2"
   },
