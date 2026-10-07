@@ -103,13 +103,8 @@ module.exports = {
                     multipass: true,
                     plugins: [{
                         // set of built-in plugins enabled by default
-                        // see: https://github.com/svg/svgo#default-preset
+                        // see: https://svgo.dev/docs/preset-default/
                         name: 'preset-default',
-                        params: {
-                            overrides: {
-                                removeViewBox: false,
-                            }
-                        }
                     }],
                 },
             }),

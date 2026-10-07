@@ -19,22 +19,22 @@
     "node": ">=22.12"
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^20.10.6",
-    "@rspack/cli": "^2.0.8",
-    "@rspack/core": "^2.0.8",
-    "@rspack/dev-server": "^2.0.3",
-    "@swc/core": "^1.15.41",
-    "browserslist": "^4.28.2",
-    "css-loader": "^7.1.4",
-    "happy-dom": "^20.10.6",
-    "oxlint": "^1.70.0",
-    "preact": "^10.21.0",
-    "preact-render-to-string": "^6.4.2",
-    "sharp": "^0.35.3",
-    "svgo": "^3.3.2"
+    "@happy-dom/global-registrator": "^20.14.5",
+    "@rspack/cli": "^2.2.8",
+    "@rspack/core": "^2.2.8",
+    "@rspack/dev-server": "^2.2.1",
+    "@swc/core": "^1.16.13",
+    "browserslist": "^4.29.3",
+    "css-loader": "^7.1.5",
+    "happy-dom": "^20.14.5",
+    "oxlint": "^1.87.0",
+    "preact": "^11.0.0",
+    "preact-render-to-string": "^6.8.0",
+    "sharp": "^0.35.5",
+    "svgo": "^4.1.0"
   },
   "dependencies": {
-    "@microsoft/applicationinsights-web": "^3.4.1",
-    "@stormid/toggle": "^1.0.0"
+    "@microsoft/applicationinsights-web": "^3.4.5",
+    "@stormid/toggle": "^1.1.1"
   }
 }
